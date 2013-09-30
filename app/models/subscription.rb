@@ -55,7 +55,6 @@ class Subscription < ActiveRecord::Base
         self.last_4_digits = customer.cards.data.first["last4"]
         self.stripe_id = customer.id
         self.stripe_card_token = nil
-        self.failed_payment = false
         rescue Stripe::StripeError => e
         logger.error "Stripe Error: " + e.message
         errors.add :base, "#{e.message}."
