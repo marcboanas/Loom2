@@ -1,0 +1,46 @@
+<%= form_for(@step) do |f| %>
+  <% if @step.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@step.errors.count, "error") %> prohibited this step from being saved:</h2>
+
+      <ul>
+      <% @step.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% for business in BusinessType.find(:all) %>
+  
+  <div class="field">
+  <label class='inline'><%= business.business %></label>
+  <%= check_box_tag "step[business_type_ids][]", business.id, @step.business_types.include?(business) %><br />
+  </div>
+  
+  <% end %>
+
+  <div class="field">
+    <%= f.label :step, :class => 'inline' %>
+    <%= f.text_field :step %><br />
+  </div>
+  <div class="field">
+    <%= f.label :controller, :class => 'inline' %>
+    <%= f.text_field :controller %><br />
+  </div>
+  <div class="field">
+    <%= f.label :action, :class => 'inline' %>
+    <%= f.text_field :action %><br />
+  </div>
+  <div class="field">
+    <%= f.label :variable, :class => 'inline' %>
+    <%= f.text_field :variable %><br />
+  </div>
+  <div class="field">
+    <%= f.label :description, :class => 'inline' %>
+    <%= f.text_field :description %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

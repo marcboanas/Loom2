@@ -1,0 +1,33 @@
+<h1>Listing tax_returns</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Loss</th>
+    <th>Pension</th>
+    <th>Utr</th>
+    <th>Dividend</th>
+    <th>Interest</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tax_returns.each do |tax_return| %>
+  <tr>
+    <td><%= tax_return.user_id %></td>
+    <td><%= tax_return.loss %></td>
+    <td><%= tax_return.pension %></td>
+    <td><%= tax_return.UTR %></td>
+    <td><%= tax_return.dividend %></td>
+    <td><%= tax_return.interest %></td>
+    <td><%= link_to 'Show', tax_return %></td>
+    <td><%= link_to 'Edit', edit_tax_return_path(tax_return) %></td>
+    <td><%= link_to 'Destroy', tax_return, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tax return', new_tax_return_path %>

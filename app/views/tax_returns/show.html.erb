@@ -1,0 +1,33 @@
+<p>
+  <b>User:</b>
+  <%= @tax_return.user_id %>
+</p>
+
+<p>
+  <b>Loss:</b>
+  <%= @tax_return.loss %>
+</p>
+
+<p>
+  <b>Pension:</b>
+  <%= @tax_return.pension %>
+</p>
+
+<p>
+  <b>Utr:</b>
+  <%= @tax_return.UTR %>
+</p>
+
+<p>
+  <b>Dividend:</b>
+  <%= @tax_return.dividend %>
+</p>
+
+<p>
+  <b>Interest:</b>
+  <%= @tax_return.interest %>
+</p>
+
+
+<%= link_to 'Edit', edit_tax_return_path(@tax_return) %> |
+<%= link_to 'Back', tax_returns_path %>

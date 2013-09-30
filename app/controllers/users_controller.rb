@@ -21,21 +21,30 @@ class UsersController < ApplicationController
       if @user.save
          sign_in @user
          flash[:success] = "Welcome to the Base App!"
-         redirect_to @user
+          redirect_to edit_user_path(@user, :step => current_user.next_step)
       else
          render 'new'
       end
   end
     
   def edit
+      @start_date_array = [['06/04/2013','06/04/2013'],['06/04/2014','06/04/2014']]
+      @year_array = [['April 2013 - April 2014','2013'],['April 2014 - April 2015','2014']]
+      @plans = Plan.all
+      plan = Plan.first
+      @subscription = plan.subscriptions.build
   end
     
   def update
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-          flash[:success] = "Profile updated"
+          
           sign_in @user
-          redirect_to @user
+                if !current_user.next_step.blank?
+                    redirect_to edit_user_path(@user, :step => current_user.next_step)
+                    else
+                    redirect_to root_path
+            end
           else
           render 'edit'
       end

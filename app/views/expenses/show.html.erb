@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Expense type:</b>
+  <%= @expense.expense_type_id %>
+</p>
+
+<p>
+  <b>Dated:</b>
+  <%= @expense.dated %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @expense.value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @expense.description %>
+</p>
+
+<p>
+  <b>Asset life:</b>
+  <%= @expense.asset_life %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @expense.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_expense_path(@expense) %> |
+<%= link_to 'Back', expenses_path %>

@@ -1,11 +1,40 @@
 BaseApp::Application.routes.draw do
     
+  mount StripeEvent::Engine => '/stripe'
+
+  resources :subscriptions 
+    
+  resources :plans
+    
+    
+  resources :steps
+
+
+  resources :incomes
+
+
+  resources :students
+
+
+  resources :expenses
+
+
+  resources :expense_categories
+
+
+  resources :business_types
+
+
+  resources :tax_returns
+    
+  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+
+
     get "password_resets/new"
-    get 'income_table', :controller => 'incomes', :action => :income_table
-    get 'expense_table', :controller => 'expenses', :action => :expense_table
-    get 'income_form', :controller => 'incomes', :action => :income_form
-    get 'expense_form', :controller => 'expenses', :action => :expense_form
-    get 'summary_boxes', :controller => 'static_pages', :action => :summary_boxes
+    get 'update_fields', :controller => 'expenses', :action => :update_fields
+    put 'update_card', :controller => 'subscriptions', :action => :update_card
+    put 'update_plan', :controller => 'subscriptions', :action => :update_plan
+    
     
     resources :users do
         member do

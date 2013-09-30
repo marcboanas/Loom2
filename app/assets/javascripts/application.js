@@ -12,4 +12,50 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_nested_form
 //= require_tree .
+
+$('.selectable').live('change', function() {
+$("#update_fields").load('/update_fields?expense_type_id=' + (this).value, function(){});
+});
+
+$(function() {
+
+jQuery(".selectable option:first-child").attr("selected", true);
+  
+  $('.selectable').change();
+
+});
+
+$(function() {
+  
+  $('input[type="checkbox"]').each(function() {
+  
+  if (this.checked) {
+  $(this).closest('.checklist_item').css('background', '#d2eded');
+  }
+  
+  });
+  
+  var step = $('.step_hidden').attr('name');
+  
+  if (typeof step !== 'undefined') {
+  
+  $('.signup_step').each(function() {
+  $(this).removeClass('active');
+  });
+  
+  $('#' + step).addClass('active');
+  
+  }
+  
+  $('#accounting_start_date').live('change', function() {
+  
+  var selected = $(this).prop("selectedIndex");
+                                   
+  $('#default_year').prop("selectedIndex",selected);
+                                   
+  });
+  
+});
+

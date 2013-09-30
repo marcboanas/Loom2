@@ -1,0 +1,36 @@
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.hidden_field :next_step, value: '' %>
+      
+      <div class="highlight">
+      
+      <% if current_user.subscriptions.empty? %>
+      
+      please select a subscription
+      
+      <% else %>
+      
+      <% current_user.subscriptions.each do |s| %>
+      
+      Your current subscription is <%= s.plan.name %>.<br />
+      
+      <% end %>
+      
+      <% end %>
+      
+      </div>
+      
+      <% @plans.each do |plan| %>
+      
+      <%= plan.name %>
+
+      <% end %>
+
+      <div class="actionContainer">
+      
+      <%= f.submit "Save changes", class: "" %>
+      
+      </div>
+    <% end %>
+

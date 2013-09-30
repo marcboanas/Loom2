@@ -1,0 +1,335 @@
+/* line 1, ../../app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #E3E1D6;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 58px 0px 0px 0px;
+}
+
+/* line 10, ../../app/assets/stylesheets/scaffolds.css.scss */
+.body-container {
+  width: 100%;
+  position: absolute;
+}
+
+/* line 15, ../../app/assets/stylesheets/scaffolds.css.scss */
+.main-container {
+  width: 1024px;
+  height: auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: none;
+  padding: 0px;
+}
+
+/* line 25, ../../app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 31, ../../app/assets/stylesheets/scaffolds.css.scss */
+h1 {
+  margin: 0px;
+  font-size: 16px;
+  color: #37404e;
+  margin-left: 10px;
+}
+
+/* line 38, ../../app/assets/stylesheets/scaffolds.css.scss */
+li {
+  display: inline-block;
+}
+
+/* line 42, ../../app/assets/stylesheets/scaffolds.css.scss */
+ul {
+  padding: 0px;
+}
+
+/* line 46, ../../app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 52, ../../app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 54, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 57, ../../app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 63, ../../app/assets/stylesheets/scaffolds.css.scss */
+div, input {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+}
+/* line 66, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions, input.field, input.actions {
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  width: 984px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background: none;
+  position: relative;
+}
+/* line 75, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field.notes, div.actions.notes, input.field.notes, input.actions.notes {
+  height: 60px;
+}
+/* line 78, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field input, div.actions input, input.field input, input.actions input {
+  width: 250px;
+  line-height: 20px;
+  font-size: 16px;
+  color: #37404e;
+  margin: 7px;
+}
+/* line 84, ../../app/assets/stylesheets/scaffolds.css.scss */
+div.field input.currency, div.actions input.currency, input.field input.currency, input.actions input.currency {
+  width: 125px;
+}
+
+input.small {
+  width: 125px !important;
+}
+
+/* line 91, ../../app/assets/stylesheets/scaffolds.css.scss */
+.form-section {
+  background: #F6F7F8;
+  margin: 0 20px 20px 20px;
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* line 98, ../../app/assets/stylesheets/scaffolds.css.scss */
+.note {
+  position: absolute;
+  bottom: 0px;
+  left: 307px;
+  height: 20px;
+  line-height: 20px;
+  width: auto;
+  background: none;
+  font-size: 12px;
+}
+
+/* line 109, ../../app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 113, ../../app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 119, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 126, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 136, ../../app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 142, ../../app/assets/stylesheets/scaffolds.css.scss */
+label.inline {
+  float: left;
+  margin-right: 10px;
+  display: block;
+  width: 290px;
+  text-align: right;
+}
+/* line 148, ../../app/assets/stylesheets/scaffolds.css.scss */
+label.inline.hidden {
+  font-size: 0px;
+}
+
+/* line 153, ../../app/assets/stylesheets/scaffolds.css.scss */
+input {
+  float: left;
+}
+
+/* line 157, ../../app/assets/stylesheets/scaffolds.css.scss */
+.blue-bar-top {
+  width: 100%;
+  height: 39px;
+  background: #293f6e;
+  border-bottom: 2px solid #1B2A49;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10000;
+}
+/* line 166, ../../app/assets/stylesheets/scaffolds.css.scss */
+.blue-bar-top a {
+  color: white;
+}
+
+/* line 171, ../../app/assets/stylesheets/scaffolds.css.scss */
+.top-bar-container {
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+}
+
+/* line 178, ../../app/assets/stylesheets/scaffolds.css.scss */
+.section-container {
+  width: 100%;
+  background: white;
+  border: 2px solid #b3b3b3;
+  border-radius: 2px;
+}
+
+/* line 185, ../../app/assets/stylesheets/scaffolds.css.scss */
+.section-header {
+  background: #d2eded;
+  width: 100%;
+  height: 39px;
+  line-height: 37px;
+  border-bottom: 2px solid #b3b3b3;
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+margin-top: 12px !important;
+}
+
+.checklist_item {
+margin: 20px;
+line-height: 40px;
+border: 1px solid black;
+position: relative;
+}
+
+.checklist_step {
+position: absolute;
+left: 0px;
+top: 0px;
+width: 40px;
+border-right: 1px solid black;
+text-align: center;
+}
+
+.checklist_complete {
+position: absolute;
+right: 0px;
+top: 0px;
+width: 120px;
+border-left: 1px solid black;
+height: 40px;
+padding: 0px;
+    input[type="checkbox"] {
+    margin: 14px !important;
+    }
+}
+
+.checklist_description {
+margin-left: 60px;
+width: 400px;
+}
+
+.signup_progress_container {
+height: 100px;
+margin-bottom: 40px;
+width: 100%;
+background: white;
+border: 1px solid #b3b3b3;
+position: relative;
+}
+
+.signup_step {
+float: left;
+width: 25%;
+height: 100%;
+line-height: 100px;
+text-align: center;
+border-right: 1px solid #b3b3b3;
+position: relative;
+    &:last-child {
+    border-right: 0px;
+    }
+    &.active {
+    background: #d2eded;
+    }
+    &.active:after {
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;	
+	border-top: 20px solid #d2eded;
+    }
+    &.active:before {
+    position: absolute;
+    bottom: -21px;
+    left: 39px;
+    content: "";
+	width: 0; 
+	height: 0; 
+	border-left: 21px solid transparent;
+	border-right: 21px solid transparent;
+	border-top: 21px solid #b3b3b3;
+    }
+}
+
+.actionContainer {
+width: 100%;
+height: 50px;
+border: 1px solid #b3b3b3;
+margin: 40px 0 0 0;
+background: #d2eded;
+padding: 12.5px;
+    input[type="submit"] {
+    float: right;
+    font-size: 16px;
+    }
+}
+
+.highlight {
+position: relative;
+width: 100%;
+line-height: 40px;
+text-align: center;
+background: #d2eded;
+}

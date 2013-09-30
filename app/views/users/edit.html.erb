@@ -1,20 +1,55 @@
-<% provide(:title, "Edit user") %> 
-<h1>Update your profile</h1>
+<% provide(:title, "Edit user") %>
 
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+<div class="section-container">
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<div class="section-header">
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+<h1><%= current_user.name %></h1>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+</div>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
+<div class="form-section">
+    
+<div class="signup_progress_container">
+    
+<div class="signup_step active" id="edit_step_1">
 
-      <%= f.submit "Save changes", class: "" %>
-    <% end %>
+<%= link_to "Account Details", edit_user_path(current_user, :step => '1') %>
+
+</div>
+    
+<div class="signup_step" id="edit_step_2">
+
+<%= link_to "Business Details", edit_user_path(current_user, :step => '2') %>
+
+</div>
+    
+<div class="signup_step" id="edit_step_3">
+
+<%= link_to "Accounting Information", edit_user_path(current_user, :step => '3') %>
+
+</div>
+    
+<div class="signup_step" id="edit_step_4">
+
+<%= link_to "Subscription & Payment", edit_user_path(current_user, :step => '4') %>
+
+</div>
+    
+</div>
+
+<% if params[:step] && !params[:step].blank? %>
+
+<div class="step_hidden" name=<%= 'edit_step_' + params[:step] %>></div>
+
+<%= render 'edit_step_' + params[:step] %>
+
+<% else %>
+
+<%= render 'edit_step_1' %>
+
+<% end %>
+
+</div>
+
+</div>

@@ -1,0 +1,102 @@
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.hidden_field :next_step, value: '4' %>
+
+      <div class="field notes">
+      
+      <%= f.label :business_start_date, "Self Employment Start Date", :class => 'inline' %>
+      <%= f.text_field :business_start_date, :class => "small", :placeholder => 'dd/mm/yyyy' %>
+      
+      <div class="note">This is the date you started working as self employed</div><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :registered_selfemployed, "Registered Self Employed", :class => 'inline' %>
+      <%= f.check_box :registered_selfemployed %><br />
+      
+      </div>
+
+      <div class="field">
+
+      <%= f.label :accounting_start_date, "First Accounting Start Date", :class => 'inline' %>
+      <%= f.select(:accounting_start_date, @start_date_array, {}, {:id => "accounting_start_date"}) %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :default_year, "First Accounting Year", :class => 'inline' %>
+      <%= f.select(:default_year, @year_array, {}, {:disabled => 'true', :id => "default_year"}) %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :previous_accountant, "Previous Accountant", :class => 'inline' %>
+      <%= f.check_box :previous_accountant %><br />
+      
+      </div>
+      
+      <%= fields_for :previous_accountant_address do |a| %>
+      
+      <div class="field">
+
+      <%= a.label :address1, "Previous Accountant Address", :class => 'inline' %>
+      <%= a.text_field :address1 %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :address2, ".", :class => 'inline hidden' %>
+      <%= a.text_field :address2 %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :address3, ".", :class => 'inline hidden' %>
+      <%= a.text_field :address3 %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :city, "City", :class => 'inline' %>
+      <%= a.text_field :city %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :county, "County", :class => 'inline' %>
+      <%= a.text_field :county %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :post_code, "Post Code", :class => 'inline' %>
+      <%= a.text_field :post_code %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= a.label :country, "Country", :class => 'inline' %>
+      <%= a.text_field :country %><br />
+      
+      </div>
+      
+      <% end %>
+      
+      <div class="actionContainer">
+      
+      <%= f.submit "Save changes", class: "" %>
+      
+      </div>
+    <% end %>
+

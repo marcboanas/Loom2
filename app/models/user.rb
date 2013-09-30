@@ -1,8 +1,21 @@
 class User < ActiveRecord::Base
-    attr_accessible :name, :email, :password, :password_confirmation
+    attr_accessible :name, :email, :password, :password_confirmation, :business_type_id, :account_type, :address, :business_name, :business_start_date, :accounting_start_date, :next_step, :home_phone, :mobile, :default_year, :registered_selfemployed, :previous_accountant, :previous_accountant_address
+    
     has_secure_password
+    has_many :tax_returns, :dependent => :destroy
+    has_many :employers, through: :tax_returns
+    belongs_to :business_type
+    has_many :expense_types, through: :business_type
+    has_many :expenses
+    has_many :students
+    has_many :incomes, through: :students
+    has_many :steps, through: :business_type
+    has_many :subscriptions, :dependent => :destroy
+    serialize :address, Hash
+    serialize :previous_accountant_address, Hash
     
     before_save { |user| user.email = email.downcase }
+    before_save { |user| user.name = name.titleize }
     before_save :create_remember_token
     
     validates :name, presence: true, length: { maximum: 50 }
@@ -10,8 +23,8 @@ class User < ActiveRecord::Base
     validates :email, presence:   true,
     format:     { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation, presence: true
+    validates :password, presence: true, length: { minimum: 6 }, :if => :password
+    validates :password_confirmation, presence: true, :if => :password_confirmation
     
     def generate_token(column)
         begin

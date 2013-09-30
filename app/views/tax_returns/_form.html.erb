@@ -1,0 +1,63 @@
+<%= nested_form_for(@tax_return) do |f| %>
+  <% if @tax_return.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tax_return.errors.count, "error") %> prohibited this tax_return from being saved:</h2>
+
+      <ul>
+      <% @tax_return.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-section">
+  
+  <%= f.hidden_field :year, :value => current_user.default_year %>
+
+  <div class="field">
+    <%= f.label :utr, "Unique Tax Reference", :class => 'inline' %>
+    <%= f.text_field :UTR %><br />
+  </div>
+  <div class="field">
+    <%= f.label :loss, "Previous Years' Losses Carried Forward (£)", :class => 'inline' %>
+    <%= f.text_field :loss, :class => "currency" %><br />
+  </div>
+  <div class="field">
+    <%= f.label :pension, "Pension Contributions (£)", :class => 'inline' %>
+    <%= f.text_field :pension, :class => "currency" %><br />
+  </div>
+  <div class="field">
+    <%= f.label :dividend, "Dividend Payments (£)", :class => 'inline' %>
+    <%= f.text_field :dividend, :class => "currency" %><br />
+  </div>
+  <div class="field notes">
+    <%= f.label :interest, "Bank & Building Society Interest (£)", :class => 'inline' %>
+    <%= f.text_field :interest, :class => "currency" %><br />
+    <div class="note">Interest paid on your savings.</div>
+  </div>
+  <div class="field">
+    <%= f.label :other_income, "Other Income (£)", :class => 'inline' %>
+    <%= f.text_field :other_income, :class => "currency" %><br />
+  </div>
+  <div class="field">
+    <%= f.label :employed, "Employment (PAYE)", :class => 'inline' %>
+    <%= f.check_box :employed %><br />
+  </div>
+  
+  <%= f.fields_for :employers do |employer_form| %>
+  
+  <%= render "employer_fields", :f => employer_form %>
+  
+  <%= employer_form.link_to_remove "Remove Employer" %>
+
+  <% end %>
+  
+  <%= f.link_to_add "Add an Employer", :employers %>
+
+  <div class="actionContainer">
+    <%= f.submit %>
+  </div>
+  
+  </div>
+<% end %>

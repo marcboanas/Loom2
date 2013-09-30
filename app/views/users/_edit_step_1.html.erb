@@ -1,0 +1,46 @@
+
+      <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= f.hidden_field :next_step, :value => '2' %>
+      
+      <%= f.hidden_field :default_year, :value => '2013' %>
+      
+      <div class="field">
+
+      <%= f.label :name, "Full Name", :class => 'inline' %>
+      <%= f.text_field :name %><br />
+      
+      </div>
+      
+      <div class="field notes">
+
+      <%= f.label :email, :class => 'inline' %>
+      <%= f.text_field :email %>
+      
+      <div class="note">Your email address will be used to login to your account with.</div>
+      
+      <br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :password, :class => 'inline' %>
+      <%= f.password_field :password %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :password_confirmation, :class => 'inline' %>
+      <%= f.password_field :password_confirmation %><br />
+      
+      </div>
+      
+      <div class="actionContainer">
+      
+      <%= f.submit "Save changes", class: "" %>
+      
+      </div>
+    <% end %>

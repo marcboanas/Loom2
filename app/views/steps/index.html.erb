@@ -1,0 +1,43 @@
+<div class="section-container">
+<div class="section-header">
+<h1>Checklist</h1>
+</div>
+<% @steps.sort! { |a,b| a.step <=> b.step }.each do |step| %>
+<div class="checklist_item">
+<div class="checklist_step">
+<%= step.step %>
+</div>
+<% if step.controller.blank? %>
+<div class="checklist_description">
+<%= link_to({:action => step.action, :controller => 'users', :id => send(step.variable).id }) do %>
+<%= step.description %>
+<% end %>
+</div>
+<div class="checklist_complete">
+<% if send(step.variable).complete? %>
+<label><input type="checkbox" checked disabled />Complete</label>
+<% else %>
+<input type="checkbox" disabled />
+<% end %>
+</div>
+<% else %>
+<div class="checklist_description">
+<%= link_to({:action => step.action, :controller => step.controller}) do %>
+<%= step.description %>
+<% end %>
+</div>
+<div class="checklist_complete">
+<% if !send(step.variable).send(step.controller).where('year = ?', current_user.default_year)[0].nil? %>
+<label><input type="checkbox" checked disabled />Complete</label>
+<% else %>
+<input type="checkbox" disabled />
+<% end %>
+</div>
+<% end %>
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_step_path(step) %>
+<%= link_to 'Destroy', step, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
+<% end %>
+</div>

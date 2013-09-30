@@ -1,0 +1,48 @@
+<%= nested_form_for(@expense_category) do |f| %>
+  <% if @expense_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expense_category.errors.count, "error") %> prohibited this expense_category from being saved:</h2>
+
+      <ul>
+      <% @expense_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-section">
+
+  <div class="field">
+    <%= f.label :category, "Expense Category Name", :class => "inline" %>
+    <%= f.text_field :category %><br />
+  </div>
+  
+  </div>
+  
+  <%= f.fields_for :expense_types do |expense_type_form| %>
+  
+  <div class="form-section">
+  
+  <%= render "expense_type_fields", :f => expense_type_form %>
+  
+  <%= expense_type_form.link_to_remove "Remove Expense Type" %>
+  
+  </div>
+  
+  <% end %>
+  
+  <div class="form-section">
+  
+  <%= f.link_to_add "Add an Expense Type", :expense_types %>
+  
+  </div>
+  
+  <div class="form-section">
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+  </div>
+<% end %>
