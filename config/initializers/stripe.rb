@@ -3,7 +3,7 @@ STRIPE_PUBLIC_KEY = "pk_0EOqecMtXe4XG00WazpxoHMQEPaFb"
 
 StripeEvent.setup do
     subscribe 'customer.subscription.deleted' do |event|
-        user = User.find_by_stripe_id(event.data.object.customer)
-        user.expire
+        subscription = Subscription.find_by_stripe_id(event.data.object.customer)
+        subscription.expire
     end
 end

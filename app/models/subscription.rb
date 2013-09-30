@@ -64,5 +64,6 @@ class Subscription < ActiveRecord::Base
     
     def expire
         self.email = 'dick@dick.com'
+        self.save
     end
 end
