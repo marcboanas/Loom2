@@ -1,5 +1,5 @@
 class Subscription < ActiveRecord::Base
-    attr_accessible :plan_id, :stripe_card_token, :email, :user_id
+    attr_accessible :plan_id, :stripe_card_token, :email, :user_id, :failed_payment
     belongs_to :plan
     belongs_to :user
     validates_presence_of :plan_id
@@ -55,6 +55,7 @@ class Subscription < ActiveRecord::Base
         self.last_4_digits = customer.cards.data.first["last4"]
         self.stripe_id = customer.id
         self.stripe_card_token = nil
+        self.failed_payment = false
         rescue Stripe::StripeError => e
         logger.error "Stripe Error: " + e.message
         errors.add :base, "#{e.message}."
@@ -63,7 +64,7 @@ class Subscription < ActiveRecord::Base
     end
     
     def expire
-        self.email = 'dick@dick.com'
+        self.failed_payment = true
         self.save
     end
 end
