@@ -68,7 +68,7 @@ class Subscription < ActiveRecord::Base
     end
     def payment_success
         self.failed_payment = false
-        self.email = 'dog@welldone.com'
+        self.email = customer.id
         self.save
     end
 end
