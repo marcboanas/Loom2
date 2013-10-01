@@ -66,9 +66,9 @@ class Subscription < ActiveRecord::Base
         self.failed_payment = true
         self.save
     end
-    def payment_success(customer)
+    def payment_success(event)
         self.failed_payment = false
-        self.email = customer
+        self.email = event.data.object.id
         self.save
     end
 end
