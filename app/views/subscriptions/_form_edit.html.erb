@@ -1,5 +1,7 @@
 <%= @subscription.failed_payment %>
 
+<%= @subscription.payment_history %>
+
 
 <%= form_for(@subscription, :url => update_card_path, :html => {:method => :put, :class => 'card_form'}) do |f| %>
   <% if @subscription.errors.any? %>
