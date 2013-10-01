@@ -23,7 +23,7 @@ class SubscriptionsController < ApplicationController
     end
     
     def update_card
-        @subscription = current_user.subscriptions.first
+        @subscription = current_user.subscriptions.last
         @subscription.stripe_card_token = params[:subscription][:stripe_card_token]
         if @subscription.save
         redirect_to @subscription, :notice => 'Updated card.'
@@ -34,7 +34,7 @@ class SubscriptionsController < ApplicationController
     end
     
     def update_plan
-        @subscription = current_user.subscriptions.first
+        @subscription = current_user.subscriptions.last
         plan = Plan.find(params[:subscription][:plan_id]) unless params[:subscription][:plan_id].nil?
         if @subscription.update_plan(plan)
             redirect_to @subscription, :notice => 'Updated plan.'
