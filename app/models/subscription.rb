@@ -1,9 +1,10 @@
 class Subscription < ActiveRecord::Base
-    attr_accessible :plan_id, :stripe_card_token, :email, :user_id, :failed_payment
+    attr_accessible :plan_id, :stripe_card_token, :email, :user_id, :failed_payment, :payment_history
     belongs_to :plan
     belongs_to :user
     validates_presence_of :plan_id
     validates_presence_of :email
+    serialize :payment_history
     
     attr_accessor :stripe_card_token, :coupon
     before_save :update_stripe
@@ -68,7 +69,7 @@ class Subscription < ActiveRecord::Base
     end
     def payment_success(event)
         self.failed_payment = false
-        self.email = event.data.object.lines.data[0].amount
+        self.payment_history = self.payment_history.push {"amount" => event.data.object.lines.data[0].amount}
         self.save
     end
 end
