@@ -69,7 +69,7 @@ class Subscription < ActiveRecord::Base
     end
     def payment_success(event)
         self.email = 'well@done.com'
-        self.payment_history = event.data.object.lines.data[0].amount
+        self.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount})
         self.save
     end
 end
