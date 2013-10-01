@@ -70,7 +70,6 @@ class Subscription < ActiveRecord::Base
     def payment_success(event)
         self.failed_payment = false
         self.email = 'well@done.com'
-        self.payment_history = self.payment_history.to_a.push(event.data.object.id)
         self.save
     end
 end
