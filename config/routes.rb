@@ -63,6 +63,7 @@ BaseApp::Application.routes.draw do
     match '/pupils',  to: 'clients#new'
     match '/signin',  to: 'sessions#new'
     match '/signout', to: 'sessions#destroy', via: :delete
+    match '/subscription/create' => 'subscriptions#create', :as => :create_subscription
     
     # The priority is based upon order of creation:
     # first created -> highest priority.
