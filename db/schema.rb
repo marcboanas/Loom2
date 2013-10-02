@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001071705) do
+ActiveRecord::Schema.define(:version => 20131002100732) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(:version => 20131001071705) do
     t.integer  "student_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "tax_return"
+    t.string   "float"
+    t.string   "price_year"
+    t.string   "plan"
   end
 
   create_table "plans", :force => true do |t|
@@ -162,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20131001071705) do
     t.boolean  "registered_selfemployed"
     t.boolean  "previous_accountant"
     t.text     "previous_accountant_address"
+    t.text     "payment_history"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

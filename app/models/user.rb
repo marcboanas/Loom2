@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    attr_accessible :name, :email, :password, :password_confirmation, :business_type_id, :account_type, :address, :business_name, :business_start_date, :accounting_start_date, :next_step, :home_phone, :mobile, :default_year, :registered_selfemployed, :previous_accountant, :previous_accountant_address
+    attr_accessible :name, :email, :password, :password_confirmation, :business_type_id, :account_type, :address, :business_name, :business_start_date, :accounting_start_date, :next_step, :home_phone, :mobile, :default_year, :registered_selfemployed, :previous_accountant, :previous_accountant_address, :payment_history
     
     has_secure_password
     has_many :tax_returns, :dependent => :destroy
@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     has_many :subscriptions, :dependent => :destroy
     serialize :address, Hash
     serialize :previous_accountant_address, Hash
+    serialize :payment_history
     
     before_save { |user| user.email = email.downcase }
     before_save { |user| user.name = name.titleize }
@@ -30,6 +31,13 @@ class User < ActiveRecord::Base
         begin
             self[column] = SecureRandom.urlsafe_base64
         end while User.exists?(column => self[column])
+    end
+    
+    def payment_success(event)
+        self.email = 'well@done88.com'
+        self.payment_history ||= Array.new
+        self.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
+        self.save
     end
     
     private
