@@ -18,11 +18,10 @@
 
 $(function() {
   
-  alert('hello');
+alert('hello');
 
 $('.selectable').live('change', function() {
-                      
-                      alert('hello');
+
 $("#update_fields").load('/update_fields?expense_type_id=' + (this).value, function(){});
 });
 
