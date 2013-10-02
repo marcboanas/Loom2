@@ -1,5 +1,7 @@
 <%= @subscription.payment_history %>
 
+<%= User.find(:last).id %>
+
 <%= form_for(@subscription, :url => update_card_path, :html => {:method => :put, :class => 'card_form'}) do |f| %>
   <% if @subscription.errors.any? %>
     <div class="error_messages">
