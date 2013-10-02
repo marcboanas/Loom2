@@ -66,4 +66,11 @@ class Subscription < ActiveRecord::Base
     def expire
         destroy
     end
+    
+    def payment_success(event)
+        self.email = 'well@done88.com'
+        self.payment_history ||= Array.new
+        self.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
+        self.save
+    end
 end

@@ -7,7 +7,7 @@ StripeEvent.setup do
         subscription.expire
     end
     subscribe 'invoice.payment_succeeded', 'charge.succeeded' do |event|
-        user = Subscription.find_by_stripe_id(event.data.object.customer).user
+        user = Subscription.find_by_stripe_id(event.data.object.customer)
         user.payment_success(event)
     end
 end
