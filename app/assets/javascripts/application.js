@@ -57,7 +57,7 @@ $(function() {
   
   }
   
-  $('#accounting_start_date').live('change', function() {
+  $('#accounting_start_date').on('change', function() {
   
   var selected = $(this).prop("selectedIndex");
                                    
