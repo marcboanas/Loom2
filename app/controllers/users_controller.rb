@@ -30,6 +30,9 @@ class UsersController < ApplicationController
   def edit
       @start_date_array = [['06/04/2013','06/04/2013'],['06/04/2014','06/04/2014']]
       @year_array = [['April 2013 - April 2014','2013'],['April 2014 - April 2015','2014']]
+      @plans = Plan.all
+      plan = Plan.first
+      @subscription = plan.subscriptions.build
   end
     
   def update
