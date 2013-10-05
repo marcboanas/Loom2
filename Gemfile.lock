@@ -40,6 +40,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
+    client_side_validations (3.2.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -51,12 +52,16 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     ffi (1.9.0)
+    font-awesome-rails (3.2.1.2)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.5)
+      railties (>= 3.1.0)
     json (1.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -155,8 +160,11 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
   capybara (= 1.1.2)
+  client_side_validations
   coffee-rails (= 3.2.2)
+  font-awesome-rails
   jquery-rails
+  jquery-ui-rails
   nested_form
   paper_trail
   pg (= 0.12.2)

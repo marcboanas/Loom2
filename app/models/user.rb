@@ -24,8 +24,10 @@ class User < ActiveRecord::Base
     validates :email, presence:   true,
     format:     { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-    validates :password, presence: true, length: { minimum: 6 }, :if => :password
-    validates :password_confirmation, presence: true, :if => :password_confirmation
+    validates :password, presence: true, length: { minimum: 6 }, :on => :create
+    validates :password_confirmation, presence: true, :on => :create
+    validates :password, presence: true, length: { minimum: 6 }, :if => :password, :on => :update
+    validates :password_confirmation, presence: true, :if => :password_confirmation, :on => :update
     
     def generate_token(column)
         begin

@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require jquery_nested_form
+//= require rails.validations
 //= require_tree .
 
 
@@ -62,6 +64,16 @@ $(function() {
   });
   
 });
+  
+  $('.modalOpen').on('click', function() {
+                     
+                     var id = $(this).attr('id');
+                     $('#modal').addClass(id);
+                     var offset = $(this).offset();
+                     var width = $('#modal').outerWidth() - $(this).outerWidth()
+                     $('#modal').css({left: offset.left - width});
+                     
+  });
   
 });
 

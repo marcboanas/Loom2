@@ -6,6 +6,8 @@ gem 'will_paginate', '3.0.3'
 gem "nested_form"
 gem 'paper_trail'
 gem 'stripe_event'
+gem 'client_side_validations'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -21,6 +23,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'stripe'
 
