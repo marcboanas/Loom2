@@ -3,4 +3,5 @@ class Student < ActiveRecord::Base
     belongs_to :user
     has_many :incomes
     serialize :address, Hash
+    serialize :name, Hash
 end

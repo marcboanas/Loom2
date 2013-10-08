@@ -1,0 +1,193 @@
+<%= form_for @user, :validate => true, :html => {:class => 'card_form'}  do |f| %>
+<%= render 'shared/error_messages' %>
+
+<%= f.hidden_field :default_year, :value => '2013' %>
+
+<div class="form-section">
+      
+<h2>Your account details</h2>
+
+<div class="field">
+
+<%= f.label :name, "Full name:", :class => 'inline' %>
+
+<%= f.fields_for :name do |n| %>
+
+<%= n.text_field :first_name, :class => 'small_field', :placeholder => 'First', :value => @user.name[:first_name] %>
+<%= n.text_field :last_name, :class => 'small_field', :placeholder => 'Last', :value => @user.name[:last_name] %>
+
+<% end %>
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :email, "Email:", :class => 'inline' %>
+<%= f.text_field :email %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :password, "Password:", :class => 'inline' %>
+<%= f.password_field :password %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :password_confirmation, "Confirm your password:", :class => 'inline' %>
+<%= f.password_field :password_confirmation %><br />
+      
+</div>
+
+</div>
+
+<div class="form-section">
+      
+<h2>Your business information</h2>
+      
+<div class="field">
+      
+<%= f.label :business_name, "Business name:", :class => 'inline' %>
+<%= f.text_field :business_name %><br />
+      
+</div>
+
+<div class="field">
+
+<%= f.label :account_type, "Account type:", :class => 'inline' %>
+<%= f.select :account_type, [["Sole Trader", "Sole Trader"]], { :include_blank => true} %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :business_type_id, "Business type:", :class => 'inline' %>
+<%= f.collection_select(:business_type_id, BusinessType.all, :id, :business, :include_blank => true)%><br />
+      
+</div>
+
+<div class="business_address">
+      
+<%= f.fields_for :address do |a| %>
+      
+<div class="field">
+
+<%= a.label :location, "Address:", :class => 'inline' %>
+<%= a.text_field :location %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :street_number, "Street number:", :class => 'inline hidden' %>
+<%= a.text_field :street_number, :data => { :geo => 'street_number' }, :placeholder => 'No.', :class => 'small_field', :value => @user.address[:street_number] %>
+<%= a.text_field :route, :data => { :geo => 'route' }, :placeholder => 'Street', :value => @user.address[:route] %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :locality, "City / Town:", :class => 'inline hidden' %>
+<%= a.text_field :locality, :data => { :geo => 'locality' }, :placeholder => 'City', :value => @user.address[:locality] %>
+<%= a.text_field :postal_code, :data => { :geo => 'postal_code' }, :placeholder => 'Postcode', :class => 'small_field', :value => @user.address[:postal_code]  %><br />
+      
+</div>
+      
+<% end %>
+
+</div>
+      
+<div class="field optional">
+
+<%= f.label :home_phone, "Home telephone:", :class => 'inline' %>
+<%= f.text_field :home_phone %><br />
+      
+</div>
+      
+<div class="field optional">
+
+<%= f.label :mobile, "Mobile telephone:", :class => 'inline' %>
+<%= f.text_field :mobile, :placeholder => '' %><br />
+      
+</div>
+
+</div>
+
+<div class="form-section">
+      
+<h2>Your accounting information</h2>
+
+      <div class="field">
+      
+      <%= f.label :business_start_date, "Self employment start date:", :class => 'inline' %>
+      <%= f.text_field :business_start_date, :class => "small", :placeholder => 'ddmmyyyy' %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :registered_selfemployed, "Registered self employed:", :class => 'inline' %>
+      <%= f.select :registered_selfemployed, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+      
+      </div>
+      
+      <div class="field">
+
+      <%= f.label :previous_accountant, "Prev. accountant:", :class => 'inline' %>
+      <%= f.select :previous_accountant, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+      
+      </div>
+      
+      <div class="previous_accountant_address">
+      
+      <%= f.fields_for :previous_accountant_address do |a| %>
+      
+<div class="field">
+
+<%= a.label :location, "Prev. accountant's address:", :class => 'inline' %>
+<%= a.text_field :location %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :street_number, "Street number:", :class => 'inline hidden' %>
+<%= a.text_field :street_number, :data => { :geo => 'street_number' }, :placeholder => 'No.', :class => 'small_field', :value => @user.previous_accountant_address[:street_number] %>
+<%= a.text_field :route, :data => { :geo => 'route' }, :placeholder => 'Street', :value => @user.previous_accountant_address[:route] %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :locality, "City / Town:", :class => 'inline hidden' %>
+<%= a.text_field :locality, :data => { :geo => 'locality' }, :placeholder => 'City', :value => @user.previous_accountant_address[:locality] %>
+<%= a.text_field :postal_code, :data => { :geo => 'postal_code' }, :placeholder => 'Postcode', :class => 'small_field', :value => @user.previous_accountant_address[:postal_code]   %><br />
+      
+</div>
+      
+      <% end %>
+      
+      </div>
+      
+</div>
+
+      
+      <%= f.fields_for :subscriptions do |subscription_form| %>
+  
+      <div class="form-section">
+  
+      <%= render "subscription_fields", :f => subscription_form %>
+  
+      </div>
+  
+      <% end %>
+      
+      <div class="form-section">
+   
+      <%= f.submit "Save account", class: "" %>
+      
+      </div>
+
+    <% end %>

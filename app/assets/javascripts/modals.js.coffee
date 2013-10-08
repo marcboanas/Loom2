@@ -27,10 +27,13 @@ $ ->
     false
     
   $(document).on 'click', 'html', =>
-    $modal_container.hide()
-    $modal.hide()
-    false
-    
+    if $modal.is(":visible") && $modal.attr('class') == 'signin'
+      $modal_container.hide()
+      $modal.hide()
+      false
+
   $(document).on 'click', '#modal', (event) =>
-    event.stopPropagation();
+    if $modal.is(":visible")
+      event.stopPropagation();
+
   

@@ -12,76 +12,98 @@
   <% end %>
   
   <div class="form-section">
+  
+  <h2>Student details</h2>
+
+<div class="field">
+
+<%= f.label :name, "Full name:", :class => 'inline' %>
+
+<%= f.fields_for :name do |n| %>
+
+<%= n.text_field :first_name, :class => 'small_field', :placeholder => 'First', :value => @student.name[:first_name] %>
+<%= n.text_field :last_name, :class => 'small_field', :placeholder => 'Last', :value => @student.name[:last_name] %>
+
+<% end %>
+      
+</div>
 
   <div class="field">
-    <%= f.label :name, :class => 'inline' %>
-    <%= f.text_field :name %><br />
-  </div>
-  <div class="field">
-    <%= f.label :email, :class => 'inline' %>
-    <%= f.text_field :email %><br />
+    <%= f.label :current, "Active:", :class => 'inline' %>
+    <%= f.select :current, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
   </div>
   
-  <%= f.fields_for :address do |a| %>
+  <div class="field">
+    <%= f.label :passed, "Passed:", :class => 'inline' %>
+    <%= f.select :passed, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+  </div>
 
-  <div class="field">
-    <%= a.label :address1, "Student Address", :class => 'inline' %>
-    <%= a.text_field :address1, :value => f.object.address["address1"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :address2, ".", :class => 'inline hidden' %>
-    <%= a.text_field :address2, :value => f.object.address["address2"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :address3, ".", :class => 'inline hidden' %>
-    <%= a.text_field :address3, :value => f.object.address["address3"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :city, "City", :class => 'inline' %>
-    <%= a.text_field :city, :value => f.object.address["city"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :county, "County", :class => 'inline' %>
-    <%= a.text_field :county, :value => f.object.address["county"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :post_code, "Post Code", :class => 'inline' %>
-    <%= a.text_field :post_code, :value => f.object.address["post_code"] %><br />
-  </div>
-  
-  <div class="field">
-    <%= a.label :country, "Country", :class => 'inline' %>
-    <%= a.text_field :country, :value => f.object.address["country"] %><br />
-  </div>
-  
-  <% end %>
+</div>
 
-  <div class="field">
+<div class="form-section">
+
+<h2>Student contact information</h2>
+
+<div class="field optional">
+
+<%= f.label :email, "Email:", :class => 'inline' %>
+<%= f.text_field :email %><span class="optional">**Optional</span><br />
+      
+</div>
+  
+<div class="student_address optional">
+      
+<%= f.fields_for :address do |a| %>
+      
+<div class="field">
+
+<%= a.label :location, "Address:", :class => 'inline' %>
+<%= a.text_field :location %><span class="optional">**Optional</span><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :street_number, "Street number:", :class => 'inline hidden' %>
+<%= a.text_field :street_number, :data => { :geo => 'street_number' }, :placeholder => 'No.', :class => 'small_field', :value => @student.address[:street_number] %>
+<%= a.text_field :route, :data => { :geo => 'route' }, :placeholder => 'Street', :value => @student.address[:route] %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :locality, "City / Town:", :class => 'inline hidden' %>
+<%= a.text_field :locality, :data => { :geo => 'locality' }, :placeholder => 'City', :value => @student.address[:locality] %>
+<%= a.text_field :postal_code, :data => { :geo => 'postal_code' }, :placeholder => 'Postcode', :class => 'small_field', :value => @student.address[:postal_code]  %><br />
+      
+</div>
+      
+<% end %>
+
+</div>
+
+
+
+  <div class="field optional">
     <%= f.label :home_phone, :class => 'inline' %>
-    <%= f.text_field :home_phone %><br />
+    <%= f.text_field :home_phone %><span class="optional">**Optional</span><br />
   </div>
-  <div class="field">
+  <div class="field optional">
     <%= f.label :mobile, :class => 'inline' %>
-    <%= f.text_field :mobile %><br />
-  </div>
-  <div class="field notes">
-    <%= f.label :current, :class => 'inline' %>
-    <%= f.check_box :current, :checked => 'checked' %>
-  <div class="note">Please uncheck if this student is no longer an active student.</div><br />
-  </div>
-  <div class="field">
-    <%= f.label :passed, :class => 'inline' %>
-    <%= f.check_box :passed %><br />
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :mobile %><span class="optional">**Optional</span><br />
   </div>
   
-  </div>
+</div>
+
+</div>
+
+<div class="form-section">
+   
+<%= f.submit "Save account", class: "" %>
+
+<div class="close">Close without saving</div>
+      
+</div>
+
   
 <% end %>

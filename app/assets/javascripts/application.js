@@ -43,25 +43,23 @@ $(function() {
   
   });
   
-  var step = $('.step_hidden').attr('name');
+  $('#user_previous_accountant').on('change', function() {
   
-  if (typeof step !== 'undefined') {
+  if ($(this).prop("selectedIndex") == '1') {
   
-  $('.signup_step').each(function() {
-  $(this).removeClass('active');
-  });
-  
-  $('#' + step).addClass('active');
-  
+  $('.previous_accountant_address').show();
+                                    
   }
-  
-  $('#accounting_start_date').on('change', function() {
-  
-  var selected = $(this).prop("selectedIndex");
-                                   
-  $('#default_year').prop("selectedIndex",selected);
+                                    
+  else {
+    
+  $('.previous_accountant_address').hide();
+                                    
+  }
                                    
   });
+  
+  $('#user_previous_accountant').change();
   
 });
   
@@ -69,11 +67,62 @@ $(function() {
                      
                      var id = $(this).attr('id');
                      $('#modal').addClass(id);
+                     if ($(this).attr('id') == 'signin') {
                      var offset = $(this).offset();
                      var width = $('#modal').outerWidth() - $(this).outerWidth()
                      $('#modal').css({left: offset.left - width});
+                     }
+                     else {
+                     var offset = $('.section-container').offset();
+                     var offsetLeft = offset.left + 2;
+                     $('#modal').css({left: offsetLeft});
+                     }
                      
   });
   
+  $( window ).resize(function() {
+
+                     if ($('#modal').attr('class') == 'signin') {
+                     var offset = $('#signin').offset();
+                     var width = $('#modal').outerWidth() - $('#signin').outerWidth()
+                     $('#modal').css({left: offset.left - width});
+                     }
+                     else {
+                     var offset = $('.section-container').offset();
+                     var offsetLeft = offset.left + 2;
+                     $('#modal').css({left: offsetLeft});
+                     }
+                     
+  });
+  
+  $("#user_address_location").geocomplete({
+  country: 'uk',
+  details: ".business_address",
+  detailsAttribute: "data-geo"
+  });
+  
+  $("#user_previous_accountant_address_location").geocomplete({
+  country: 'uk',
+  details: ".previous_accountant_address",
+  detailsAttribute: "data-geo"
+  });
+  
+  $("#student_address_location").geocomplete({
+  country: 'uk',
+  details: ".student_address",
+  detailsAttribute: "data-geo"
+  });
+  
+  $(document).ajaxSuccess( function() {
+  
+  $("#student_address_location").geocomplete({
+                                             country: 'uk',
+                                             details: ".student_address",
+                                             detailsAttribute: "data-geo"
+                                             });
+                                    });
+  
 });
+
+
 

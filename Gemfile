@@ -8,6 +8,7 @@ gem 'paper_trail'
 gem 'stripe_event'
 gem 'client_side_validations'
 gem 'font-awesome-rails'
+gem 'geocoder'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     
   def new
       @user = User.new
+      subscription = @user.subscriptions.build
+      @plans = Plan.all
   end
     
   def create
@@ -21,15 +23,13 @@ class UsersController < ApplicationController
       if @user.save
          sign_in @user
          flash[:success] = "Welcome to the Base App!"
-          redirect_to edit_user_path(@user, :step => current_user.next_step)
+          redirect_to root_path
       else
-         render 'new'
+         redirect_to new_user_path
       end
   end
     
   def edit
-      @start_date_array = [['06/04/2013','06/04/2013'],['06/04/2014','06/04/2014']]
-      @year_array = [['April 2013 - April 2014','2013'],['April 2014 - April 2015','2014']]
       @plans = Plan.all
       @subscription = Subscription.new(params[:subscription])
       @subscription.email = current_user.email

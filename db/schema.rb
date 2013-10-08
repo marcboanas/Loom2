@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002100732) do
+ActiveRecord::Schema.define(:version => 20131006184801) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -172,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20131002100732) do
     t.boolean  "previous_accountant"
     t.text     "previous_accountant_address"
     t.text     "payment_history"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

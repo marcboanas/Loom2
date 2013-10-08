@@ -3,7 +3,6 @@ class Subscription < ActiveRecord::Base
     belongs_to :plan
     belongs_to :user
     validates_presence_of :plan_id
-    validates_presence_of :email
     serialize :payment_history
     
     attr_accessor :stripe_card_token, :coupon
