@@ -175,12 +175,16 @@
 
       
       <%= f.fields_for :subscriptions do |subscription_form| %>
+      
+      <% if @user.subscription %>
   
       <div class="form-section">
   
       <%= render "subscription_fields", :f => subscription_form %>
   
       </div>
+      
+      <% end %>
   
       <% end %>
       
