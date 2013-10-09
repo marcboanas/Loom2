@@ -2,7 +2,7 @@
       
 <h2>Subscription and payment details</h2>
 
-<% if !@user.subscriptions %>
+<% if !@user.subscriptions[0].plan %>
       
       <div class="field">
 
@@ -30,7 +30,7 @@
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
   
-  <% else %>
+  <% elsif @user.subscriptions[0].plan %>
   
   You are currently subscribed to a <%= @user.subscriptions[0].plan.name %> subscription.
   
