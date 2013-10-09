@@ -44,24 +44,50 @@ $(function() {
   });
   
   $('#user_previous_accountant').on('change', function() {
-  
+
+  var id = $(this).attr('id');
+                                                                 
   if ($(this).prop("selectedIndex") == '1') {
   
-  $('.previous_accountant_address').show();
+  $('.' + id).show();
                                     
   }
                                     
   else {
     
-  $('.previous_accountant_address').hide();
+  $('.' + id).hide();
                                     
   }
                                    
   });
   
-  $('#user_previous_accountant').change();
+  $('select').change();
   
 });
+  
+  $( document ).ajaxSuccess( function() {
+  
+  $('#student_passed_theory').on('change', function(){
+                                 
+                                 var id = $(this).attr('id');
+                                 
+                                 if ($(this).prop("selectedIndex") == '1') {
+                                 
+                                 $('.' + id).show();
+                                 
+                                 }
+                                 
+                                 else {
+                                 
+                                 $('.' + id).hide();
+                                 
+                                 }
+                                 
+  });
+  
+    $('select').change();
+                         
+  });
   
   $('.modalOpen').on('click', function() {
                      
@@ -74,7 +100,7 @@ $(function() {
                      }
                      else {
                      var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 2;
+                     var offsetLeft = offset.left + 42;
                      $('#modal').css({left: offsetLeft});
                      }
                      
@@ -89,11 +115,18 @@ $(function() {
                      }
                      else {
                      var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 2;
+                     var offsetLeft = offset.left + 42;
                      $('#modal').css({left: offsetLeft});
                      }
                      
   });
+  
+  $( window ).scroll(function() {
+                     
+                     var offset = $(window).scrollTop() + 80;
+                     $('#modal').css({top: offset});
+                     
+                     });
   
   $("#user_address_location").geocomplete({
   country: 'uk',
@@ -103,7 +136,7 @@ $(function() {
   
   $("#user_previous_accountant_address_location").geocomplete({
   country: 'uk',
-  details: ".previous_accountant_address",
+  details: ".user_previous_accountant",
   detailsAttribute: "data-geo"
   });
   

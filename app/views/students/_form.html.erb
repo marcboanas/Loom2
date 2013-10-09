@@ -29,13 +29,22 @@
 </div>
 
   <div class="field">
-    <%= f.label :current, "Active:", :class => 'inline' %>
-    <%= f.select :current, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+    <%= f.label :passed_theory, "Passed Theory:", :class => 'inline' %>
+    <%= f.select :passed_theory, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+  </div>
+  
+  <div class="student_passed_theory">
+  
+  <div class="field">
+    <%= f.label :passed_theory, "Passed Theory:", :class => 'inline' %>
+    <%= f.select :passed_theory, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+  </div>
+  
   </div>
   
   <div class="field">
-    <%= f.label :passed, "Passed:", :class => 'inline' %>
-    <%= f.select :passed, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+    <%= f.label :passed_practical, "Passed Practical:", :class => 'inline' %>
+    <%= f.select :passed_practical, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
   </div>
 
 </div>
@@ -58,7 +67,7 @@
 <div class="field">
 
 <%= a.label :location, "Address:", :class => 'inline' %>
-<%= a.text_field :location %><span class="optional">**Optional</span><br />
+<%= a.text_field :location, :class => 'large', :placeholder => 'Start typing address here' %><span class="optional">**Optional</span><br />
       
 </div>
       

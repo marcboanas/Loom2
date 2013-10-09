@@ -23,7 +23,7 @@ class Subscription < ActiveRecord::Base
     end
     
     def update_stripe
-        if stripe_id.nil?
+        if stripe_id
             if !stripe_card_token.present?
                 raise "Stripe token not present. Can't create account."
             end

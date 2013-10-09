@@ -32,7 +32,7 @@ BaseApp::Application.routes.draw do
 
     get "password_resets/new"
     get 'update_fields', :controller => 'expenses', :action => :update_fields
-    put 'update_card', :controller => 'subscriptions', :action => :update_card
+    put 'update_card', :controller => 'payments', :action => :update_card
     put 'update_plan', :controller => 'subscriptions', :action => :update_plan
     
     

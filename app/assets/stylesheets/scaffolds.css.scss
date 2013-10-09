@@ -107,6 +107,10 @@ input.small {
   width: 125px !important;
 }
 
+input.large {
+  width: 340px !important;
+}
+
 /* line 91, ../../app/assets/stylesheets/scaffolds.css.scss */
 .form-section {
 margin: 40px 40px 0 40px;
@@ -424,7 +428,7 @@ border-radius: 6px;
 box-shadow: rgba(14, 41, 57, 0.117647) 0px 0px 0px 1px, rgba(14, 41, 57, 0.439216) 0px 2px 5px 0px, rgba(14, 41, 57, 0.14902) 0px -1px 2px 0px inset;
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 height:auto;
-width: 1020px;
+width: 940px;
  
   & > .close {
     position: absolute;

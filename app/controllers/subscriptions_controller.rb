@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
     end
     
     def edit
-        @subscription = Subscription.find(params[:id])
+        @subscription = current_user.subscriptions.last
     end
     
     def update_card

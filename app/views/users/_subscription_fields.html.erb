@@ -32,7 +32,11 @@
   
   <% elsif @user.subscriptions[0].plan %>
   
-  You are currently subscribed to a <%= @user.subscriptions[0].payment_history %> subscription.
+  <div class="field">You are currently subscribed to a <%= @user.subscriptions[0].plan.name %> subscription<br /></div>
+  <div class="field">The last 4 digits of your registered card are <b><%= @user.subscriptions[0].last_4_digits %></b><br /></div>
+  <div class="field">To change your credit / debit card <%= link_to "click here", edit_subscription_path, :id => 'edit_card' %></div>
+  
+  <div class="field">To cancel your subscription <a>click here</a></div>
   
 <% end %>
   

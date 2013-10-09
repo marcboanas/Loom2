@@ -75,7 +75,7 @@
 <div class="field">
 
 <%= a.label :location, "Address:", :class => 'inline' %>
-<%= a.text_field :location %><br />
+<%= a.text_field :location, :class => 'large', :placeholder => 'Start typing address here' %><br />
       
 </div>
       
@@ -99,7 +99,7 @@
 
 </div>
       
-<div class="field optional">
+<div class="field">
 
 <%= f.label :home_phone, "Home telephone:", :class => 'inline' %>
 <%= f.text_field :home_phone %><br />
@@ -109,7 +109,9 @@
 <div class="field optional">
 
 <%= f.label :mobile, "Mobile telephone:", :class => 'inline' %>
-<%= f.text_field :mobile, :placeholder => '' %><br />
+<%= f.text_field :mobile, :placeholder => '' %>
+<span>**Optional</span>
+<br />
       
 </div>
 
@@ -140,14 +142,14 @@
       
       </div>
       
-      <div class="previous_accountant_address">
+      <div class="user_previous_accountant">
       
       <%= f.fields_for :previous_accountant_address do |a| %>
       
 <div class="field">
 
-<%= a.label :location, "Prev. accountant's address:", :class => 'inline' %>
-<%= a.text_field :location %><br />
+<%= a.label :location, "Address:", :class => 'inline' %>
+<%= a.text_field :location, :class => 'large', :placeholder => 'Start typing address here' %><br />
       
 </div>
       
@@ -191,3 +193,5 @@
       </div>
 
     <% end %>
+    
+    
