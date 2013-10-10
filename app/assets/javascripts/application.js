@@ -100,7 +100,7 @@ $(function() {
                      }
                      else {
                      var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 42;
+                     var offsetLeft = offset.left + 2;
                      $('#modal').css({left: offsetLeft});
                      }
                      
@@ -115,7 +115,7 @@ $(function() {
                      }
                      else {
                      var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 42;
+                     var offsetLeft = offset.left + 2;
                      $('#modal').css({left: offsetLeft});
                      }
                      
@@ -123,7 +123,7 @@ $(function() {
   
   $( window ).scroll(function() {
                      
-                     var offset = $(window).scrollTop() + 80;
+                     var offset = $(window).scrollTop() + 40;
                      $('#modal').css({top: offset});
                      
                      });
