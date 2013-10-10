@@ -14,26 +14,30 @@
   
   <%= f.hidden_field :user_id %>
 
-  <%= f.hidden_field :stripe_card_token, :value => @subscription.stripe_card_token %>
+  <%= f.hidden_field :stripe_card_token %>
 
   <% if @subscription.stripe_id.present? %>
-    Credit card has been provided.
+
+    <div class="form-section">
     
-    <h3>Card</h3>
-<p>
-  Using card ending with <%= @subscription.last_4_digits %>
-</p>
+    <h2>Card payment details</h2>
+    
+<div class="field">
+    
+You are currently using card ending <b><%= @subscription.last_4_digits %></b>
+
+</div>
 
     <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
+      <%= label_tag :card_number, "Credit Card Number", :class => 'inline' %>
       <%= text_field_tag :card_number, nil, name: nil %>
     </div>
     <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= label_tag :card_code, "Security Code on Card (CVV)", :class => 'inline' %>
       <%= text_field_tag :card_code, nil, name: nil %>
     </div>
     <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
+      <%= label_tag :card_month, "Card Expiration", :class => 'inline' %>
       <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
       <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
     </div>
@@ -41,8 +45,15 @@
   <div id="stripe_error">
     <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div>
-  <div class="actions">
-    <%= f.submit "Subscribe", :class => 'subscribe' %>
+  
+</div>
+
+    
+  
+  <div class="form-section">
+  
+    <%= f.submit "Update card" %>
+    
   </div>
 <% end %>
 

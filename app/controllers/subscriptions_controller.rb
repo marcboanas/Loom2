@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
     end
     
     def edit
-        @subscription = current_user.subscriptions.last
+        @subscription = current_user.subscriptions.first
     end
     
     def update_card
@@ -42,5 +42,12 @@ class SubscriptionsController < ApplicationController
             flash.alert = 'Unable to update plan.'
             render :edit
         end
+    end
+    
+    def destroy
+        @subscription = current_user.subscriptions.first
+        @subscription.destroy
+        flash[:success] = "Subscription cancelled."
+        redirect_to root_url
     end
 end

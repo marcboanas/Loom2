@@ -34,20 +34,24 @@ class UsersController < ApplicationController
       @subscription = Subscription.new(params[:subscription])
       @subscription.email = current_user.email
       @subscription.user_id = current_user.id
+      @user = current_user
+      if @user.subscriptions.empty?
+      subscription = @user.subscriptions.build
+      end
+      @password_change = params[:password_change]
   end
     
   def update
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-          
           sign_in @user
-                if !current_user.next_step.blank?
-                    redirect_to edit_user_path(@user, :step => current_user.next_step)
-                    else
-                    redirect_to root_path
-            end
+          redirect_to root_path
           else
-          render 'edit'
+          flash[:error] = "Changes could not be saved."
+          if params[:user][:password]
+          @password_change = 'true'
+          end
+          render :edit
       end
   end
     

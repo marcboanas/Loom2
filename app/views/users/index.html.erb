@@ -9,7 +9,7 @@
     <li>
       <%= link_to user.name, user %>
         <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
+    | <%= link_to "delete", user, method: :destroy,
                                   data: { confirm: "You sure?" } %>
   <% end %>
     </li>
@@ -17,3 +17,17 @@
 </ul>
 
 <%= will_paginate %>
+
+<div class="field">
+
+<%= f.label :password, "Password:", :class => 'inline' %>
+<%= f.password_field :password %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :password_confirmation, "Confirm your password:", :class => 'inline' %>
+<%= f.password_field :password_confirmation %><br />
+      
+</div>

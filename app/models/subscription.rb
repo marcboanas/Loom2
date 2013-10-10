@@ -7,6 +7,7 @@ class Subscription < ActiveRecord::Base
     
     attr_accessor :stripe_card_token, :coupon
     before_save :update_stripe
+    before_destroy :cancel_subscription
     
     def update_plan(plan)
         self.plan_id = []
@@ -23,7 +24,7 @@ class Subscription < ActiveRecord::Base
     end
     
     def update_stripe
-        if stripe_id
+        if stripe_id.nil?
             if !stripe_card_token.present?
                 raise "Stripe token not present. Can't create account."
             end
@@ -64,6 +65,21 @@ class Subscription < ActiveRecord::Base
     
     def expire
         destroy
+    end
+    
+    def cancel_subscription
+        unless stripe_id.nil?
+            customer = Stripe::Customer.retrieve(stripe_id)
+            unless customer.nil? or customer.respond_to?('deleted')
+                if customer.subscription.status == 'active'
+                    customer.cancel_subscription
+                end
+            end
+        end
+        rescue Stripe::StripeError => e
+        logger.error "Stripe Error: " + e.message
+        errors.add :base, "Unable to cancel your subscription. #{e.message}."
+        false
     end
     
     def payment_success(event)

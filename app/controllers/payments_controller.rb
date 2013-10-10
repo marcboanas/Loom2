@@ -6,7 +6,7 @@ class PaymentsController < ApplicationController
             redirect_to @subscriptionCard, :notice => 'Updated card.'
             else
             flash.alert = 'Unable to update card.'
-            render :edit
+            redirect_to edit_user_path(current_user)
         end
     end
 end
