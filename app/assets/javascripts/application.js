@@ -67,7 +67,7 @@ $(function() {
   
   $( document ).ajaxSuccess( function() {
   
-  $('#student_passed_theory').on('change', function(){
+  $('#student_passed_theory, #student_passed_practical').on('change', function(){
                                  
                                  var id = $(this).attr('id');
                                  

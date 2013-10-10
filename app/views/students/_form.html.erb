@@ -37,7 +37,7 @@
   
   <div class="field">
     <%= f.label :date_passed_theory, "Date passed theory test:", :class => 'inline' %>
-    <%= f.text_field :date_passed_theory, :class => 'small_field' %><br />
+    <%= f.text_field :date_passed_theory, :class => 'small_field', :placeholder => 'DDMMYYYY' %><br />
   </div>
   
   </div>
@@ -45,6 +45,15 @@
   <div class="field">
     <%= f.label :passed_practical, "Passed Practical:", :class => 'inline' %>
     <%= f.select :passed_practical, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
+  </div>
+  
+  <div class="student_passed_practical">
+  
+  <div class="field">
+    <%= f.label :date_passed_practical, "Date passed practical test:", :class => 'inline' %>
+    <%= f.text_field :date_passed_practical, :class => 'small_field', :placeholder => 'DDMMYYYY' %><br />
+  </div>
+  
   </div>
 
 </div>
