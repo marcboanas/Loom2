@@ -17,7 +17,7 @@ $ ->
       .css( top: $(window).scrollTop() - dh, opacity: 0, display: "block" )
       .animate({
         opacity: 1
-        top: $(window).scrollTop() + 40 }, 1000)
+        top: $(window).scrollTop() + 60 }, 1000)
       .show()
     $modal_container.show();
  

@@ -123,7 +123,7 @@ $(function() {
   
   $( window ).scroll(function() {
                      
-                     var offset = $(window).scrollTop() + 40;
+                     var offset = $(window).scrollTop() + 60;
                      $('#modal').css({top: offset});
                      
                      });
