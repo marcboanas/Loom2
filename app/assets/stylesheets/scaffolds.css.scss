@@ -430,6 +430,8 @@ box-shadow: rgba(14, 41, 57, 0.117647) 0px 0px 0px 1px, rgba(14, 41, 57, 0.43921
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 height:auto;
 width: 1020px;
+max-height: 600px;
+overflow: scroll;
  
   & > .close {
     position: absolute;
