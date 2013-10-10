@@ -1,7 +1,7 @@
 <%= form_for @user, :validate => true, :html => {:class => 'card_form'}  do |f| %>
 <%= render 'shared/error_messages' %>
 
-<% if @password_change %>
+<% if params[:password_change] == 'true' %>
 
 <div class="form-section">
 
@@ -50,12 +50,32 @@
 <%= f.text_field :email %><br />
       
 </div>
+
+<% if current_user %>
       
 <div class="field">
 
 To change your password <%= link_to "click here", edit_user_path(@user, :password_change => 'true') %> 
 
 </div>
+
+<% else %>
+
+<div class="field">
+
+<%= f.label :password, "Password:", :class => 'inline' %>
+<%= f.password_field :password %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= f.label :password_confirmation, "Confirm your password:", :class => 'inline' %>
+<%= f.password_field :password_confirmation %><br />
+      
+</div>
+
+<% end %>
 
 </div>
 
