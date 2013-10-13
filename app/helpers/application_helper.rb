@@ -9,4 +9,8 @@ module ApplicationHelper
             "#{base_title} | #{page_title}"
         end
     end
+    
+    def currency(amount)
+        number_to_currency(amount, unit: "&pound;", separator: ".", delimiter: ",")
+    end
 end
