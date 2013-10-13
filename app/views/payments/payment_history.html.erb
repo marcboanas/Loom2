@@ -8,7 +8,7 @@
 
 <% @payments.payment_history.each do |p| %>
 
-<%= Time.at(p['date']) %>
+<%= Time.at(p['date']).strftime("%m/%d/%Y %T") %>
 
 <% end %>
 
