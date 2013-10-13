@@ -661,7 +661,7 @@ word-spacing: 0px;
   text-decoration: underline;
   cursor: pointer;
   }
-  
+
   input[type="text"]:focus, input[type="password"]:focus, select:focus {
   outline: 0px solid #38b664 !important;
   box-shadow: 0px 0px 2pt 1pt #38b664;
@@ -669,7 +669,7 @@ word-spacing: 0px;
   
   table.payment_history {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid #b3b3b3;
   margin-bottom: 40px;
     th, td {
     text-align: left;
