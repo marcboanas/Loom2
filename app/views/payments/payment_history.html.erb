@@ -6,7 +6,11 @@
 
 <h2>Payment history</h2>
 
-<%= @payments.payment_history[0]['date'] %>
+<% @payments.payment_history.each do |p| %>
+
+<%= p['date'].to_date %>
+
+<% end %>
 
 </div>
 
