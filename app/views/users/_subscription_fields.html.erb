@@ -38,5 +38,7 @@
   
   <div class="field">To cancel your subscription <%= link_to "click here", @user.subscriptions[0], method: :delete, data: { confirm: "Are you sure?" } %></div>
   
+    <div class="field">To view your payment history <%= link_to "click here", payment_history_path %></div>
+  
 <% end %>
   

@@ -12,34 +12,31 @@
   <% end %>
   
   <div class="form-section">
+  
+  <h2>Expense details</h2>
 
   <div class="field">
     <%= f.label :expense_type_id, :class => "inline" %>
     <%= f.collection_select(:expense_type_id, current_user.expense_types, :id, :expense, {}, {:class => 'selectable'}) %><br />
   </div>
   <div class="field">
-    <%= f.label :dated, :class => "inline" %>
-    <%= f.date_select :dated %><br />
+    <%= f.label :dated, "Date:", :class => "inline" %>
+    <%= f.text_field :dated, :class => 'small_field', :placeholder => 'DDMMYYYY' %><br />
   </div>
   <div class="field">
-    <%= f.label :value, :class => "inline" %>
-    <%= f.text_field :value, :class => "currency" %><br />
+    <%= f.label :value, "Amount:", :class => "inline" %>
+    <%= f.text_field :value, :class => "currency", :placeholder => '00.00' %><br />
   </div>
-  <div class="field">
-    <%= f.label :description, :class => "inline" %>
-    <%= f.text_field :description %><br />
+  <div class="field optional">
+    <%= f.label :description, "Description:", :class => "inline" %>
+    <%= f.text_field :description, :class => 'extra_large', :placeholder => 'Add a short description' %><span class="optional">**Optional</span><br />
   </div>
+  
   </div>
   
   <div id="update_fields"></div>
   
   <div class="form-section">
-  
-    
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
+    <%= f.submit "Save" %>
   </div>
 <% end %>

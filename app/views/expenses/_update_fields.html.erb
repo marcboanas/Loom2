@@ -1,37 +1,41 @@
-<div class="form-section">
-
 <%= fields_for @expense do |f| %>
 
-<div class="field">
+<div class="form-section fixed_asset_<%= @expense_type.fixed_asset %>">
 
-<%= f.label :fixed_asset, "Fixed Asset", :class => "inline" %>
-<%= f.check_box :fixed_asset, :checked => @expense_type.fixed_asset?, :disabled => 'disabled' %>
-
-</div>
-
-<% if @expense_type.fixed_asset? %>
+<h2>Fixed asset</h2>
 
 <div class="field">
 
 <%= f.label :asset_life, :class => "inline" %>
-<%= f.text_field :asset_life, :class => "small", :disabled => @expense_type.asset_life_fixed?, :value => @expense_type.asset_life %><br />
+<%= f.text_field :asset_life, :class => "small", :disabled => @expense_type.asset_life_fixed?, :value => @expense_type.asset_life, :placeholder => '0' %>
 
-</div>
+<% if @expense_type.asset_life_fixed? %>
+
+<span>**Fixed</span>
 
 <% end %>
 
-<div class="field notes">
+</div>
+
+</div>
+
+<div class="form-section">
+
+<h2>Personal use</h2>
+
+<div class="field">
 
 <%= f.label :private_use, "Private Use (%)", :class => 'inline' %>
-<%= f.text_field :private_use, :disabled => @expense_type.private_use_fixed?, :value => @expense_type.private_use, :class => 'small' %>
+<%= f.text_field :private_use, :disabled => @expense_type.private_use_fixed?, :value => @expense_type.private_use, :class => 'currency', :placeholder => '0' %>
+
+<% if @expense_type.private_use_fixed? %>
+
+<span>**Fixed</span>
+
 <% end %>
 
-<div class="note">
-
-Percentage of Expense for Private Use
-
 </div>
 
 </div>
 
-</div>
+<% end %>
