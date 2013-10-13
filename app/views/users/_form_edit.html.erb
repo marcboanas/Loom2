@@ -37,8 +37,8 @@
 
 <%= f.fields_for :name do |n| %>
 
-<%= n.text_field :first_name, :class => 'small_field', :placeholder => 'First', :value => params[:first_name] %>
-<%= n.text_field :last_name, :class => 'small_field', :placeholder => 'Last', :value => params[:last_name] %>
+<%= n.text_field :first_name, :class => 'small_field', :placeholder => 'First', :value => @user.name[:first_name] %>
+<%= n.text_field :last_name, :class => 'small_field', :placeholder => 'Last', :value => @user.name[:last_name] %>
 
 <% end %>
       
@@ -47,7 +47,7 @@
 <div class="field">
 
 <%= f.label :email, "Email:", :class => 'inline' %>
-<%= f.text_field :email, :value => params[:email] %><br />
+<%= f.text_field :email %><br />
       
 </div>
 

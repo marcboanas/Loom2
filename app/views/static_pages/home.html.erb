@@ -1,5 +1,49 @@
 <% provide(:title, 'Home') %>
 
+<% if signed_in? %>
+
+<div class="section-container">
+</div>
+
+<% else %>
+
 <div class="section-container">
 
+<div class="form-section">
+
+<h2>Get started</h2>
+
+<%= form_tag('/signup', :method => 'get') %>
+
+<div class="field">
+
+<%= label_tag 'first_name', 'First name:', :class => 'inline' %>
+<%= text_field_tag 'first_name', nil, :placeholder => 'First name' %>
+
 </div>
+
+<div class="field">
+
+<%= label_tag 'last_name', 'Last name:', :class => 'inline' %>
+<%= text_field_tag 'last_name', nil, :placeholder => 'Last name' %>
+
+</div>
+
+<div class="field">
+
+<%= label_tag 'email', 'Email:', :class => 'inline' %>
+<%= text_field_tag 'email', nil, :placeholder => 'Email' %>
+
+</div>
+
+</div>
+
+<div class="form-section">
+
+<%= submit_tag "start" %>
+
+</div>
+
+</div>
+
+<% end %>

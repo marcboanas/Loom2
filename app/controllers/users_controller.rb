@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
          sign_in @user
-         flash[:success] = "Welcome to the Base App!"
+         flash[:success] = "Welcome to Account Hero!"
           redirect_to root_path
       else
          redirect_to new_user_path

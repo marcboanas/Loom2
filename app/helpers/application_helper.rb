@@ -13,4 +13,8 @@ module ApplicationHelper
     def currency(amount)
         number_to_currency(amount, unit: "&pound;", separator: ".", delimiter: ",")
     end
+    
+    def full_name(user)
+        user.name[:first_name] + " " + user.name[:last_name]
+    end
 end
