@@ -12,31 +12,33 @@
   <% end %>
   
   <div class="form-section">
+  
+  <h2>Income details</h2>
 
   <div class="field">
-    <%= f.label :student_id, "Student", :class => 'inline' %>
-    <%= f.collection_select(:student_id, current_user.students, :id, :name) %><br />
+    <%= f.label :student_id, "Student name:", :class => 'inline' %>
+    <%= f.collection_select(:student_id, current_user.students, :id, :full_name) %><br />
   </div>
   <div class="field">
-    <%= f.label :date, "Dated", :class => 'inline' %>
-    <%= f.date_select :date %><br />
+    <%= f.label :date, "Date:", :class => 'inline' %>
+    <%= f.text_field :date, :class => 'small_field', :placeholder => 'DDMMYYYY' %><br />
   </div>
   <div class="field">
-    <%= f.label :value, "Expense Amount (£)", :class => 'inline' %>
-    <%= f.text_field :value, :class => 'small' %><br />
+    <%= f.label :value, "Income amount (£)", :class => 'inline' %>
+    <%= f.text_field :value, :class => 'currency', :placeholder => '00.00' %><br />
   </div>
-  <div class="field">
+  <div class="field optional">
     <%= f.label :description, "Description", :class => 'inline' %>
-    <%= f.text_field :description, :class => 'long' %><br />
+    <%= f.text_field :description, :class => 'extra_large' %><span class="optional">**Optional</span><br />
   </div>
   <div class="field">
     <%= f.label :test, "Practical Test", :class => 'inline' %>
-    <%= f.check_box :test %><br />
+    <%= f.select :test, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
   </div>
-  <div class="actions">
-    <%= f.submit %>
   </div>
   
+  <div class="form-section">
+    <%= f.submit "Save" %>
   </div>
   
 <% end %>

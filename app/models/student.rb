@@ -4,4 +4,10 @@ class Student < ActiveRecord::Base
     has_many :incomes
     serialize :address, Hash
     serialize :name, Hash
+    
+    def full_name
+       
+        self.name['first_name'] + ' ' + self.name['last_name']
+        
+    end
 end

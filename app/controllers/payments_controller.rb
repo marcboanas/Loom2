@@ -9,4 +9,8 @@ class PaymentsController < ApplicationController
             redirect_to edit_user_path(current_user)
         end
     end
+    
+    def payment_history
+       @payments = current_user.subscriptions.first
+    end
 end

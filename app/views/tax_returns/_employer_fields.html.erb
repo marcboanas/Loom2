@@ -1,78 +1,105 @@
+<% id = f.object.id %>
+
+<% @employers = @tax_return.employers %>
+
+<% @current_object = @employers.index{|o| o.id == id} %>
+
+<% @current_object %>
+
 <div class="fields">
 <p>
 
   <div class="field">
-    <%= f.label :name, "Employer Name", :class => 'inline' %>
+    <%= f.label :name, "Employer name:", :class => 'inline' %>
     <%= f.text_field :name %><br />
   </div>
 
 <div class="field">
-<%= f.label :PAYE, "Employer PAYE Reference", :class => 'inline' %>
-<%= f.text_field :PAYE %><br />
+<%= f.label :PAYE, "Employer PAYE reference:", :class => 'inline' %>
+<%= f.text_field :PAYE, :placeholder => '123456' %><br />
 </div>
+
+<div class="address_<%= @current_object %>">
 
 <%= f.fields_for :address do |a| %>
 
 <div class="field">
-<%= a.label :address1, "Employer Address", :class => 'inline' %>
-<%= a.text_field :address1, :value => f.object.address["address1"] %><br />
+
+<%= a.label :location, "Address:", :class => 'inline' %>
+<%= a.text_field :location, :class => 'large, input_address_' + @current_object.to_s, :placeholder => 'Start typing address here' %><br />
+      
 </div>
 
+<% if @current_object.nil? %>
+      
 <div class="field">
-<%= a.label :address2, ".", :class => 'inline hidden' %>
-<%= a.text_field :address2, :value => f.object.address["address2"] %><br />
+
+<%= a.label :street_number, "Street number:", :class => 'inline hidden' %>
+<%= a.text_field :street_number, :data => { :geo => 'street_number' }, :placeholder => 'No.', :class => 'small_field' %>
+<%= a.text_field :route, :data => { :geo => 'route' }, :placeholder => 'Street' %><br />
+      
+</div>
+      
+<div class="field">
+
+<%= a.label :locality, "City / Town:", :class => 'inline hidden' %>
+<%= a.text_field :locality, :data => { :geo => 'locality' }, :placeholder => 'City' %>
+<%= a.text_field :postal_code, :data => { :geo => 'postal_code' }, :placeholder => 'Postcode', :class => 'small_field'  %><br />
+      
 </div>
 
-<div class="field">
-<%= a.label :address3, ".", :class => 'inline hidden' %>
-<%= a.text_field :address3, :value => f.object.address["address3"] %><br />
-</div>
+<% else %>
 
 <div class="field">
-<%= a.label :city, "City", :class => 'inline' %>
-<%= a.text_field :city, :value => f.object.address["city"] %><br />
-</div>
 
-<div class="field">
-<%= a.label :county, "County", :class => 'inline' %>
-<%= a.text_field :county, :value => f.object.address["county"] %><br />
+<%= a.label :street_number, "Street number:", :class => 'inline hidden' %>
+<%= a.text_field :street_number, :data => { :geo => 'street_number' }, :placeholder => 'No.', :class => 'small_field', :value => @tax_return.employers[@current_object].address[:street_number] %>
+<%= a.text_field :route, :data => { :geo => 'route' }, :placeholder => 'Street', :value => @tax_return.employers[@current_object].address[:route] %><br />
+      
 </div>
-
+      
 <div class="field">
-<%= a.label :post_code, "Postcode", :class => 'inline' %>
-<%= a.text_field :post_code, :value => f.object.address["post_code"] %><br />
-</div>
 
-<div class="field">
-<%= a.label :country, "Country", :class => 'inline' %>
-<%= a.text_field :country, :value => f.object.address["country"] %><br />
+<%= a.label :locality, "City / Town:", :class => 'inline hidden' %>
+<%= a.text_field :locality, :data => { :geo => 'locality' }, :placeholder => 'City', :value => @tax_return.employers[@current_object].address[:locality] %>
+<%= a.text_field :postal_code, :data => { :geo => 'postal_code' }, :placeholder => 'Postcode', :class => 'small_field', :value => @tax_return.employers[@current_object].address[:postal_code]  %><br />
+      
 </div>
 
 <% end %>
 
-<div class="field">
-<%= f.label :start, "Start Date of Employment", :class => 'inline' %>
-<%= f.text_field :start %><br />
+<% end %>
+
 </div>
 
 <div class="field">
-<%= f.label :end_date, "End Date of Employment", :class => 'inline' %>
-<%= f.text_field :end_date %><br />
+<%= f.label :start, "Start date of employment:", :class => 'inline' %>
+<%= f.text_field :start, :class => 'small', :placeholder => 'DDMMYYYY' %><br />
 </div>
 
 <div class="field">
-<%= f.label :income, "Income", :class => 'inline' %>
-<%= f.text_field :income %><br />
+<%= f.label :end_date, "End date of employment:", :class => 'inline' %>
+<%= f.text_field :end_date, :class => 'small', :placeholder => 'DDMMYYYY' %><br />
 </div>
 
 <div class="field">
-<%= f.label :tax, "Tax", :class => 'inline' %>
-<%= f.text_field :tax %><br />
+<%= f.label :income, "Income before tax & national insurance:", :class => 'inline' %>
+<%= f.text_field :income, :class => 'currency', :placeholder => '00.00' %><br />
 </div>
 
 <div class="field">
-<%= f.label :director, "Director", :class => 'inline' %>
-<%= f.check_box :director %><br />
+<%= f.label :tax, "Tax:", :class => 'inline' %>
+<%= f.text_field :tax, :class => 'currency', :placeholder => '00.00' %><br />
+</div>
+
+<div class="field">
+<%= f.label :national_insurance, "National insurance:", :class => 'inline' %>
+<%= f.text_field :national_insurance, :class => 'currency', :placeholder => '00.00' %><br />
+</div>
+
+<div class="field">
+<%= f.label :director, "Were you a director?", :class => 'inline' %>
+<%= f.select :director, [["Yes", true], ["No", false]], { :include_blank => true} %><br />
 </div>
 
 </p>

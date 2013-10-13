@@ -181,7 +181,14 @@ To change your password <%= link_to "click here", edit_user_path(@user, :passwor
       <div class="user_previous_accountant">
       
       <%= f.fields_for :previous_accountant_address do |a| %>
+
+<div class="field">
+
+<%= a.label :name, "Accountant name:", :class => 'inline' %>
+<%= a.text_field :name, :class => '', :placeholder => '', :value => @user.previous_accountant_address[:name] %><br />
       
+</div>
+
 <div class="field">
 
 <%= a.label :location, "Address:", :class => 'inline' %>
@@ -226,7 +233,7 @@ To change your password <%= link_to "click here", edit_user_path(@user, :passwor
       
       <div class="form-section">
    
-      <%= f.submit "Save account", class: "" %>
+      <%= f.submit "Save", class: "" %>
       
       </div>
 

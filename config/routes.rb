@@ -34,7 +34,14 @@ BaseApp::Application.routes.draw do
     get 'update_fields', :controller => 'expenses', :action => :update_fields
     put 'update_card', :controller => 'payments', :action => :update_card
     put 'update_plan', :controller => 'subscriptions', :action => :update_plan
+    get 'payment_history', :controller => 'payments', :action => :payment_history
     
+    
+    resources :payments do
+        member do
+        get :payment_history
+    end
+        end
     
     resources :users do
         member do
@@ -61,6 +68,7 @@ BaseApp::Application.routes.draw do
     match '/help',    to: 'static_pages#help'
     match '/signup',  to: 'users#new'
     match '/pupils',  to: 'clients#new'
+    match '/payment_history', to: 'payments#payment_history'
     match '/signin',  to: 'sessions#new'
     match '/signout', to: 'sessions#destroy', via: :delete
     match '/subscription/create' => 'subscriptions#create', :as => :create_subscription

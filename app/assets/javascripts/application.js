@@ -47,17 +47,17 @@ $(function() {
 
   var id = $(this).attr('id');
                                                                  
-  if ($(this).prop("selectedIndex") == '1') {
-  
-  $('.' + id).show();
+                                    if ($(this).prop("selectedIndex") == '1') {
                                     
-  }
+                                    $('.' + id + ' input, .' + id + ' label').prop('disabled', false).animate({opacity: 1.0});
                                     
-  else {
-    
-  $('.' + id).hide();
+                                    }
                                     
-  }
+                                    else {
+                                    
+                                    $('.' + id + ' input, .' + id + ' label').prop('disabled', true).animate({opacity: 0.3},100);
+                                    
+                                    }
                                    
   });
   
@@ -65,27 +65,21 @@ $(function() {
   
 });
   
-  $( document ).ajaxSuccess( function() {
-  
   $('#student_passed_theory, #student_passed_practical').on('change', function(){
                                  
                                  var id = $(this).attr('id');
                                  
                                  if ($(this).prop("selectedIndex") == '1') {
                                  
-                                 $('.' + id).show();
+                                                            $('.' + id + ' input, .' + id + ' label').prop('disabled', false).animate({opacity: 1.0});
                                  
                                  }
                                  
                                  else {
                                  
-                                 $('.' + id).hide();
+                                                            $('.' + id + ' input, .' + id + ' label').prop('disabled', true).animate({opacity: 0.3},100);
                                  
                                  }
-                                 
-  });
-  
-    $('select').change();
                          
   });
   
@@ -124,8 +118,9 @@ $(function() {
   $( window ).scroll(function() {
                      
                      var offset = $(window).scrollTop() + 60;
+                     if ($('#modal').height() < 600) {
                      $('#modal').css({top: offset});
-                     
+                     }
                      });
   
   $("#user_address_location").geocomplete({
@@ -146,6 +141,42 @@ $(function() {
   detailsAttribute: "data-geo"
   });
   
+  $(".input_address_0").on("click", function() {
+                          
+                          $(this).geocomplete({
+                                             country: 'uk',
+                                             details: ".address_0",
+                                             detailsAttribute: "data-geo"
+                                              });
+  });
+                          
+  $(".input_address_1").on("click", function() {
+                           
+                           $(this).geocomplete({
+                                               country: 'uk',
+                                               details: ".address_1",
+                                               detailsAttribute: "data-geo"
+                                               });
+                           });
+
+  $(".input_address_2").on("click", function() {
+                           
+                           $(this).geocomplete({
+                                               country: 'uk',
+                                               details: ".address_2",
+                                               detailsAttribute: "data-geo"
+                                               });
+                           });
+  
+  $(".input_address_3").on("click", function() {
+                           
+                           $(this).geocomplete({
+                                               country: 'uk',
+                                               details: ".address_3",
+                                               detailsAttribute: "data-geo"
+                                               });
+                           });
+  
   $(document).ajaxSuccess( function() {
   
   $("#student_address_location").geocomplete({
@@ -154,6 +185,40 @@ $(function() {
                                              detailsAttribute: "data-geo"
                                              });
                                     });
+  
+  $('.currency').keypress(function(event) {
+                        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                        event.preventDefault();
+                        }
+                        });
+  
+  $('.currency').blur(function(){
+                      if ($(this).val() != '') {
+                          var num = parseFloat($(this).val());
+                          var cleanNum = num.toFixed(2);
+                          $(this).val(cleanNum);
+                      }
+                          });
+  
+  $('.currency').blur();
+  
+  
+  $('#tax_return_employed').on("change", function() {
+                              
+                              if ($(this).val() != 'true') {
+                              
+                               $('div.employment input, div.employment select, div.employment label, div.employment h2').prop('disabled', true).animate({opacity: 0.3},100);
+                              
+                              }
+                               else {
+                               
+                               $('div.employment input, div.employment select, div.employment label, div.employment h2').prop('disabled', false).animate({opacity: 1.0});
+                               
+                               }
+                              
+                              });
+  
+  $('#tax_return_employed').change();
   
 });
 

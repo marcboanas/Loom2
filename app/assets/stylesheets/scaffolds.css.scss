@@ -100,15 +100,19 @@ div.field input, div.actions input, input.field input, input.actions input {
 }
 /* line 84, ../../app/assets/stylesheets/scaffolds.css.scss */
 div.field input.currency, div.actions input.currency, input.field input.currency, input.actions input.currency {
-  width: 125px;
+  width: 130px !important;
 }
 
 input.small {
-  width: 125px !important;
+  width: 130px !important;
 }
 
 input.large {
   width: 340px !important;
+}
+
+input.extra_large {
+  width: 540px !important;
 }
 
 /* line 91, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -228,7 +232,7 @@ label.inline {
   float: left;
   padding: 2px 20px 0 0;
   display: block;
-  width: 190px;
+  width: 270px;
   line-height: 28px;
   text-align: left;
   text-shadow: rgb(255, 255, 255) 0px 1px 0px;
@@ -430,8 +434,6 @@ box-shadow: rgba(14, 41, 57, 0.117647) 0px 0px 0px 1px, rgba(14, 41, 57, 0.43921
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 height:auto;
 width: 1020px;
-max-height: 600px;
-overflow: scroll;
  
   & > .close {
     position: absolute;
@@ -659,3 +661,9 @@ word-spacing: 0px;
   text-decoration: underline;
   cursor: pointer;
   }
+  
+  input[type="text"]:focus, input[type="password"]:focus, select:focus {
+  outline: 0px solid #38b664 !important;
+  box-shadow: 0px 0px 2pt 1pt #38b664;
+  }
+  

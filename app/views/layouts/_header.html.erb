@@ -10,7 +10,7 @@
     <li><%= link_to "Steps", steps_path %></li>
     <li><%= link_to "Tax Return", new_tax_return_path(:year => '2013') %></li>
     <li><%= link_to "Add Income", new_income_path %></li>
-    <li><%= link_to "Add Student", new_student_path, :remote => true, :id => '', :class => 'modalOpen' %></li>
+    <li><%= link_to "Add Student", new_student_path, :remote =>false, :id => '', :class => 'modalOpen' %></li>
     <li><%= link_to "Add Expense", new_expense_path, :remote => true, :id => '', :class => 'modalOpen' %></li>
     <li><%= link_to "Expenses", expense_categories_path %></li>
     <li><%= link_to "Businesses", business_types_path, :remote => true, :id => '', :class => 'modalOpen' %></li>
