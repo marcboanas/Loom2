@@ -670,5 +670,10 @@ word-spacing: 0px;
   table.payment_history {
   width: 100%;
   border: 1px solid black;
+  margin-bottom: 40px;
+    th, td {
+    text-align: left;
+    padding-left: 10px;
+    }
   }
   
