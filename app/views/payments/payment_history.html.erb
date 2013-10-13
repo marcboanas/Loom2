@@ -6,13 +6,26 @@
 
 <h2>Payment history</h2>
 
+<table>
+
+<th>
+<tr>Payment date</tr>
+<tr>Amount</tr>
+</th>
+
 <% @payments.payment_history.each do |p| %>
 
-<%= Time.at(p['date']).strftime("%m/%d/%Y - %T")%>
+<tr>
 
-<%= currency(p['amount']*10) %>
+<td><%= Time.at(p['date']).strftime("%m/%d/%Y")%></td>
+
+<td><%= currency(p['amount']) %></td>
+
+</tr>
 
 <% end %>
+
+</table>
 
 </div>
 
