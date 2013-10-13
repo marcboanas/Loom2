@@ -10,7 +10,7 @@
 
 <%= Time.at(p['date']).strftime("%m/%d/%Y - %T")%>
 
-<%= currency(p['amount']) %>
+<%= currency(p['amount']*10) %>
 
 <% end %>
 
