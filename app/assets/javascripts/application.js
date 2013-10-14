@@ -120,6 +120,7 @@ $(function() {
                      var offset = $(window).scrollTop() + 60;
                      if ($('#modal').height() < 600) {
                      $('#modal').css({top: offset});
+                     $('.drop-menu').css({top: offset - 20});
                      }
                      });
   
@@ -222,7 +223,21 @@ $(function() {
   
 });
 
-
+$(function() {
+  
+  $('.menu-item').click(function(event) {
+                        
+                event.preventDefault();
+                    
+                 var offset = $(this).offset();
+                 var id = $(this).attr('id');
+                        var width = $(this).outerWidth();
+                        var menuwidth = $('.' + id).outerWidth();
+                        $('.' + id).css({left: offset.left + width - menuwidth}).slideDown();
+                     
+        });
+  
+});
 
 
 
