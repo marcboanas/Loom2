@@ -11,6 +11,6 @@ class PaymentsController < ApplicationController
     end
     
     def payment_history
-       @payments = current_user.subscriptions.first
+       @payments = current_user
     end
 end
