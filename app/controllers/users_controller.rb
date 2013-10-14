@@ -43,13 +43,9 @@ class UsersController < ApplicationController
   def update
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
-          
-          sign_in @user
-                if !current_user.next_step.blank?
-                    redirect_to edit_user_path(@user, :step => current_user.next_step)
-                    else
-                    redirect_to root_path
-            end
+          sigin @user
+          flash[:success] = "Account Changes Saved"
+          redirect_to root_url
           else
           render 'edit'
       end
