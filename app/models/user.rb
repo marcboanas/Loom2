@@ -48,9 +48,9 @@ class User < ActiveRecord::Base
     
     def payment_success(event)
         self.user_payments.build
-        self.user_payment.first.payment_history ||= Array.new
-        self.user_payment.first.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
-        self.user_payment.first.save
+        self.user_payments.first.payment_history ||= Array.new
+        self.user_payments.first.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
+        self.user_payments.first.save
     end
     
     private
