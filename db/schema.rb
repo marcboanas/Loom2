@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131012204502) do
+ActiveRecord::Schema.define(:version => 20131014092516) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -140,6 +140,13 @@ ActiveRecord::Schema.define(:version => 20131012204502) do
     t.integer  "year"
     t.float    "other_income"
     t.boolean  "employed"
+  end
+
+  create_table "user_payments", :force => true do |t|
+    t.text     "payment_history"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

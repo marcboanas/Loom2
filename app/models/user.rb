@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     serialize :previous_accountant_address, Hash
     serialize :payment_history
     serialize :name, Hash
+    has_one :user_payment
     
     accepts_nested_attributes_for :subscriptions, :allow_destroy => true
     
@@ -46,9 +47,9 @@ class User < ActiveRecord::Base
     end
     
     def payment_success(event)
-        self.payment_history ||= Array.new
-        self.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
-        self.save
+        self.user_payment.payment_history ||= Array.new
+        self.user_payment.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
+        self.user_payment.save
     end
     
     private
