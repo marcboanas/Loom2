@@ -8,8 +8,6 @@ class SubscriptionsController < ApplicationController
     def create
         @subscription = Subscription.new(params[:subscription])
         if @subscription.save
-            sigin current_user
-            flash[:success] = "Subscription"
             redirect_to root_url
             else
             render :new
