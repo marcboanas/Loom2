@@ -13,13 +13,15 @@
 <th>Amount</th>
 </tr>
 
-<% if @payments.payment_history.nil? %>
+<% if @payments.nil? %>
 
 <tr><td>Your payment history is empty.</td></tr>
 
 <% else %>
 
-<% @payments.payment_history.each do |p| %>
+<% @payments.each do |p| %>
+
+<% p.payment_history.each do |p| %>
 
 <tr>
 
@@ -28,6 +30,8 @@
 <td><%= currency(p['amount']/100) %></td>
 
 </tr>
+
+<% end %>
 
 <% end %>
 
