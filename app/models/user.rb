@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
     end
     
     def payment_success(event)
+        if self.user_payment.nil?
+           self.build_user_payment
+        end
         self.user_payment.payment_history ||= Array.new
         self.user_payment.payment_history = self.payment_history.push({"amount" => event.data.object.lines.data[0].amount, "date" => event.data.object.date, "type" => event.type, "start" => event.data.object.period_start, "end" => event.data.object.period_end})
         self.user_payment.save
