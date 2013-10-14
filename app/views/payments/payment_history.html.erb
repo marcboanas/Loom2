@@ -25,7 +25,7 @@
 
 <td><%= Time.at(p['date']).strftime("%m/%d/%Y")%></td>
 
-<td><%= currency(p['amount']) %></td>
+<td><%= currency(p['amount']/100) %></td>
 
 </tr>
 
