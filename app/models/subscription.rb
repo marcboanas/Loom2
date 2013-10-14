@@ -72,6 +72,7 @@ class Subscription < ActiveRecord::Base
             customer = Stripe::Customer.retrieve(stripe_id)
             unless customer.nil? or customer.respond_to?('deleted')
                 if customer.subscription.status == 'active'
+                    customer.at_period_end = false
                     customer.cancel_subscription
                 end
             end
