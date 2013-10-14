@@ -36,14 +36,20 @@
 
 </div>
 
+<% if signed_in? %>
+
 <div class="drop-menu settings-menu">
 
 <%= link_to "Edit your account details", edit_user_path(current_user) %><br />
+
+<%= link_to "Change payment details", edit_subscription_path(current_user.subscriptions.first), :id => 'edit_card' %><br />
 
 <%= link_to "View payment history", payment_history_path %><br />
 
 <%= link_to "Sign out", signout_path, method: "delete" %>
 
 </div>
+
+<% end %>
 
 
