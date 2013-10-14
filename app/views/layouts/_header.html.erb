@@ -21,7 +21,7 @@
     <li><%= link_to "Add Student", new_student_path, :remote =>false, :id => '', :class => 'modalOpen' %></li>
     <li><%= link_to "Add Expense", new_expense_path, :remote => false, :id => '', :class => 'modalOpen' %></li>
     <li><%= link_to full_name(current_user), "", :class => 'menu-item', :id => "settings-menu" %></li>
-    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>  
+    <li><% link_to "Sign out", signout_path, method: "delete" %></li>  
     
     <% else %>
 
@@ -38,7 +38,13 @@
 
 <div class="drop-menu settings-menu">
 
-<%= link_to "Edit your account details", edit_user_path(current_user) %>
+<%= link_to "Edit your account details", edit_user_path(current_user) %><br />
+
+<%= link_to "Change payment card", edit_subscription_path, :id => 'edit_card' %><br />
+
+<%= link_to "View payment history", payment_history_path %><br />
+
+<%= link_to "Sign out", signout_path, method: "delete" %>
 
 </div>
 
