@@ -10,7 +10,11 @@ BaseApp::Application.routes.draw do
   resources :steps
 
 
-  resources :incomes
+  resources :incomes do
+      collection do
+          post :create_multiple
+      end
+  end
 
 
   resources :students

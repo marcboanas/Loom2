@@ -1,0 +1,21 @@
+<%= @user.incomes %>
+
+<%= nested_form_for(@user) do |f| %>
+  
+  <div class="form-section employment">
+  
+  <h2>Income</h2>
+  
+  <%= f.fields_for :incomes do |student_form| %>
+  
+  <%= render "income_fields", :f => student_form %>
+
+  <% end %>
+  
+  </div>
+  
+    <div class="form-section">
+    <%= f.submit "Save" %>
+  </div>
+
+<% end %>

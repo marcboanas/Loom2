@@ -17,6 +17,11 @@
 //= require rails.validations
 //= require_tree .
 
+$(function() {
+
+  $( document ).tooltip();
+
+});
 
 $(function() {
 
@@ -187,13 +192,14 @@ $(function() {
                                              });
                                     });
   
-  $('.currency').keypress(function(event) {
-                        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
-                        event.preventDefault();
-                        }
-                        });
+  $(document).on( 'keypress','.currency', function(event) {
+                 if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                 event.preventDefault();
+                 }
+                 });
+ 
   
-  $('.currency').blur(function(){
+  $(document).on( 'blur', '.currency', function(){
                       if ($(this).val() != '') {
                           var num = parseFloat($(this).val());
                           var cleanNum = num.toFixed(2);

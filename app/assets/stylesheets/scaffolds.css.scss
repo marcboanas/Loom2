@@ -99,7 +99,7 @@ div.field input, div.actions input, input.field input, input.actions input {
   margin: 7px;
 }
 /* line 84, ../../app/assets/stylesheets/scaffolds.css.scss */
-div.field input.currency, div.actions input.currency, input.field input.currency, input.actions input.currency {
+div.field input.currency, div.actions input.currency, input.field input.currency, input.actions, input.currency {
   width: 130px !important;
 }
 
@@ -689,6 +689,15 @@ word-spacing: 0px;
   width: 100% !important;
   }
   
+  select {
+  min-width: 190px;
+  max-width: 190px;
+    &.short {
+  min-width: 60px;
+  max-width: 60px;
+  }
+  }
+  
   .drop-menu {
   width: 190px;
   background: red;
@@ -753,5 +762,36 @@ text-align: left;
 white-space: nowrap;
 width: 220px;
 line-height: 30px;
+  }
+
+  .hidden {
+  
+  display: none;
+  
+  }
+
+  div.incomes {
+    width: 100%;
+    border: 0px solid #b3b3b3; 
+        .income_row {
+        width: 100%;
+        border: 1px solid #b3b3b3;
+        padding: 7px 10px 7px 10px;
+        margin: 0 0 10px 0;
+        }
+        .income_field {
+        display: inline;
+        }
+  }
+  
+  i.large {
+  font-size: 20px;
+  font-weight: 200;
+  cursor: pointer;
+  }
+  
+  .total-right {
+  width: 220px;
+  float: right;
   }
   

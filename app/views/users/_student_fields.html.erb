@@ -1,0 +1,14 @@
+<div class="fields">
+
+  <div class="field">
+    <%= f.label :name, "Student:", :class => 'inline' %>
+    <%= f.text_field :name %><br />
+  </div>
+
+</div>
+
+  <%= f.fields_for :incomes do |income_form| %>
+  
+  <%= render "income_fields", :f => income_form %>
+
+  <% end %>

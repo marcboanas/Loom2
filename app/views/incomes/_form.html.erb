@@ -1,3 +1,58 @@
+<% if params[:multiple_create] == "true" %>
+
+<%= form_tag 'create_multiple' do |f| %>
+
+ <div class="form-section">
+ 
+ <h2>Income details</h2>
+
+ <div class="incomes">
+ 
+    <% 2.times do %>
+
+    <div class="income_row">
+      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field', placeholder: 'DDMMYYYY', title: 'Date' %></div>
+      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency', placeholder: '00.00', title:'Amount (£)' %></div>
+      <div class="income_field"><%= select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => 'Practical Test'} %></div>
+      <div class="income_field"><i class="icon-trash large remove" title="Remove"></i></div>
+      </div>
+      
+      <% end %>
+      
+    <div class="income_row total">
+    
+    Total:
+    
+    <div class="total-right">£0.00</div>
+
+    </div>
+
+    <div class="actions">
+      <div><a id='add_income_form' href="#">Add more income</a></div>
+    </div>
+    <div>
+      <div><%= submit_tag 'Save' %></div>
+    </div>
+  
+  </div>
+  
+<% end %>
+
+    <div class="new_income_row hidden income_row">
+      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field', placeholder: 'DDMMYYYY', title: 'Date' %></div>
+      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency', placeholder: '00.00', title:'Amount (£)' %></div>
+      <div class="income_field"><%= select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => 'Practical Test'} %></div>
+      <div class="income_field"><i class="icon-trash large remove" title="Remove"></i></div>
+      </div>
+      
+</div>
+
+<% else %>
+
 <%= form_for(@income) do |f| %>
   <% if @income.errors.any? %>
     <div id="error_explanation">
@@ -41,4 +96,6 @@
     <%= f.submit "Save" %>
   </div>
   
+<% end %>
+
 <% end %>

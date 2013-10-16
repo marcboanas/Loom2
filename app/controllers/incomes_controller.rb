@@ -31,6 +31,13 @@ class IncomesController < ApplicationController
       format.json { render json: @income }
     end
   end
+    
+  def create_multiple
+            params[:income].each do |income|
+            income = Income.create(income)
+            end
+    redirect_to incomes_url
+  end
 
   # GET /incomes/1/edit
   def edit

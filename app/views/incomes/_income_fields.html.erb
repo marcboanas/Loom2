@@ -1,0 +1,31 @@
+<script type="text/javascript">
+$(function() {
+        var scntDiv = $('#addincomes');
+        var i = $('#addincomes div').size() + 1;
+
+        $('#addfields').on('click', function() {
+                $('<div class="form-section"><div class="field"><input id="incomes__date" name="incomes[][date]" placeholder="DDMMYYYY" type="text" class="small_field" /><input id="incomes__value' + i +'" name="incomes[][value]" placeholder="00.00" type="text" class="currency" /></div></div><br />').appendTo(scntDiv);
+                i++;
+                return false;
+        });
+
+
+});
+
+</script>
+
+<div id="addincomes">
+<div class="form-section">
+<div class="field">
+ <h2>Income</h2>
+ <%= text_field_tag "incomes[][date]", nil, :class => 'small_field', :placeholder => 'DDMMYYYY' %>
+ <%= text_field_tag "incomes[][value]", nil, :class => 'currency', :placeholder => '00.00' %><br />
+</div>
+</div>
+</div>
+
+<br /><br /><div class="form-section">
+
+<a href="#" id="addfields">Add New Income</a><br/>
+
+</div>
