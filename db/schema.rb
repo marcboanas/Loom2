@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014092516) do
+ActiveRecord::Schema.define(:version => 20131016182243) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20131014092516) do
     t.integer  "asset_life"
     t.boolean  "asset_life_fixed"
     t.boolean  "fixed_asset"
+    t.float    "sale_price"
+    t.boolean  "sale_price_fixed"
   end
 
   create_table "expenses", :force => true do |t|
@@ -72,6 +74,8 @@ ActiveRecord::Schema.define(:version => 20131014092516) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "private_use"
+    t.float    "sale_value"
+    t.boolean  "sold"
   end
 
   create_table "incomes", :force => true do |t|
@@ -82,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20131014092516) do
     t.integer  "student_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "expense_id"
   end
 
   create_table "plans", :force => true do |t|

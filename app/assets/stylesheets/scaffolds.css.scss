@@ -790,8 +790,17 @@ line-height: 30px;
   cursor: pointer;
   }
   
+  .total {
+  margin-top: 40px !important;
+  }
+  
   .total-right {
   width: 220px;
   float: right;
+  }
+  
+  select.large {
+  min-width: 390px;
+  max-width: 390px;
   }
   

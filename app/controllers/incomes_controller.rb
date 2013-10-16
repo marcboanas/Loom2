@@ -25,6 +25,15 @@ class IncomesController < ApplicationController
   # GET /incomes/new.json
   def new
     @income = Income.new
+      
+      ExpenseType.where("fixed_asset = ?", true).each do |fa|
+          @fixed_assets ||= Array.new
+          @fixed_assets.push(fa.id)
+          end
+      
+    @assets = current_user.expenses.find_all_by_expense_type_id(@fixed_assets)
+      
+      @assets = @assets.select { |asset| asset.sold != true }
 
     respond_to do |format|
       format.html # new.html.erb

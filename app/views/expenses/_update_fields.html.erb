@@ -6,10 +6,24 @@
 
 <div class="field">
 
-<%= f.label :asset_life, :class => "inline" %>
+<%= f.label :asset_life, "Asset life:", :class => "inline" %>
 <%= f.text_field :asset_life, :class => "small", :disabled => @expense_type.asset_life_fixed?, :value => @expense_type.asset_life, :placeholder => '0' %>
 
 <% if @expense_type.asset_life_fixed? %>
+
+<span>**Fixed</span>
+
+<% end %>
+
+</div>
+
+<div class="field">
+
+<%= f.label :sale_price, "Sale price:", :class => "inline" %>
+
+<%= f.text_field :sale_value, :class => "small", :disabled => @expense_type.sale_price_fixed?, :value => @expense_type.sale_price, :placeholder => '0' %>
+
+<% if @expense_type.sale_price_fixed? %>
 
 <span>**Fixed</span>
 
