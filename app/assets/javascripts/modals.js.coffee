@@ -6,7 +6,7 @@ $ ->
   $modal = $('#modal')
   $modal_close = $modal.find('.close')
   $modal_container = $('#modal-container')
-  dh = $modal.outerHeight()
+  dh = $modal.outerHeight() - 67
   offset = $('#signin').offset()
  
   # Handle modal links with the data-remote attribute
@@ -17,7 +17,7 @@ $ ->
       .css( top: $(window).scrollTop() - dh, opacity: 0, display: "block" )
       .animate({
         opacity: 1
-        top: $(window).scrollTop() + 60 }, 1000)
+        top: $(window).scrollTop() + 70 }, 1000)
       .show()
     $modal_container.show();
  

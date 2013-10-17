@@ -1,11 +1,18 @@
 /* line 1, ../../app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #E3E1D6;
+  background-image:url('background.jpg');
+  background-position: 50% 60px;
+  background-repeat: no-repeat;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 58px 0px 0px 0px;
+  margin: 88px 0px 0px 0px;
+}
+
+h1, h2, h3 {
+color: 1b2a49;
 }
 
 /* line 10, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -97,6 +104,61 @@ div.field input, div.actions input, input.field input, input.actions input {
   font-size: 16px;
   color: #37404e;
   margin: 7px;
+  display: none;
+    -webkit-appearance: none;
+-webkit-box-shadow: rgba(0, 0, 0, 0.180392) 0px 1px 2px 0px inset;
+-webkit-font-smoothing: antialiased;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;
+-webkit-writing-mode: horizontal-tb;
+background-color: rgb(255, 255, 255);
+border-bottom-color: rgb(187, 187, 187);
+border-bottom-left-radius: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-image-outset: 0px;
+border-image-repeat: stretch;
+border-image-slice: 100%;
+border-image-source: none;
+border-image-width: 1;
+border-left-color: rgb(187, 187, 187);
+border-left-style: solid;
+border-left-width: 1px;
+border-right-color: rgb(187, 187, 187);
+border-right-style: solid;
+border-right-width: 1px;
+border-top-color: rgb(153, 153, 153);
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+border-top-style: solid;
+border-top-width: 1px;
+box-shadow: rgba(0, 0, 0, 0.180392) 0px 1px 2px 0px inset;
+color: rgb(0, 0, 0);
+cursor: auto;
+display: inline-block;
+font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: normal;
+height: 30px;
+letter-spacing: normal;
+line-height: normal;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 5px;
+margin-top: 0px;
+padding-bottom: 6px;
+padding-left: 7px;
+padding-right: 7px;
+padding-top: 6px;
+text-align: start;
+text-indent: 0px;
+text-shadow: none;
+text-transform: none;
+width: 200px;
+word-spacing: 0px;
+writing-mode: lr-tb;
 }
 /* line 84, ../../app/assets/stylesheets/scaffolds.css.scss */
 div.field input.currency, div.actions input.currency, input.field input.currency, input.actions, input.currency {
@@ -250,13 +312,17 @@ label.inline.hidden {
 /* line 157, ../../app/assets/stylesheets/scaffolds.css.scss */
 .blue-bar-top {
   width: 100%;
-  height: 39px;
+  height: 60px;
+  padding: 0px;
   background: #293f6e;
   border-bottom: 2px solid #1B2A49;
   position: fixed;
   top: 0px;
   left: 0px;
   z-index: 10000;
+-webkit-box-shadow: 0px 6px 7px rgba(50, 50, 50, 0.8);
+-moz-box-shadow:    0px 6px 7px rgba(50, 50, 50, 0.8);
+box-shadow:         0px 6px 7px rgba(50, 50, 50, 0.8);
 }
 /* line 166, ../../app/assets/stylesheets/scaffolds.css.scss */
 .blue-bar-top a {
@@ -269,6 +335,7 @@ label.inline.hidden {
   margin-left: auto;
   margin-right: auto;
   text-align: right;
+  line-height: 50px;
 }
 
 /* line 178, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -295,6 +362,116 @@ label.inline.hidden {
         border-bottom: 1px solid #b3b3b3;
         }
   }
+}
+
+.logo {
+float: left;
+height: 33px;
+width: 249px;
+background-image: url('logo.png');
+}
+
+.home-header {
+background-image: url('laptop.png');
+background-position: 50% 3%;
+width: 100%;
+min-height: 430px;
+margin-bottom: 10px;
+}
+
+.home-tag {
+border-top: 2px solid #9f9592;
+border-bottom: 2px solid #9f9592;
+width: 100%;
+margin-bottom: 10px;
+position: relative;
+    h1 {
+    color: 1b2a49;
+    line-height: 50px;
+    font-size: 26px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-indent: 50px;
+    }
+}
+
+.sticker {
+position: absolute;
+right: 50px;
+top: -140px;
+width: 220px;
+height: 220px;
+background-image: url('sticker.png');
+z-index: 10;
+}
+
+.telephone {
+float: left;
+background-image: url('tele.png');
+background-repeat: no-repeat;
+background-position: 0% 10%;
+width: 240px;
+height: 50px;
+margin-left: 140px;
+text-align: left;
+line-height: 32px;
+color: white;
+font-size: 20px;
+padding-left: 42px;
+}
+
+.home {
+position: relative;
+width: 100%;
+height: 500px;
+}
+
+.home-form {
+width: 460px;
+height: 500px;
+background: none;
+background-image: url('form.png');
+background-repeat: no-repeat;
+margin-left: 50px;
+position: absolute;
+padding: 30px 25px 30px 25px;
+left: 0px;
+    .stamp {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    background-image: url('stamp.png');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    }
+    .title {
+    width: 250px;
+    font-size: 24px;
+    line-height: 30px;
+    text-weight: 200px;
+    margin-bottom: 20px;
+    }
+    span {
+    display: inline-block;
+    margin-left: 20px;
+    }
+}
+
+.larger {
+width: 410px !important;
+}
+
+.why {
+width: 460px;
+height: 500px;
+background: none;
+background-image: url('form.png');
+background-repeat: no-repeat;
+margin-left: 50px;
+position: absolute;
+right: 50px;
+padding: 30px 25px 30px 25px;
 }
 
 /* line 185, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -435,6 +612,7 @@ box-shadow: rgba(14, 41, 57, 0.117647) 0px 0px 0px 1px, rgba(14, 41, 57, 0.43921
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 height:auto;
 width: 1020px;
+z-index: 10000000000000;
  
   & > .close {
     position: absolute;
@@ -507,7 +685,7 @@ border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
 color: rgb(255, 255, 255);
-cursor: default;
+cursor: pointer;
 display: block;
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 font-size: 14px;
@@ -613,13 +791,13 @@ border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 box-shadow: rgba(255, 255, 255, 0.247059) 0px 1px 0px 0px inset;
 color: rgb(255, 255, 255);
-cursor: default;
-display: block;
+cursor: pointer;
+display: inline-block;
 font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
 font-size: 14px;
 font-style: normal;
 font-weight: bold;
-height: 46px !important;
+height: 38px !important;
 letter-spacing: normal;
 line-height: 14px;
 margin-bottom: 40px;

@@ -2,48 +2,47 @@
 
 <% if signed_in? %>
 
-<div class="section-container">
-</div>
+<body style="background-image: none !important"></body>
 
 <% else %>
 
-<div class="section-container">
+<div class="home-header"></div>
 
-<div class="form-section">
+<div class="home-tag">
 
-<h2>Get started</h2>
+<h1>A Super Simple Fixed Fee Accountancy Service.</h1>
+
+<div class="sticker"></div>
+
+</div>
+
+<div class="home">
+<div class="home-form">
+
+<div class="stamp"></div>
+
+<div class="title">Sign up and get started today</div>
 
 <%= form_tag('/signup', :method => 'get') %>
 
 <div class="field">
-
-<%= label_tag 'first_name', 'First name:', :class => 'inline' %>
 <%= text_field_tag 'first_name', nil, :placeholder => 'First name' %>
-
-</div>
-
-<div class="field">
-
-<%= label_tag 'last_name', 'Last name:', :class => 'inline' %>
 <%= text_field_tag 'last_name', nil, :placeholder => 'Last name' %>
-
 </div>
 
 <div class="field">
+<%= text_field_tag 'email', nil, :placeholder => 'Email', :class => "larger" %>
+</div>
 
-<%= label_tag 'email', 'Email:', :class => 'inline' %>
-<%= text_field_tag 'email', nil, :placeholder => 'Email' %>
+<%= submit_tag "Get Started" %><span>7 Day <b>FREE</b> Trial Period</span>
 
 </div>
 
-</div>
-
-<div class="form-section">
-
-<%= submit_tag "start" %>
-
-</div>
-
-</div>
+<div class="why"></div>
 
 <% end %>
+
+</div>
+
+
+

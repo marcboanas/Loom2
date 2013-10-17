@@ -3,7 +3,9 @@
 <div class="top-bar-container">
 
 <ul>
-    <li><%= link_to "Home", root_path %></li>
+    <li style="float: left;"><%= link_to "", root_path, :class => 'logo' %></li>
+    
+    <li class="telephone">0845 123 456</li>
     
     <% if signed_in? %>
     
@@ -16,17 +18,23 @@
         <% end %>
     
     
-    <li><%= link_to "Tax Return", new_tax_return_path(:year => '2013') %></li>
+    <li><%= link_to "Tax", new_tax_return_path(:year => current_user.default_year), :class => 'menu-item', :id => "tax-menu" %></li>
     <li><%= link_to "Income", new_income_path(:multiple_create => "true"), :class => 'menu-item', :id => "income-menu" %></li>
-    <li><%= link_to "Add Student", new_student_path, :remote =>false, :id => '', :class => 'modalOpen' %></li>
-    <li><%= link_to "Add Expense", new_expense_path, :remote => false, :id => '', :class => 'modalOpen' %></li>
+    <li><%= link_to "Students", new_student_path, :remote =>false, :id => 'student-menu', :class => 'menu-item' %></li>
+    <li><%= link_to "Expenses", new_expense_path, :remote => false, :id => 'expense-menu', :class => 'menu-item' %></li>
     <li><%= link_to full_name(current_user), "", :class => 'menu-item', :id => "settings-menu" %></li>
     <li><% link_to "Sign out", signout_path, method: "delete" %></li>  
     
     <% else %>
 
-    <li><% link_to "Sign up", signup_path %></li>
-    <li><%= link_to "Sign in", signin_path, :remote => true, :id => 'signin', :class => 'modalOpen' %></li>
+    <li><%= link_to "forgotten password?", signup_path %></li>
+    
+    <li>
+    <%= link_to signin_path, :remote => true, :id => 'signin', :class => 'modalOpen' do %>
+    <input type="submit" value="Client Log in"></input>
+
+    <% end %>
+    </li>
 
     <% end %>
 
@@ -55,6 +63,24 @@
 <%= link_to "Add Income", new_income_path(:multiple_create => "true") %><br />
 
 <%= link_to "Sale of Asset", new_income_path(:sale_of_asset => "true") %>
+
+</div>
+
+<div class="drop-menu tax-menu">
+
+<%= link_to "PAYE & other income", new_tax_return_path(:year => current_user.default_year) %><br />
+
+</div>
+
+<div class="drop-menu expense-menu">
+
+<%= link_to "Add expense", new_expense_path %><br />
+
+</div>
+
+<div class="drop-menu student-menu">
+
+<%= link_to "Add new student", new_student_path %><br />
 
 </div>
 

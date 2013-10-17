@@ -94,7 +94,7 @@ $(function() {
                      $('#modal').addClass(id);
                      if ($(this).attr('id') == 'signin') {
                      var offset = $(this).offset();
-                     var width = $('#modal').outerWidth() - $(this).outerWidth()
+                     var width = $('#modal').outerWidth() - 200;
                      $('#modal').css({left: offset.left - width});
                      }
                      else {
@@ -109,7 +109,7 @@ $(function() {
 
                      if ($('#modal').attr('class') == 'signin') {
                      var offset = $('#signin').offset();
-                     var width = $('#modal').outerWidth() - $('#signin').outerWidth()
+                     var width = $('#modal').outerWidth() - 200;
                      $('#modal').css({left: offset.left - width});
                      }
                      else {
@@ -122,7 +122,7 @@ $(function() {
   
   $( window ).scroll(function() {
                      
-                     var offset = $(window).scrollTop() + 60;
+                     var offset = $(window).scrollTop() + 70;
                      if ($('#modal').height() < 600) {
                      $('#modal').css({top: offset});
                      $('.drop-menu').css({top: offset - 20});
