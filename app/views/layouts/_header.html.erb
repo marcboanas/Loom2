@@ -54,8 +54,6 @@
     <li><%= link_to "Income", new_income_path(:multiple_create => "true"), :class => 'menu-item', :id => "income-menu" %></li>
     <li><%= link_to "Students", new_student_path, :remote =>false, :id => 'student-menu', :class => 'menu-item' %></li>
     <li><%= link_to "Expenses", new_expense_path, :remote => false, :id => 'expense-menu', :class => 'menu-item' %></li>
-    <li><%= link_to full_name(current_user), "", :class => 'menu-item', :id => "settings-menu" %></li>
-    <li><% link_to "Sign out", signout_path, method: "delete" %></li> 
     
 </div>
     
