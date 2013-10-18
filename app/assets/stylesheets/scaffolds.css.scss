@@ -24,6 +24,7 @@ color: #1b2a49;
 /* line 10, ../../app/assets/stylesheets/scaffolds.css.scss */
 .body-container {
   width: 100%;
+  min-width: 1220px !important;
   position: absolute;
   min-height: 100%;
   padding-top: 188px;
@@ -1070,6 +1071,7 @@ line-height: 30px;
   .inner-container {
   height: 100%;
   width: 100%;
+  min-width: 1220px !important;
   position: absolute;
     .main-container {
     position: relative;
