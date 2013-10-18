@@ -40,6 +40,12 @@ class User < ActiveRecord::Base
         
     end
     
+    def full_name
+        
+        self.name[:first_name] + " " + self.name[:last_name]
+        
+    end
+    
     def generate_token(column)
         begin
             self[column] = SecureRandom.urlsafe_base64

@@ -125,7 +125,7 @@ $(function() {
                      var offset = $(window).scrollTop() + 70;
                      if ($('#modal').height() < 600) {
                      $('#modal').css({top: offset});
-                     $('.drop-menu').css({top: offset - 20});
+                     $('.drop-menu').css({top: offset - 15});
                      }
                      });
   
