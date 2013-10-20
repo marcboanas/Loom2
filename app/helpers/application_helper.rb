@@ -17,4 +17,8 @@ module ApplicationHelper
     def full_name(user)
         user.name[:first_name] + " " + user.name[:last_name]
     end
+    
+    def date_format(the_date)
+        return the_date.strftime('%d/%m/%Y')
+    end
 end

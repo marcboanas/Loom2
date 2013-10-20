@@ -1,3 +1,65 @@
+<% if params[:multiple_create] == "true" %>
+
+<%= form_tag 'create_multiple', :validates => true do |f| %>
+
+<div class="form-section">
+ 
+<h2>Students</h2>
+
+<div class="students">
+
+    <% 4.times do %>
+    
+
+      <div class="student_row">
+      <div class="student_field"><%= text_field_tag 'student[][first_name]', nil, class: 'small_field required', placeholder: 'First name', title: 'First name' %></div>
+      <div class="student_field"><%= text_field_tag 'student[][last_name]', nil, class: 'small_field required', placeholder: 'Last name', title: 'Last name' %></div>
+      <div class="student_field"><%= text_field_tag 'student[][location]', nil, class: 'large geo', placeholder: 'Start typing student address here' %>
+            <div class="address hidden">
+      <%= hidden_field_tag 'student[][street_number]', nil, :data => { :geo => 'street_number' } %>
+      <%= hidden_field_tag 'student[][route]', nil, :data => { :geo => 'route' } %>
+      <%= hidden_field_tag 'student[][locality]', nil, :data => { :geo => 'locality' } %>
+      <%= hidden_field_tag 'student[][postal_code]', nil, :data => { :geo => 'postal_code' } %>
+      </div>
+      </div>
+      <div class="student_field"><%= text_field_tag 'student[][mobile]', nil, class: 'small_field', placeholder: 'Mobile number', title: 'Mobile number (optional)' %></div>
+      <div class="student_field"><%= select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
+      <div class="student_field"><i class="icon-trash large remove" title="Remove"></i></div>
+    </div>
+    <% end %>
+
+    <div class="actions">
+      <div><a id='add_student_form' href="#">Add more students</a></div>
+    </div>
+
+    <div>
+      <div><%= submit_tag 'Save' %></div>
+    </div>
+
+</div>
+
+</div>
+
+<% end %>
+
+      <div class="new_student_row hidden student_row">
+      <div class="student_field"><%= text_field_tag 'student[][first_name]', nil, class: 'small_field required', placeholder: 'First name', title: 'First name' %></div>
+      <div class="student_field"><%= text_field_tag 'student[][last_name]', nil, class: 'small_field required', placeholder: 'Last name', title: 'Last name' %></div>
+      <div class="student_field"><%= text_field_tag 'student[][location]', nil, class: 'large geo', placeholder: 'Start typing student address here', title: "Student's address (optional)" %></div>
+      <div class="student_field"><%= text_field_tag 'student[][mobile]', nil, class: 'small_field', placeholder: 'Mobile number', title: 'Mobile number (optional)' %></div>
+      <div class="student_field"><%= select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
+      <div class="student_field"><i class="icon-trash large remove" title="Remove"></i></div>
+      <div class="address">
+      <%= hidden_field_tag 'student[][street_number]', nil, :data => { :geo => 'street_number' } %>
+      <%= hidden_field_tag 'student[][route]', nil, :data => { :geo => 'route' } %>
+      <%= hidden_field_tag 'student[][locality]', nil, :data => { :geo => 'locality' } %>
+      <%= hidden_field_tag 'student[][postal_code]', nil, :data => { :geo => 'postal_code' } %>
+      </div>
+    </div>
+
+
+<% else %>
+
 <%= form_for(@student) do |f| %>
   <% if @student.errors.any? %>
     <div id="error_explanation">
@@ -69,14 +131,14 @@
       
 </div>
   
-<div class="student_address optional">
+<div class="address optional">
       
 <%= f.fields_for :address do |a| %>
       
 <div class="field">
 
 <%= a.label :location, "Address:", :class => 'inline' %>
-<%= a.text_field :location, :class => 'large', :placeholder => 'Start typing address here' %><span class="optional">**Optional</span><br />
+<%= a.text_field :location, :class => 'large geo', :placeholder => 'Start typing address here' %><span class="optional">**Optional</span><br />
       
 </div>
       
@@ -123,3 +185,6 @@
 
   
 <% end %>
+
+<% end %>
+

@@ -35,6 +35,13 @@ class ExpensesController < ApplicationController
       format.json { render json: @expense }
     end
   end
+    
+    def create_multiple
+        params[:expense].each do |expense|
+            expense = Expense.create(expense)
+        end
+        redirect_to expenses_url
+    end
 
   # GET /expenses/1/edit
   def edit

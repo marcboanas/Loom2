@@ -31,6 +31,13 @@ class StudentsController < ApplicationController
       format.json { render json: @student }
     end
   end
+    
+    def create_multiple
+        params[:student].each do |student|
+        student = Student.create(student)
+        end
+        redirect_to students_url
+    end
 
   # GET /students/1/edit
   def edit

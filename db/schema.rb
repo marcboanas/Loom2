@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016182243) do
+ActiveRecord::Schema.define(:version => 20131019120521) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20131016182243) do
     t.boolean  "passed_practical"
     t.date     "date_passed_theory"
     t.date     "date_passed_practical"
+    t.string   "referal"
   end
 
   create_table "subscriptions", :force => true do |t|

@@ -17,10 +17,18 @@ BaseApp::Application.routes.draw do
   end
 
 
-  resources :students
+  resources :students do
+        collection do
+            post :create_multiple
+        end
+  end
 
 
-  resources :expenses
+    resources :expenses do
+        collection do
+            post :create_multiple
+        end
+    end
 
 
   resources :expense_categories

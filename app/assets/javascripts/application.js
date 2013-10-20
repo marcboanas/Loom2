@@ -24,6 +24,20 @@ $(function() {
 });
 
 $(function() {
+  
+  var sectionId = $('.section-container').attr('id');
+  
+  $('#' + sectionId + 'Tab').addClass('active');
+  
+  $('.date').each(function(){
+                  $(this).datepicker({
+                                     numberOfMonths: 3,
+                                     showButtonPanel: true
+                                     });
+                        });
+  });
+
+$(function() {
 
 $('.selectable').on('change', function() {
 
@@ -141,11 +155,21 @@ $(function() {
   detailsAttribute: "data-geo"
   });
   
-  $("#student_address_location").geocomplete({
+                            
+  $('.geo').on("focus", function() {
+                                     
+  var address = $(this).next(".address");
+               
+               
+                                     
+  $(this).geocomplete({
   country: 'uk',
-  details: ".student_address",
+  details: address,
   detailsAttribute: "data-geo"
   });
+                                     
+  });
+
   
   $(".input_address_0").on("click", function() {
                           

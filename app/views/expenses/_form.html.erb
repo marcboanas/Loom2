@@ -1,3 +1,55 @@
+<% if params[:multiple_create] == "true" %>
+
+<%= form_tag 'create_multiple' do |f| %>
+
+<div class="form-section">
+ 
+<h2>Expenses</h2>
+
+<div class="expenses">
+
+    <% 4.times do |x| %>
+    
+    <div class="expense_row">
+      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>
+      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => 'Amount' %></div>
+      <div class="expense_field"><i class="icon-trash large remove" title="Remove"></i></div>
+    </div>
+    <% end %>
+    
+    <div class="expense_row total">
+    
+    Total:
+    
+    <div class="total-right">£0.00</div>
+
+    </div>
+
+    <div class="actions">
+      <div><a id='add_expense_form' href="#">Add more expenses</a></div>
+    </div>
+    <div>
+      <div><%= submit_tag 'Save' %></div>
+    </div>
+    
+<% end %>
+
+    </div>
+    
+    </div>
+
+    <div class="new_expense_row expense_row hidden">
+      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: 'Date', :id => "date4" %></div>
+      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => 'Amount' %></div>
+      <div class="expense_field"><i class="icon-trash large remove" title="Remove"></i></div>
+    </div>
+
+<% else %>
+
 <%= form_for(@expense) do |f| %>
   <% if @expense.errors.any? %>
     <div id="error_explanation">
@@ -39,4 +91,6 @@
   <div class="form-section">
     <%= f.submit "Save" %>
   </div>
+<% end %>
+
 <% end %>

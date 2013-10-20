@@ -2,8 +2,19 @@ $(function() {
   
   $('#add_income_form').bind('click', function(e) {
                              e.preventDefault();
+                             
+                             var id = $('div.new_income_row .datepicker').attr('id');
+                             
+                             $('div.new_income_row .datepicker').attr('id', id + '1');
+                             
                              var row = $('div.new_income_row').clone().removeClass('hidden new_income_row');
                              $('div.total').before(row);
+                             
+                             $('#' + id + '1').datepicker({
+                                                          numberOfMonths: 3,
+                                                          showButtonPanel: true
+                                                          });
+                             
                              $('i.remove').on('click', function() {
                                               $(this).closest('.income_row').remove();
                                               $('.value').keyup();
