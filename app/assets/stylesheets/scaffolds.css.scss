@@ -1146,7 +1146,7 @@ line-height: 30px;
   padding: 0px;
   font-size: 14px;
   cursor: pointer;
-  z-index: 99999999;
+  z-index: 1;
       &:after {
     content: "\f057";
     font-family: FontAwesome;
