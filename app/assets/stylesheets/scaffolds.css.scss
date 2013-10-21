@@ -57,14 +57,15 @@ h1 {
 }
 
 /* line 38, ../../app/assets/stylesheets/scaffolds.css.scss */
+ul {
+padding-left: 0px;
+}
+
 li {
-  display: inline-block;
+list-style: none;
 }
 
 /* line 42, ../../app/assets/stylesheets/scaffolds.css.scss */
-ul {
-  padding: 0px;
-}
 
 /* line 46, ../../app/assets/stylesheets/scaffolds.css.scss */
 pre {
@@ -340,7 +341,7 @@ box-shadow:         0px 6px 7px rgba(50, 50, 50, 0.8);
   padding: 0px;
   background: #293f6e;
   border-top: 1px solid white;
-  border-bottom: 2px solid #1B2A49;
+  border-bottom: 1px solid white;
   position: absolute;
   top: 58px;
   left: 0px;
@@ -362,6 +363,9 @@ box-shadow:         0px 6px 7px rgba(50, 50, 50, 0.8);
   margin-right: auto;
   text-align: right;
   line-height: 50px;
+    &.left {
+    text-align: left;
+    }
 }
 
 /* line 178, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -1126,6 +1130,42 @@ line-height: 30px;
   background: lighten(#8acfd0,25) !important;
   border: 2px solid #8acfd0 !important;
   }
+  
+  .alert {
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  right: 40px;
+  height: 50px;
+  width: 944px;
+  background: #39866c !important;
+  border: 5px solid darken(#39866c,10);
+  color: white;
+  line-height: 40px;
+  text-align: center;
+  padding: 0px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 99999999;
+      &:after {
+    content: "\f057";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    width: 50px;
+    font-size: 16px;
+    }
+  }
+  
+  .remember_me {
+  padding: 10px 0 10px 0;
+    span {
+    margin-left: 5px;
+    }
+  }
+
   
   
   

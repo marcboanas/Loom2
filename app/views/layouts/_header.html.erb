@@ -26,9 +26,9 @@
     
     <% else %>
 
-    <li><%= link_to "forgotten password?", signup_path %></li>
+    <li style="display: inline-block"><%= link_to "forgotten password?", new_password_reset_path %></li>
     
-    <li>
+    <li style="display: inline-block">
     <%= link_to signin_path, :remote => true, :id => 'signin', :class => 'modalOpen' do %>
     <input type="submit" value="Client Log in"></input>
 
@@ -48,12 +48,29 @@
 <div class="nav-bar-top">
 
 
-<div class="top-bar-container">
+<div class="top-bar-container left">
 
-    <li><%= link_to "Tax", new_tax_return_path(:year => current_user.default_year), :class => 'menu-item', :id => "tax-menu" %></li>
-    <li><%= link_to "Income", new_income_path(:multiple_create => "true"), :class => 'menu-item', :id => "income-menu" %></li>
-    <li><%= link_to "Students", new_student_path, :remote =>false, :id => 'student-menu', :class => 'menu-item' %></li>
-    <li><%= link_to "Expenses", new_expense_path, :remote => false, :id => 'expense-menu', :class => 'menu-item' %></li>
+<div id='cssmenu'>
+<ul>
+   <li id="homeMenu"><%= link_to "Home", root_url %></li>
+   <li id="addMenu" class='has-sub'><a href='#'><span>Add</span></a>
+      <ul>
+         <li class='has-sub'><%= link_to "Add a student", new_student_path(:multiple_create => "true") %>
+         </li>
+         <li class='has-sub'><%= link_to "Add income", new_income_path(:multiple_create => "true") %>
+         </li>
+         <li class='has-sub'><%= link_to "Add expenses", new_expense_path(:multiple_create => "true") %>
+         </li>
+      </ul>
+   </li>
+   <li id="studentsMenu"><a href='#'><span>Students</span></a></li>
+   <li id="incomeMenu"><a href='#'><span>Income</span></a></li>
+   <li id="expensesMenu"><a href='#'><span>Expenses</span></a></li>
+   <li id="accountsMenu"><a href='#'><span>Accounts</span></a></li>
+   <li id="taxreturnMenu"><a href='#'><span>Tax Return</span></a></li>
+   <li class='last'><a href='#'><span>Settings</span></a></li>
+</ul>
+</div>
     
 </div>
     

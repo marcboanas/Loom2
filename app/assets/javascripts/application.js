@@ -20,8 +20,17 @@
 $(function() {
 
   $( document ).tooltip();
+  
+  $('.alert').attr('title', 'Click to close');
+  
+  $('.alert').click(function() {
+                     
+                     $(this).remove();
+                     
+                     });
 
 });
+
 
 $(function() {
   
@@ -29,11 +38,16 @@ $(function() {
   
   $('#' + sectionId + 'Tab').addClass('active');
   
+  var section_name = $('.section-container').attr('name');
+  
+  $('#' + section_name + 'Menu').addClass('active');
+  
   $('.date').each(function(){
                   $(this).datepicker({
                                      numberOfMonths: 3,
                                      showButtonPanel: true
                                      });
+                  $(this).attr('readonly', 'readonly');
                         });
   });
 

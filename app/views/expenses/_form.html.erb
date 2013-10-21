@@ -8,7 +8,7 @@
 
 <div class="expenses">
 
-    <% 4.times do |x| %>
+    <% 2.times do |x| %>
     
     <div class="expense_row">
       <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>

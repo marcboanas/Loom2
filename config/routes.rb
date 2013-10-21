@@ -1,5 +1,7 @@
 BaseApp::Application.routes.draw do
     
+  get "password_resets/new"
+
   mount StripeEvent::Engine => '/stripe'
 
   resources :subscriptions 

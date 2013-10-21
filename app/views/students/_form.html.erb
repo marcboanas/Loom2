@@ -8,7 +8,7 @@
 
 <div class="students">
 
-    <% 4.times do %>
+    <% 2.times do %>
     
 
       <div class="student_row">
@@ -23,7 +23,7 @@
       </div>
       </div>
       <div class="student_field"><%= text_field_tag 'student[][mobile]', nil, class: 'small_field', placeholder: 'Mobile number', title: 'Mobile number (optional)' %></div>
-      <div class="student_field"><%= select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
+      <div class="student_field"><% select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
       <div class="student_field"><i class="icon-trash large remove" title="Remove"></i></div>
     </div>
     <% end %>
@@ -47,7 +47,7 @@
       <div class="student_field"><%= text_field_tag 'student[][last_name]', nil, class: 'small_field required', placeholder: 'Last name', title: 'Last name' %></div>
       <div class="student_field"><%= text_field_tag 'student[][location]', nil, class: 'large geo', placeholder: 'Start typing student address here', title: "Student's address (optional)" %></div>
       <div class="student_field"><%= text_field_tag 'student[][mobile]', nil, class: 'small_field', placeholder: 'Mobile number', title: 'Mobile number (optional)' %></div>
-      <div class="student_field"><%= select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
+      <div class="student_field"><% select_tag 'student[][referal]', options_for_select(how_find_options), :class => 'medium', :title => "How did they find you?" %></div>
       <div class="student_field"><i class="icon-trash large remove" title="Remove"></i></div>
       <div class="address">
       <%= hidden_field_tag 'student[][street_number]', nil, :data => { :geo => 'street_number' } %>
