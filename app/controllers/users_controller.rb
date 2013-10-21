@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
       @user = User.new(params[:user])
       if @user.save
-         sign_in @user
+         edit_sign_in @user
          flash[:success] = "Welcome to Account Hero!"
           redirect_to root_path
       else
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   def update
       @user = User.find(params[:id])
       if @user.update_attributes(params[:user])
+          edit_sign_in @user
           flash[:success] = "Account Changes Saved"
           redirect_to(root_path)
           else
