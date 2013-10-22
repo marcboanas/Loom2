@@ -27,7 +27,7 @@ color: #1b2a49;
   min-width: 1080px !important;
   position: absolute;
   min-height: 100%;
-  padding-top: 188px;
+  padding-top: 138px;
   padding-bottom: 140px;
 }
 
@@ -377,6 +377,7 @@ box-shadow:         0px 6px 7px rgba(50, 50, 50, 0.8);
   border: 2px solid #b3b3b3;
   border-radius: 0 5px 5px 5px;
   position: relative;
+  margin-top: 50px;
   h2 {
     color: rgb(51, 51, 51);
     font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
@@ -433,7 +434,7 @@ background-position: 50% -60px;
 width: 100%;
 min-height: 430px;
 margin-bottom: -20px;
-margin-top: -95px;
+margin-top: -45px;
 }
 
 .home-tag {
@@ -1133,10 +1134,7 @@ line-height: 30px;
   }
   
   .alert {
-  position: absolute;
-  top: -60px;
-  left: 0px;
-  right: 0px;
+  position: relative;
   height: 50px;
   width: 1024px;
   background: #39866c !important;
