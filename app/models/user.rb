@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    attr_accessible :name, :email, :password, :password_confirmation, :business_type_id, :account_type, :address, :business_name, :business_start_date, :accounting_start_date, :next_step, :home_phone, :mobile, :default_year, :registered_selfemployed, :previous_accountant, :previous_accountant_address, :payment_history, :subscriptions_attributes, :longitude, :latitude
+    attr_accessible :name, :email, :password, :password_confirmation, :business_type_id, :account_type, :address, :business_name, :business_start_date, :accounting_start_date, :next_step, :home_phone, :mobile, :default_year, :registered_selfemployed, :previous_accountant, :previous_accountant_address, :payment_history, :subscriptions_attributes, :longitude, :latitude, :password_reset_sent_at, :password_reset_token
     
     geocoded_by :full_address
     after_validation :geocode
