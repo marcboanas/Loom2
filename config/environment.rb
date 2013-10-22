@@ -4,6 +4,8 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 BaseApp::Application.initialize!
 
+config.action_mailer.default_url_options = { :host => 'http://young-wave-9844.herokuapp.com' }
+
 ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
