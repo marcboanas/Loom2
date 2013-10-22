@@ -66,7 +66,7 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
 
  <div class="incomes">
  
-    <% 2.times do |x| %>
+    <% 1.times do |x| %>
 
     <div class="income_row">
       <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>

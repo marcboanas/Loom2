@@ -3,15 +3,17 @@ module SessionsHelper
     def sign_in(user)
         if params[:session][:remember_me] == "1"
             cookies.permanent[:remember_token] = user.remember_token
+            user.remember_me = true
             else
             cookies[:remember_token] = user.remember_token
+            user.remember_me = false
         end
         self.current_user = user
     end
     
     
     def edit_sign_in(user)
-        if params[:remember_me]
+        if user.remember_me
             cookies.permanent[:remember_token] = user.remember_token
             else
             cookies[:remember_token] = user.remember_token

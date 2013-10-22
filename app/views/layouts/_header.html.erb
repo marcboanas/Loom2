@@ -53,7 +53,7 @@
 <div id='cssmenu'>
 <ul>
    <li id="homeMenu"><%= link_to "Home", root_url %></li>
-   <li id="addMenu" class='has-sub'><a href='#'><span>Add</span></a>
+   <li id="addMenu" class='has-sub'><a><span>Add</span></a>
       <ul>
          <li class='has-sub'><%= link_to "Add a student", new_student_path(:multiple_create => "true") %>
          </li>
@@ -68,7 +68,12 @@
    <li id="expensesMenu"><a href='#'><span>Expenses</span></a></li>
    <li id="accountsMenu"><a href='#'><span>Accounts</span></a></li>
    <li id="taxreturnMenu"><a href='#'><span>Tax Return</span></a></li>
-   <li class='last'><a href='#'><span>Targets</span></a></li>
+   <li class='last has-sub'><a><span>Targets</span></a>
+      <ul>
+         <li class='has-sub right'><%= link_to "Add new targets", root_url %>
+         </li>
+      </ul>
+   </li>
 </ul>
 </div>
     
