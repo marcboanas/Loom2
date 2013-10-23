@@ -86,6 +86,8 @@ BaseApp::Application.routes.draw do
     match '/signin',  to: 'sessions#new'
     match '/signout', to: 'sessions#destroy', via: :delete
     match '/subscription/create' => 'subscriptions#create', :as => :create_subscription
+    match '/request_reset_password', to: 'password_resets#new'
+    match '/reset_password', to: 'password_resets#edit'
     
     # The priority is based upon order of creation:
     # first created -> highest priority.

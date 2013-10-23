@@ -1,7 +1,23 @@
+<div class="section-container">
+
+<div class="tabs">
+
+<div class="tab active">Forgot Password</div>
+
+</div>
+
+<div class="form-section">
+
 <%= form_tag password_resets_path, :method => :post do %>
   <div class="field">
-    <%= label_tag :email %>
+    <%= label_tag :email, nil, class: 'inline' %>
     <%= text_field_tag :email, params[:email] %>
   </div>
-  <div class="actions"><%= submit_tag "Reset Password" %></div>
+  </div>
+  
+  <div class="form-section">
+  <%= submit_tag "Reset Password" %>
+  </div>
 <% end %>
+
+</div>

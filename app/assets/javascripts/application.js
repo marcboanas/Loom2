@@ -19,15 +19,24 @@
 
 $(function() {
 
-  $( document ).tooltip();
+  $( document ).tooltip({
+                        track: true
+                        });
   
   $('.alert').attr('title', 'Click to close');
   
   $('.alert').click(function() {
                      
-                     $(this).remove();
+                    $(this).remove();
+                    
                      
                      });
+  
+  if ($(document).attr('title') == "Account Hero | Home") {
+  
+  $('.alert').addClass('moveUp');
+  
+  }
 
 });
 

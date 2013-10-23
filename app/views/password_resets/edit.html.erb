@@ -1,3 +1,13 @@
+<div class="section-container">
+
+<div class="tabs">
+
+<div class="tab active">Reset Password</div>
+
+</div>
+
+<div class="form-section">
+
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
@@ -10,12 +20,23 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, class: 'inline' %>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation, class: 'inline' %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit "Update Password" %></div>
+  
+  </div>
+  
+  <div class="form-section">
+  
+  <%= f.submit "Update Password" %>
+  
+  </div>
 <% end %>
+
+</div>
+
+</div>
