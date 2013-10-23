@@ -9,7 +9,6 @@ module SessionsHelper
             user.remember_me = false
         end
         self.current_user = user
-        self.save!
     end
     
     
