@@ -4,11 +4,9 @@ module SessionsHelper
         if params[:session][:remember_me] == "1"
             cookies.permanent[:remember_token] = user.remember_token
             user.remember_me = true
-            user.save
             else
             cookies[:remember_token] = user.remember_token
             user.remember_me = false
-            user.save
         end
         self.current_user = user
     end
