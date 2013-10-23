@@ -1,6 +1,6 @@
-<% provide(:title, 'Home') %>
-
 <% if signed_in? %>
+
+<% provide(:title, current_user.full_name) %>
 
 <div class="section-container" name="home">
 
@@ -13,6 +13,8 @@
 </div>
 
 <% else %>
+
+<% provide(:title, 'Home') %>
 
 <body style="background-image: url(/assets/background.jpg);"></body>
 
