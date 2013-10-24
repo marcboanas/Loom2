@@ -38,25 +38,9 @@ $(function() {
   
   }
   
-  $( "#amount1" ).slider({
-                                  range: "min",
-                                  value: 37,
-                                  min: 0,
-                                  max: 79000,
-                                  slide: function( event, ui ) {
-                                  $( ".slider" ).val( ui.value );
-                                  $( ".slider" ).blur();
-                                  }
-                                  });
-  $( ".slider1" ).val($( "#amount" ).slider( "value" ));
+  $('input[type="text"]').keyup(function() {
   
-  $( ".slider1" ).keyup(function() {
-                       
-                       $( "#amount" ).slider("value", $(this).val());
-                       
-  });
-  
-  $('.weekly').each(function() {
+                    $('.weekly').each(function() {
                     
                     var value = $(this).val();
                     
@@ -75,6 +59,17 @@ $(function() {
                     $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                     
                     });
+                                
+                                $('input[type="text"]').not(this).each(function() {
+                                                                       
+                                                                       $(this).blur();
+                                                                       
+                                                                       });
+});
+  
+  $('input[type="text"]').keyup();
+  
+  $('.disabled').attr('readonly', 'readonly');
 
 });
 

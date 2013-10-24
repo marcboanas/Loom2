@@ -36,15 +36,15 @@
   </div>
   
   <div class="field">
-    <%= t.label :hourly, "Price / hour (£)", :class => 'inline' %>
+    <%= t.label :hourly, "Hourly rate (£)", :class => 'inline' %>
     <%= t.text_field :hourly, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hourly"] %>
   </div>
   
   <div class="field">
     <%= t.label :hours, "Hours", :class => 'inline' %>
     <%= t.text_field :hours, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hours"] %>
-    <%= text_field_tag 'hoursMonthly', nil, :class => "currency monthly", :placeholder => "00.00" %>
-    <%= text_field_tag 'hoursYearly', nil, :class => "currency yearly", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
   </div>
   
   <div class="field">
