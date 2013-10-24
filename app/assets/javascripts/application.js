@@ -64,7 +64,7 @@ $(function() {
                                 
                                 $('.expense_category').each(function() {
                                                             
-                                expense = $(this).val();
+                                expense += Number($(this).val().replace(/[^0-9\.-]+/g,""))
                                                             
                                                             });
                                 
