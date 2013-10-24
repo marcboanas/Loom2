@@ -59,10 +59,10 @@
   <% expense_categories(current_user).each do |e| %>
   
   <div class="field">
-    <%= t.label :hours, "Hours", :class => 'inline' %>
-    <%= t.text_field :hours, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hours"] %>
-    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
-    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+    <%= t.label e.category.parameterize.underscore.to_sym, e.category, :class => 'inline' %>
+    <%= t.text_field e.category.parameterize.underscore.to_sym, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets[e.category] %>
+    <%= text_field_tag e.category + 'Monthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag e.category + 'Yearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
   </div>
   
 
