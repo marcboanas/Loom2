@@ -56,9 +56,11 @@ $(function() {
                     
                     $('#income').val(income);
                                       
+                    var expense = 0;
+                                      
                     $('.expense_category').each(function() {
                                                                   
-                    var expense += Number(($(this).val()).replace(/[^0-9\.-]+/g,""));
+                    var expense += Number($(this).val());
                                                 
                     });
                                       
