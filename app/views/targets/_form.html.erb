@@ -48,7 +48,7 @@
   </div>
   
   <div class="field">
-    <%= label_tag "income", "Income", :class => 'inline' %>
+    <%= label_tag "income", "Total income", :class => 'inline' %>
     <%= text_field_tag "income", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'incomeMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'incomeYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
@@ -60,13 +60,19 @@
   
   <div class="field">
     <%= t.label e.category.parameterize.underscore.to_sym, e.category, :class => 'inline' %>
-    <%= t.text_field e.category.parameterize.underscore.to_sym, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets[e.category] %>
+    <%= t.text_field e.category.parameterize.underscore.to_sym, :class => "currency weekly expense_category", :placeholder => "00.00", :value => @target.targets[e.category] %>
     <%= text_field_tag e.category + 'Monthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
     <%= text_field_tag e.category + 'Yearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
   </div>
   
-
   <% end %>
+  
+    <div class="field">
+    <%= label_tag "expense", "Total expense", :class => 'inline' %>
+    <%= text_field_tag "expense", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'expenseMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'expenseYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
   
   </div>
   
