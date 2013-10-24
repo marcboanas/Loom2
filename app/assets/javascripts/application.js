@@ -68,6 +68,8 @@ $(function() {
                                 
                                 $('#expense').val(expense);
                                 
+                                $('#profit').val(income - expense);
+                                
                                 $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                                 
                                 $('input[type="text"]').not(this).each(function() {
