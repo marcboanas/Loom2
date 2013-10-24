@@ -40,15 +40,6 @@ $(function() {
   
   $('input[type="text"]').keyup(function() {
   
-                    $('.weekly').each(function() {
-                    
-                    var value = $(this).val();
-                    
-                    $(this).parent().find('.monthly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429/12);
-                    
-                    $(this).parent().find('.yearly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429);
-                    
-                    });
                                 
                                 var hourly = $('#target_targets_hourly').val()
                                 
@@ -69,6 +60,17 @@ $(function() {
                                 $('#expense').val(expense);
                                 
                                 $('#profit').val(income - expense);
+                                
+                                $('.weekly').each(function() {
+                                                  
+                                                  var value = $(this).val();
+                                                  
+                                                  $(this).parent().find('.monthly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429/12);
+                                                  
+                                                  $(this).parent().find('.yearly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429);
+                                                  
+                                                  });
+
                                 
                                 $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                                 
