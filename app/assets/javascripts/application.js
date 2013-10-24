@@ -48,17 +48,17 @@ $(function() {
                     
                     $(this).parent().find('.yearly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429);
                     
-                    var hourly = $('#target_targets_hourly').val()
-                    
-                    var hours = $('#target_targets_hours').val()
-                    
-                    var income = hourly * hours
-                    
-                    $('#income').val(income);
-                    
-                    $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
-                    
                     });
+                                
+                                var hourly = $('#target_targets_hourly').val()
+                                
+                                var hours = $('#target_targets_hours').val()
+                                
+                                var income = hourly * hours
+                                
+                                $('#income').val(income);
+                                
+                                $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                     
                                 var expense = 0;
                                 
