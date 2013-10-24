@@ -64,6 +64,8 @@ $(function() {
                                 
                                 $('.expense_category').each(function() {
                                                             
+                                expense = $(this).val();
+                                                            
                                                             });
                                 
                                 $('#expense').val(expense);
