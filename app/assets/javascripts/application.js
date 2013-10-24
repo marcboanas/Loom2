@@ -55,20 +55,19 @@ $(function() {
                     var income = hourly * hours
                     
                     $('#income').val(income);
-                                      
-                    var expense = 0;
-                                      
-                    $('.expense_category').each(function() {
-                                                                  
-                    var expense += Number($(this).val());
-                                                
-                    });
-                                      
-                    $('#expense').val(expense);
                     
                     $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                     
                     });
+                    
+                                var expense = 0;
+                                
+                                $('.expense_category').each(function() {
+                                                            
+                                                            });
+                                
+                                $('#expense').val(expense);
+                                
                                 
                                 $('input[type="text"]').not(this).each(function() {
                                                                        
