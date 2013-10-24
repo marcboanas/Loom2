@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022174614) do
+ActiveRecord::Schema.define(:version => 20131023220409) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -132,6 +132,14 @@ ActiveRecord::Schema.define(:version => 20131022174614) do
     t.string   "stripe_id"
     t.boolean  "failed_payment"
     t.text     "payment_history"
+  end
+
+  create_table "targets", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "targets"
+    t.integer  "year"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tax_returns", :force => true do |t|

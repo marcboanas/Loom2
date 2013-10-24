@@ -37,6 +37,44 @@ $(function() {
   $('.alert').addClass('moveUp');
   
   }
+  
+  $( "#amount1" ).slider({
+                                  range: "min",
+                                  value: 37,
+                                  min: 0,
+                                  max: 79000,
+                                  slide: function( event, ui ) {
+                                  $( ".slider" ).val( ui.value );
+                                  $( ".slider" ).blur();
+                                  }
+                                  });
+  $( ".slider1" ).val($( "#amount" ).slider( "value" ));
+  
+  $( ".slider1" ).keyup(function() {
+                       
+                       $( "#amount" ).slider("value", $(this).val());
+                       
+  });
+  
+  $('.weekly').each(function() {
+                    
+                    var value = $(this).val();
+                    
+                    $(this).parent().find('.monthly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429/12);
+                    
+                    $(this).parent().find('.yearly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429);
+                    
+                    var hourly = $('#target_targets_hourly').val()
+                    
+                    var hours = $('#target_targets_hours').val()
+                    
+                    var income = hourly * hours
+                    
+                    $('#income').val(income);
+                    
+                    $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
+                    
+                    });
 
 });
 

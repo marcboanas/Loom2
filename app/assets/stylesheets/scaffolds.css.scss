@@ -19,6 +19,7 @@ body {
 
 h1, h2, h3 {
 color: #1b2a49;
+z-index: 999999;
 }
 
 /* line 10, ../../app/assets/stylesheets/scaffolds.css.scss */
@@ -175,6 +176,47 @@ div.field input.currency, div.actions input.currency, input.field input.currency
   width: 130px !important;
 }
 
+.columns {
+positon: absolute;
+width: 100%;
+height: 100%;
+    .column {
+    position: absolute;
+    width: 141px;
+    background: #d7e7e1;
+    top: 69px;
+    bottom: 100px;
+    left: 324px;
+    z-index: 0;
+    }
+    .column1 {
+    position: absolute;
+    width: 141px;
+    background: none;
+    top: 69px;
+    bottom: 100px;
+    left: 465px;
+    z-index: 0;
+    }
+    .column2 {
+    position: absolute;
+    width: 141px;
+    background: #d7e7e1;
+    top: 69px;
+    bottom: 100px;
+    left: 605px;
+    z-index: 0;
+    }
+    .columnTitle {
+    border: 1px solid black !important;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 101px;
+    text-align: center;
+    }
+}
+
 input.small {
   width: 130px !important;
 }
@@ -251,6 +293,12 @@ writing-mode: lr-tb;
     }
     &.number_field {
     width: 65px;
+    }
+    &.disabled {
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    background: none !important;
     }
     }
 }
@@ -412,7 +460,7 @@ box-shadow:         0px 6px 7px rgba(50, 50, 50, 0.8);
     padding: 0 20px 0 20px;
     text-indent: 20px;
     line-height: 40px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
         &.active {
         border-bottom: none;

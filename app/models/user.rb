@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     has_many :expense_types, through: :business_type
     has_many :expenses
     has_many :students
+    has_many :targets
     has_many :incomes, through: :students
     has_many :steps, through: :business_type
     has_many :subscriptions, :dependent => :destroy

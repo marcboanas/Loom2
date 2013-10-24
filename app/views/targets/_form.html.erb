@@ -1,0 +1,68 @@
+<%= form_for(@target) do |f| %>
+  <% if @target.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@target.errors.count, "error") %> prohibited this target from being saved:</h2>
+
+      <ul>
+      <% @target.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-section">
+  
+  <h2>Business targets</h2>
+  
+  <h2>Income targets</h2>
+  
+  <%= f.hidden_field :year %>
+  
+  <%= f.fields_for :targets do |t| %>
+  
+  <div class="columns">
+  
+  <div class="column">
+  <div class="columnTitle">Weekly</div>
+  </div>
+  
+  <div class="column1">
+  <div class="columnTitle">Monthly</div>
+  </div>
+  
+  <div class="column2">
+  <div class="columnTitle">Yearly</div>
+  </div>
+  
+  <div class="field">
+    <%= t.label :hourly, "Price / hour (£)", :class => 'inline' %>
+    <%= t.text_field :hourly, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hourly"] %>
+  </div>
+  
+  <div class="field">
+    <%= t.label :hours, "Hours", :class => 'inline' %>
+    <%= t.text_field :hours, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hours"] %>
+    <%= text_field_tag 'hoursMonthly', nil, :class => "currency monthly", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "currency yearly", :placeholder => "00.00" %>
+  </div>
+  
+  <div class="field">
+    <%= label_tag "income", "Income", :class => 'inline' %>
+    <%= text_field_tag "income", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'incomeMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'incomeYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+  <h2>Expense targets</h2>
+  
+  </div>
+  
+  <% end %>
+  
+  </div>
+  
+  <div class="form-section">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
