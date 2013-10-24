@@ -57,8 +57,6 @@ $(function() {
                                 var income = hourly * hours
                                 
                                 $('#income').val(income);
-                                
-                                $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                     
                                 var expense = 0;
                                 
@@ -70,6 +68,7 @@ $(function() {
                                 
                                 $('#expense').val(expense);
                                 
+                                $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                                 
                                 $('input[type="text"]').not(this).each(function() {
                                                                        
