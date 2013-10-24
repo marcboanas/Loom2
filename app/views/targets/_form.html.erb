@@ -56,7 +56,17 @@
   
   <h2>Expense targets</h2>
   
-  <%= expense_categories(current_user) %>
+  <% expense_categories(current_user).each do |e| %>
+  
+  <div class="field">
+    <%= t.label :hours, "Hours", :class => 'inline' %>
+    <%= t.text_field :hours, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hours"] %>
+    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+
+  <% end %>
   
   </div>
   
