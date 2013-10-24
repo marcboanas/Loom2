@@ -25,7 +25,7 @@ module ApplicationHelper
     def expense_categories(user)
         user.expense_types.each do |et|
            @expense_cat ||= Array.new
-           @expense_cat.push(et.expense_category)
+           @expense_cat.push(et.expense_categories)
         end        
         @expense_cat
     end
