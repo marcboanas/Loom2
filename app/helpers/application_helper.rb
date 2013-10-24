@@ -27,6 +27,6 @@ module ApplicationHelper
            @expense_cat ||= Array.new
            @expense_cat.push(et.expense_category_id).uniq
         end        
-        @expense_cat
+        @expense_cat = ExpenseCategory.find_all_by_id(@expense_cat)
     end
 end
