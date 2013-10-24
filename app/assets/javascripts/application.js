@@ -55,6 +55,14 @@ $(function() {
                     var income = hourly * hours
                     
                     $('#income').val(income);
+                                      
+                    $('.expense_category').each(function() {
+                                                                  
+                    var expense += $(this).val();
+                                                
+                    });
+                                      
+                    $('#expense').val(expense);
                     
                     $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
                     
