@@ -21,4 +21,12 @@ module ApplicationHelper
     def date_format(the_date)
         return the_date.strftime('%d/%m/%Y')
     end
+    
+    def expense_categories(user)
+        user.expense_types.each do |et|
+           @expense_cat ||= Array.new
+           @expense_cat.push(et.expense_category)
+        end        
+        @expense_cat
+    end
 end
