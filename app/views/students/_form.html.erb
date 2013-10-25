@@ -12,6 +12,7 @@
     
 
       <div class="student_row">
+      <%= hidden_field_tag 'student[][user_id]', current_user.id %>
       <div class="student_field"><%= text_field_tag 'student[][first_name]', nil, class: 'small_field required', placeholder: 'First name', title: 'First name' %></div>
       <div class="student_field"><%= text_field_tag 'student[][last_name]', nil, class: 'small_field required', placeholder: 'Last name', title: 'Last name' %></div>
       <div class="student_field"><%= text_field_tag 'student[][location]', nil, class: 'large geo', placeholder: 'Start typing student address here' %>
@@ -43,6 +44,7 @@
 <% end %>
 
       <div class="new_student_row hidden student_row">
+      <%= hidden_field_tag 'student[][user_id]', current_user.id %>
       <div class="student_field"><%= text_field_tag 'student[][first_name]', nil, class: 'small_field required', placeholder: 'First name', title: 'First name' %></div>
       <div class="student_field"><%= text_field_tag 'student[][last_name]', nil, class: 'small_field required', placeholder: 'Last name', title: 'Last name' %></div>
       <div class="student_field"><%= text_field_tag 'student[][location]', nil, class: 'large geo', placeholder: 'Start typing student address here', title: "Student's address (optional)" %></div>

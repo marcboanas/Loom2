@@ -11,6 +11,7 @@
     <% 1.times do |x| %>
     
     <div class="expense_row">
+      <%= hidden_field_tag 'expense[][user_id]', current_user.id %>
       <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>
       <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
       <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>
@@ -41,6 +42,7 @@
     </div>
 
     <div class="new_expense_row expense_row hidden">
+      <%= hidden_field_tag 'expense[][user_id]', current_user.id %>
       <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: 'Date', :id => "date4" %></div>
       <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
       <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>

@@ -69,6 +69,7 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
     <% 1.times do |x| %>
 
     <div class="income_row">
+      <%= hidden_field_tag 'income[][user_id]', current_user.id %>
       <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>
       <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student', :class => 'required' %></div>
       <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
@@ -99,6 +100,7 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
 <% end %>
 
     <div class="new_income_row hidden income_row">
+      <%= hidden_field_tag 'income[][user_id]', current_user.id %>
       <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: 'Date', :id => "date4" %></div>
       <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student', :class => 'required' %></div>
       <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
