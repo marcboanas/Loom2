@@ -66,17 +66,25 @@ $(function() {
                                 
                                 var profit = income - expense;
                                 
+                                var ni2 = 0;
+                                
+                                var ni4 = 0;
+                                
                                 $('#profit').val(profit);
                                 
                                 if(profit > (5725/52.1429)) {
                                 
-                                $('#ni2').val(2.70);
+                                ni2 = 2.70;
+                                
+                                $('#ni2').val(ni2);
                                 
                                 }
                                 
                                 if(profit >= (7755/52.1429) && profit <= (41450/52.1429)) {
                                 
-                                $('#ni4').val((profit - (7755/52.1429))*0.09);
+                                ni4 = (profit - (7755/52.1429))*0.09
+                                
+                                $('#ni4').val(ni4);
                                 
                                 }
                                 
@@ -86,19 +94,25 @@ $(function() {
                                 
                                 var over = (profit - (41450/52.1429))*0.02;
                                 
-                                $('#ni4').val(under + over);
+                                ni4 = under + over
+                                
+                                $('#ni4').val(ni4);
                                 
                                 }
                                 
                                 if(profit < 7755/52.1429) {
                                 
-                                $('#ni4').val(0);
+                                ni4 = 0;
+                                
+                                $('#ni4').val(ni4);
                                 
                                 }
                                 
                                 if(profit < 5725/52.1429) {
                                 
-                                $('#ni2').val(0);
+                                ni2 = 0;
+                                
+                                $('#ni2').val(ni2);
                                 
                                 }
                                 
@@ -107,6 +121,10 @@ $(function() {
                                 $('#ni2').val(0);
                                 
                                 $('#ni4').val(0);
+                                
+                                ni2 = 0;
+                                
+                                ni4 = 0;
                                 
                                 }
                                 
@@ -172,7 +190,33 @@ $(function() {
                                 
                                 var pa = $('#pa').val();
                                 
-                                $('#totalTaxableIncome').val(profit - pa);
+                                var taxableIncome = profit - pa;
+                                
+                                if(taxableIncome < 0) {
+                                
+                                taxableIncome = 0;
+                                
+                                }
+                                
+                                $('#totalTaxableIncome').val(taxableIncome);
+                                
+                                var tax = 0;
+                                
+                                if(taxableIncome < 32011/52.1429) {
+                                tax = taxableIncome * 0.2;
+                                }
+                                if(taxableIncome > 32010/52.1429) {
+                                if(taxableIncome < (150001/52.1429)) {
+                                    tax = ((taxableIncome - 32010/52.1429) * 0.4) + ((32010/52.1429) * 0.2)
+                                }
+                                if(taxableIncome > (150001/52.1429)) {
+                                tax = ((150000/52.1429 - 32010/52.1429) * 0.4) + ((32010/52.1429) * 0.2) + ((taxableIncome - 150000/52.1429) * 0.45);
+                                }
+                                }
+                                
+                                $('#tax').val(tax);
+                                
+                                $('#earnings').val(profit - tax - ni2 - ni4);
 
                                 $('.weekly').each(function() {
                                                   

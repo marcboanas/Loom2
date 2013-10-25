@@ -115,6 +115,22 @@
     <%= text_field_tag 'totalTaxableIncomeYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
   </div>
   
+    <div class="field">
+    <%= label_tag "tax", "Income tax", :class => 'inline' %>
+    <%= text_field_tag "tax", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'taxMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'taxYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+  <h2>Earnings after tax & national insurance</h2>
+  
+      <div class="field">
+    <%= label_tag "earnings", "Target earnings", :class => 'inline' %>
+    <%= text_field_tag "earnings", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'earningsMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'earningsYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
   </div>
   
   <% end %>
