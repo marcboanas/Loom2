@@ -6,7 +6,18 @@
   
   <h2>Income targets</h2>
   
+  <div class="field">
+    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled_number currency", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled_number currency", :placeholder => "00.00" %>
+  </div>
+  
   <h2>Expense targets</h2>
+  
+    <div class="field">
+    <%= label_tag "expense", "Total expense", :class => 'inline' %>
+    <%= text_field_tag 'expenseMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'expenseYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
   
   <h2>Profit targets</h2>
   
