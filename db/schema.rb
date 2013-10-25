@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023220409) do
+ActiveRecord::Schema.define(:version => 20131025121816) do
 
   create_table "business_types", :force => true do |t|
     t.string   "business"
@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20131023220409) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.boolean  "remember_me"
+    t.date     "dob"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

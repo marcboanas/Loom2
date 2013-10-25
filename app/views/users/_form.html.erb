@@ -51,6 +51,13 @@
       
 </div>
 
+<div class="field">
+
+<%= f.label :dob, "Date of birth:", :class => 'inline' %>
+<%= f.text_field :dob, :value => params[:dob], class: 'date' %><br />
+      
+</div>
+
 <% if current_user %>
       
 <div class="field">

@@ -27,10 +27,15 @@ $(function() {
   
   $('.alert').click(function() {
                      
-                    $(this).remove();
+                    $(this).tooltip({ disabled: true });
                     
-                     
-                     });
+                    $(this).animate({
+                    
+                                    opacity: 0,
+                    
+                    });
+                    $(this).css('cursor','auto');
+                    });
   
   if ($(document).attr('title') == "Account Hero | Home") {
   
@@ -137,8 +142,12 @@ $(function() {
   
   $('.date').each(function(){
                   $(this).datepicker({
-                                     numberOfMonths: 3,
-                                     showButtonPanel: true
+                                     changeMonth: true,
+                                     changeYear: true,
+                                     dateFormat: "dd/mm/yy",
+                                     minDate: "-100Y",
+                                     maxDate: "-16Y",
+                                     yearRange: "-100:-16"
                                      });
                   $(this).attr('readonly', 'readonly');
                         });
