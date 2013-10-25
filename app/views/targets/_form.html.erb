@@ -104,6 +104,15 @@
     <div class="field">
     <%= label_tag "pa", "Tax free personal allowance", :class => 'inline' %>
     <%= text_field_tag "pa", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'paMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'paYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+    <div class="field">
+    <%= label_tag "totalTaxableIncome", "Total taxable income", :class => 'inline' %>
+    <%= text_field_tag "totalTaxableIncome", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'totalTaxableIncomeMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'totalTaxableIncomeYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
   </div>
   
   </div>

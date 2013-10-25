@@ -112,7 +112,7 @@ $(function() {
                                 
                                 if(Number($('#userAge').attr('class')) > 65) {
                                 
-                                $('#pa').val(10500);
+                                $('#pa').val(10500/52.1429);
                                 
                                 if(profit > (26100/52.1429)) {
                                 
@@ -124,7 +124,7 @@ $(function() {
                                 
                                 }
                                 
-                                $('#pa').val(10500 - reduce);
+                                $('#pa').val((10500 - reduce)/52.1429);
                                 
                                 }
                                 
@@ -132,7 +132,7 @@ $(function() {
                                 
                                 if(Number($('#userAge').attr('class')) > 75) {
     
-                                $('#pa').val(10660);
+                                $('#pa').val(10660/52.1429);
                                 
                                 if(profit > (26100/52.1429)) {
                                 
@@ -144,7 +144,7 @@ $(function() {
                                 
                                 }
                                 
-                                $('#pa').val(10660 - reduce);
+                                $('#pa').val((10660 - reduce)/52.1429);
                                 
                                 }
     
@@ -152,7 +152,7 @@ $(function() {
   
                                 if(Number($('#userAge').attr('class')) < 65) {
   
-                                $('#pa').val(9440);
+                                $('#pa').val(9440/52.1429);
                                 
                                 if(profit > (100000/52.1429)) {
                                 
@@ -164,11 +164,15 @@ $(function() {
                                 
                                 }
                                 
-                                $('#pa').val(9440 - reduce);
+                                $('#pa').val((9440 - reduce)/52.1429);
                                 
                                 }
   
                                 }
+                                
+                                var pa = $('#pa').val();
+                                
+                                $('#totalTaxableIncome').val(profit - pa);
 
                                 $('.weekly').each(function() {
                                                   
