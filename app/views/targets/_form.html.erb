@@ -85,6 +85,20 @@
   
   <h2>Income tax and national insurance</h2>
   
+    <div class="field">
+    <%= label_tag "ni2", "Class 2 national insurance", :class => 'inline' %>
+    <%= text_field_tag "ni2", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'ni2Monthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'ni2Yearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+    <div class="field">
+    <%= label_tag "ni4", "Class 4 national insurance", :class => 'inline' %>
+    <%= text_field_tag "ni4", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'ni4Monthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'ni4Yearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
   </div>
   
   <% end %>

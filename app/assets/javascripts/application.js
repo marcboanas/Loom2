@@ -59,7 +59,44 @@ $(function() {
                                 
                                 $('#expense').val(expense);
                                 
-                                $('#profit').val(income - expense);
+                                var profit = income - expense;
+                                
+                                $('#profit').val(profit);
+                                
+                                if(profit > (5725/52.1429)) {
+                                
+                                $('#ni2').val(2.70);
+                                
+                                }
+                                
+                                if(profit >= (7755/52.1429) && profit <= (41450/52.1429)) {
+                                
+                                $('#ni4').val((profit - (7755/52.1429))*0.09);
+                                
+                                }
+                                
+                                if(profit > 41450/52.1429) {
+                                
+                                var under = ((41450 - 7755)/52.1429)*0.09;
+                                
+                                var over = (profit - (41450/52.1429))*0.02;
+                                
+                                $('#ni4').val(under + over);
+                                
+                                }
+                                
+                                if(profit < 7755/52.1429) {
+                                
+                                $('#ni4').val(0);
+                                
+                                }
+                                
+                                if(profit < 5725/52.1429) {
+                                
+                                $('#ni2').val(0);
+                                
+                                }
+                                
                                 
                                 $('.weekly').each(function() {
                                                   
