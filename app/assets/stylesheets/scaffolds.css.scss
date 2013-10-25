@@ -294,7 +294,7 @@ writing-mode: lr-tb;
     &.number_field {
     width: 65px;
     }
-    &.disabled {
+    &.disabled, &.disabled_number {
     border: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;

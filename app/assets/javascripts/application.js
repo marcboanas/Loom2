@@ -102,7 +102,74 @@ $(function() {
                                 
                                 }
                                 
+                                if(Number($('#userAge').attr('class')) > 65) {
                                 
+                                $('#ni2').val(0);
+                                
+                                $('#ni4').val(0);
+                                
+                                }
+                                
+                                if(Number($('#userAge').attr('class')) > 65) {
+                                
+                                $('#pa').val(10500);
+                                
+                                if(profit > (26100/52.1429)) {
+                                
+                                var reduce = (profit*52.1429 - 26100)/2;
+                                
+                                if(reduce > 10500) {
+                                
+                                reduce = 10500;
+                                
+                                }
+                                
+                                $('#pa').val(10500 - reduce);
+                                
+                                }
+                                
+                                }
+                                
+                                if(Number($('#userAge').attr('class')) > 75) {
+    
+                                $('#pa').val(10660);
+                                
+                                if(profit > (26100/52.1429)) {
+                                
+                                var reduce = (profit*52.1429 - 26100)/2;
+                                
+                                if(reduce > 10660) {
+                                
+                                reduce = 10660;
+                                
+                                }
+                                
+                                $('#pa').val(10660 - reduce);
+                                
+                                }
+    
+                                }
+  
+                                if(Number($('#userAge').attr('class')) < 65) {
+  
+                                $('#pa').val(9440);
+                                
+                                if(profit > (100000/52.1429)) {
+                                
+                                var reduce = (profit*52.1429 - 100000)/2;
+                                
+                                if(reduce > 9440) {
+                                
+                                reduce = 9440;
+                                
+                                }
+                                
+                                $('#pa').val(9440 - reduce);
+                                
+                                }
+  
+                                }
+
                                 $('.weekly').each(function() {
                                                   
                                                   var value = $(this).val();
@@ -115,12 +182,13 @@ $(function() {
 
                                 
                                 $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
-                                
+
                                 $('input[type="text"]').not(this).each(function() {
                                                                        
                                                                        $(this).blur();
                                                                        
                                                                        });
+                                
 });
   
   $('input[type="text"]').keyup();

@@ -43,8 +43,8 @@
   <div class="field">
     <%= t.label :hours, "Hours", :class => 'inline' %>
     <%= t.text_field :hours, :class => "currency weekly", :placeholder => "00.00", :value => @target.targets["hours"] %>
-    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
-    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled_number currency", :placeholder => "00.00" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled_number currency", :placeholder => "00.00" %>
   </div>
   
   <div class="field">
@@ -85,6 +85,8 @@
   
   <h2>Income tax and national insurance</h2>
   
+    <div id="userAge" class="<%= age(current_user) %>" %></div>
+  
     <div class="field">
     <%= label_tag "ni2", "Class 2 national insurance", :class => 'inline' %>
     <%= text_field_tag "ni2", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
@@ -97,6 +99,11 @@
     <%= text_field_tag "ni4", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'ni4Monthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'ni4Yearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>
+  </div>
+  
+    <div class="field">
+    <%= label_tag "pa", "Tax free personal allowance", :class => 'inline' %>
+    <%= text_field_tag "pa", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
   </div>
   
   </div>

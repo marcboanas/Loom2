@@ -29,4 +29,10 @@ module ApplicationHelper
         end        
         @expense_cat = ExpenseCategory.find_all_by_id(@expense_cat)
     end
+    
+    def age(user)
+       if user.default_year == 2013
+       ("05/04/2013").to_date.year - user.dob.year
+       end
+    end
 end
