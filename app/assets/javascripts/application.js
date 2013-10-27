@@ -42,16 +42,16 @@ var a = $("#target_targets_hourly").val(),
 b = $("#target_targets_hours").val(),
 week = 52;
 if($("#target_targets_holidays").val() >= 0) {
-week = 52 - Number($("#target_targets_holidays").val().replace(/[^0-9\.-]+/g, ""));
+weekHolidays = 52 - Number($("#target_targets_holidays").val().replace(/[^0-9\.-]+/g, ""));
 };
-var c = (a * b) * (week/52);
+var c = (a * b) * weekHolidays/52;
 if(week < 0) { week = 0 };
 $("#income").val(c);
 var d = 0;
 $(".expense_category").each(function () {
 d += Number($(this).val().replace(/[^0-9\.-]+/g, ""))
-}), $("#expense").val(d * (week/52));
-var e = c - (d * (week/52)),
+}), $("#expense").val(d);
+var e = c - d,
 f = 0,
 g = 0;
 $("#profit").val(e), e > 5725 / week && (f = 2.7, $("#ni2").val(f)), e >= 7755 / week && e <= 41450 / week && (g = (e - 7755 / week) * .09, $("#ni4").val(g));
