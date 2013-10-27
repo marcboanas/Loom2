@@ -51,7 +51,7 @@ var d = 0;
 $(".expense_category").each(function () {
 d += Number($(this).val().replace(/[^0-9\.-]+/g, ""))
 }), $("#expense").val(d * (week/52));
-var e = c - d,
+var e = c - (d * (week/52)),
 f = 0,
 g = 0;
 $("#profit").val(e), e > 5725 / week && (f = 2.7, $("#ni2").val(f)), e >= 7755 / week && e <= 41450 / week && (g = (e - 7755 / week) * .09, $("#ni4").val(g));
