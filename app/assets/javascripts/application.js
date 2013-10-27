@@ -41,6 +41,7 @@ opacity: 1
 var a = $("#target_targets_hourly").val(),
 b = $("#target_targets_hours").val(),
 week = 52;
+weekHolidays = 52;
 if($("#target_targets_holidays").val() >= 0) {
 weekHolidays = 52 - Number($("#target_targets_holidays").val().replace(/[^0-9\.-]+/g, ""));
 };
