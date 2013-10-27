@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-    attr_accessible :address, :current, :email, :home_phone, :mobile, :name, :passed_theory, :passed_practical, :user_id, :date_passed_theory, :date_passed_practical, :first_name, :last_name, :location, :street_number, :route, :locality, :postal_code, :referal
+    attr_accessible :address, :current, :email, :home_phone, :mobile, :name, :passed_theory, :passed_practical, :user_id, :date_passed_theory, :date_passed_practical, :first_name, :last_name, :location, :street_number, :route, :locality, :postal_code, :referal, :user_id
     
     attr_accessor :first_name, :last_name, :location, :street_number, :route, :locality, :postal_code
     

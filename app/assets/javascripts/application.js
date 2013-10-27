@@ -31,26 +31,26 @@ rules: {
 
 $(document).tooltip({
 track: !0
-}), $(".alert").attr("title", "Click to close"), $(".alert").click(function () {
+}), $(".alert").attr("title", ""), $(".alert").click(function () {
 $(this).tooltip({
 disabled: !0
 }), $(this).animate({
-opacity: 0
+opacity: 1
 }), $(this).css("cursor", "auto")
-}), $(document).attr("title") == "Account Hero | Home" && $(".alert").addClass("moveUp"), $('input[type="text"]').keyup(function () {
+}), $(document).attr("title") == "Account Hero | Home" && $(".alert").addClass("moveUp"), $(document).attr("title") == "Account Hero | Sign Up" && $(".section-container").css("margin-top", 0), $('input[type="text"]').keyup(function () {
 var a = $("#target_targets_hourly").val(),
 b = $("#target_targets_hours").val(),
-c = a * b,
 week = 52;
 if($("#target_targets_holidays").val() >= 0) {
 week = 52 - Number($("#target_targets_holidays").val().replace(/[^0-9\.-]+/g, ""));
 };
+var c = (a * b) * (week/52);
 if(week < 0) { week = 0 };
 $("#income").val(c);
 var d = 0;
 $(".expense_category").each(function () {
 d += Number($(this).val().replace(/[^0-9\.-]+/g, ""))
-}), $("#expense").val(d);
+}), $("#expense").val(d * (week/52));
 var e = c - d,
 f = 0,
 g = 0;
@@ -97,6 +97,15 @@ $(this).blur()
 })
 }), $('input[type="text"]').keyup(), $(".disabled").attr("readonly", "readonly")
 }), $(function () {
+
+$(document).ajaxSuccess(function() {
+var a = $(".form-section").attr("id");
+$("#" + a + "Tab").addClass("active");
+var b = $(".section-container").attr("name");
+$("#" + b + "Menu").addClass("active");
+});
+
+
 var a = $(".section-container").attr("id");
 $("#" + a + "Tab").addClass("active");
 var b = $(".section-container").attr("name");

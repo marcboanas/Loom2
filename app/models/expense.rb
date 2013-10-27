@@ -1,5 +1,5 @@
 class Expense < ActiveRecord::Base
-    attr_accessible :asset_life, :dated, :description, :expense_type_id, :user_id, :value, :private_use, :sale_value, :sold
+    attr_accessible :asset_life, :dated, :description, :expense_type_id, :user_id, :value, :private_use, :sale_value, :sold, :user_id
     belongs_to :user
     belongs_to :expense_type
     has_many :incomes, :dependent => :destroy

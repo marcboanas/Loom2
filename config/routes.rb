@@ -1,52 +1,52 @@
 BaseApp::Application.routes.draw do
     
-  resources :targets
-
-
-  get "password_resets/new"
-
-  mount StripeEvent::Engine => '/stripe'
-
-  resources :subscriptions 
-    
-  resources :plans
+    resources :targets
     
     
-  resources :steps
-
-
-  resources :incomes do
-      collection do
-          post :create_multiple
-      end
-  end
-
-
-  resources :students do
+    get "password_resets/new"
+    
+    mount StripeEvent::Engine => '/stripe'
+    
+    resources :subscriptions
+    
+    resources :plans
+    
+    
+    resources :steps
+    
+    
+    resources :incomes do
         collection do
             post :create_multiple
         end
-  end
-
-
+    end
+    
+    
+    resources :students do
+        collection do
+            post :create_multiple
+        end
+    end
+    
+    
     resources :expenses do
         collection do
             post :create_multiple
         end
     end
-
-
-  resources :expense_categories
-
-
-  resources :business_types
-
-
-  resources :tax_returns
     
-  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
-
-
+    
+    resources :expense_categories
+    
+    
+    resources :business_types
+    
+    
+    resources :tax_returns
+    
+    post "versions/:id/revert" => "versions#revert", :as => "revert_version"
+    
+    
     get "password_resets/new"
     get 'update_fields', :controller => 'expenses', :action => :update_fields
     put 'update_card', :controller => 'payments', :action => :update_card
@@ -56,9 +56,9 @@ BaseApp::Application.routes.draw do
     
     resources :payments do
         member do
-        get :payment_history
-    end
+            get :payment_history
         end
+    end
     
     resources :users do
         member do

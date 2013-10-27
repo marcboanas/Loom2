@@ -1,3 +1,5 @@
+<%= render 'shared/tabs' %>
+
 <% if params[:sale_of_asset] == "true" %>
 
 <div class="form-section">
@@ -58,9 +60,9 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
 
 <% if params[:multiple_create] == "true" %>
 
-<%= form_tag 'create_multiple' do |f| %>
+<%= form_tag url_for(:controller => 'incomes', :action => 'create_multiple'), :method => 'post' do |f| %>
 
- <div class="form-section">
+ <div class="form-section" id="income">
  
  <h2>Income</h2>
 
@@ -69,12 +71,11 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
     <% 1.times do |x| %>
 
     <div class="income_row">
-      <%= hidden_field_tag 'income[][user_id]', current_user.id %>
-      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>
-      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student', :class => 'required' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: '' %></div>
+      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: '', :class => 'required' %></div>
       <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
-      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency value required', placeholder: '00.00', title:'Amount (£)' %></div>
-      <div class="income_field"><% select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => 'Practical Test'} %></div>
+      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency value required', placeholder: '00.00', title:'' %></div>
+      <div class="income_field"><% select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => ''} %></div>
       <div class="income_field"><i class="icon-trash large remove" title="Remove"></i></div>
       </div>
       
@@ -100,12 +101,11 @@ You currently have <b>no fixed assets</b>. <%= link_to "Click here", new_expense
 <% end %>
 
     <div class="new_income_row hidden income_row">
-      <%= hidden_field_tag 'income[][user_id]', current_user.id %>
-      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: 'Date', :id => "date4" %></div>
-      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: 'Student', :class => 'required' %></div>
+      <div class="income_field"><%= text_field_tag 'income[][date]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: '', :id => "date4" %></div>
+      <div class="income_field"><%= select_tag 'income[][student_id]', options_from_collection_for_select(current_user.students, :id, :full_name), title: '', :class => 'required' %></div>
       <div class="income_field"><%= text_field_tag 'income[][description]', nil, class: 'large', placeholder: 'Add a short description (Optional)' %></div>
-      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency value required', placeholder: '00.00', title:'Amount (£)' %></div>
-      <div class="income_field"><% select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => 'Practical Test'} %></div>
+      <div class="income_field"><%= text_field_tag 'income[][value]', nil, class: 'currency value required', placeholder: '00.00', title:'' %></div>
+      <div class="income_field"><% select_tag 'income[][test]', options_for_select([["Yes", true], ["No", false]]), { :include_blank => true, :class => 'short', :title => ''} %></div>
       <div class="income_field"><i class="icon-trash large remove" title="Remove"></i></div>
       </div>
       

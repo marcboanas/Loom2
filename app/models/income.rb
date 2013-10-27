@@ -11,8 +11,8 @@ class Income < ActiveRecord::Base
     
     def asset_sold
         if self.expense_id
-           self.expense.sold = true
-        self.expense.save
+            self.expense.sold = true
+            self.expense.save
         end
     end
     

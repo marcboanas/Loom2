@@ -1,8 +1,10 @@
+<%= render 'shared/tabs' %>
+
 <% if params[:multiple_create] == "true" %>
 
-<%= form_tag 'create_multiple' do |f| %>
+<%= form_tag url_for(:controller => 'expenses', :action => 'create_multiple'), :method => 'post' do |f| %>
 
-<div class="form-section">
+<div class="form-section" id="expenses">
  
 <h2>Expenses</h2>
 
@@ -12,10 +14,10 @@
     
     <div class="expense_row">
       <%= hidden_field_tag 'expense[][user_id]', current_user.id %>
-      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: 'Date' %></div>
-      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
-      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>
-      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => 'Amount' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field date required', :id => 'date' + x.to_s, placeholder: 'DD/MM/YYYY', title: '' %></div>
+      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: '', :class => 'required' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => '' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => '' %></div>
       <div class="expense_field"><i class="icon-trash large remove" title="Remove"></i></div>
     </div>
     <% end %>
@@ -43,10 +45,10 @@
 
     <div class="new_expense_row expense_row hidden">
       <%= hidden_field_tag 'expense[][user_id]', current_user.id %>
-      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: 'Date', :id => "date4" %></div>
-      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: 'Expense type', :class => 'required' %></div>
-      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => 'Example: 1 year advert in yellow pages' %></div>
-      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => 'Amount' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][dated]', nil, class: 'small_field datepicker required', placeholder: 'DD/MM/YYYY', title: '', :id => "date4" %></div>
+      <div class="expense_field"><%= select_tag 'expense[][expense_type_id]', options_from_collection_for_select(current_user.expense_types, :id, :expense), title: '', :class => 'required' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][description]', nil, :class => 'large', :placeholder => 'Add a short description', :title => '' %></div>
+      <div class="expense_field"><%= text_field_tag 'expense[][value]', nil, :class => 'currency value required', :placeholder => '00.00', :title => '' %></div>
       <div class="expense_field"><i class="icon-trash large remove" title="Remove"></i></div>
     </div>
 
