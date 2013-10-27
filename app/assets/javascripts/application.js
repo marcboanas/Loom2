@@ -15,502 +15,253 @@
 //= require jquery.ui.all
 //= require jquery_nested_form
 //= require rails.validations
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .
 
-$(function() {
 
-  $( document ).tooltip({
-                        track: true
-                        });
-  
-  $('.alert').attr('title', 'Click to close');
-  
-  $('.alert').click(function() {
-                     
-                    $(this).tooltip({ disabled: true });
-                    
-                    $(this).animate({
-                    
-                                    opacity: 0,
-                    
-                    });
-                    $(this).css('cursor','auto');
-                    });
-  
-  if ($(document).attr('title') == "Account Hero | Home") {
-  
-  $('.alert').addClass('moveUp');
-  
-  }
-  
-  $('input[type="text"]').keyup(function() {
-  
-                                
-                                var hourly = $('#target_targets_hourly').val()
-                                
-                                var hours = $('#target_targets_hours').val()
-                                
-                                var income = hourly * hours
-                                
-                                $('#income').val(income);
-                    
-                                var expense = 0;
-                                
-                                $('.expense_category').each(function() {
-                                                            
-                                expense += Number($(this).val().replace(/[^0-9\.-]+/g,""))
-                                                            
-                                                            });
-                                
-                                $('#expense').val(expense);
-                                
-                                var profit = income - expense;
-                                
-                                var ni2 = 0;
-                                
-                                var ni4 = 0;
-                                
-                                $('#profit').val(profit);
-                                
-                                if(profit > (5725/52.1429)) {
-                                
-                                ni2 = 2.70;
-                                
-                                $('#ni2').val(ni2);
-                                
-                                }
-                                
-                                if(profit >= (7755/52.1429) && profit <= (41450/52.1429)) {
-                                
-                                ni4 = (profit - (7755/52.1429))*0.09
-                                
-                                $('#ni4').val(ni4);
-                                
-                                }
-                                
-                                if(profit > 41450/52.1429) {
-                                
-                                var under = ((41450 - 7755)/52.1429)*0.09;
-                                
-                                var over = (profit - (41450/52.1429))*0.02;
-                                
-                                ni4 = under + over
-                                
-                                $('#ni4').val(ni4);
-                                
-                                }
-                                
-                                if(profit < 7755/52.1429) {
-                                
-                                ni4 = 0;
-                                
-                                $('#ni4').val(ni4);
-                                
-                                }
-                                
-                                if(profit < 5725/52.1429) {
-                                
-                                ni2 = 0;
-                                
-                                $('#ni2').val(ni2);
-                                
-                                }
-                                
-                                if(Number($('#userAge').attr('class')) > 65) {
-                                
-                                $('#ni2').val(0);
-                                
-                                $('#ni4').val(0);
-                                
-                                ni2 = 0;
-                                
-                                ni4 = 0;
-                                
-                                }
-                                
-                                if(Number($('#userAge').attr('class')) > 65) {
-                                
-                                $('#pa').val(10500/52.1429);
-                                
-                                if(profit > (26100/52.1429)) {
-                                
-                                var reduce = (profit*52.1429 - 26100)/2;
-                                
-                                if(reduce > 10500) {
-                                
-                                reduce = 10500;
-                                
-                                }
-                                
-                                $('#pa').val((10500 - reduce)/52.1429);
-                                
-                                }
-                                
-                                }
-                                
-                                if(Number($('#userAge').attr('class')) > 75) {
-    
-                                $('#pa').val(10660/52.1429);
-                                
-                                if(profit > (26100/52.1429)) {
-                                
-                                var reduce = (profit*52.1429 - 26100)/2;
-                                
-                                if(reduce > 10660) {
-                                
-                                reduce = 10660;
-                                
-                                }
-                                
-                                $('#pa').val((10660 - reduce)/52.1429);
-                                
-                                }
-    
-                                }
-  
-                                if(Number($('#userAge').attr('class')) < 65) {
-  
-                                $('#pa').val(9440/52.1429);
-                                
-                                if(profit > (100000/52.1429)) {
-                                
-                                var reduce = (profit*52.1429 - 100000)/2;
-                                
-                                if(reduce > 9440) {
-                                
-                                reduce = 9440;
-                                
-                                }
-                                
-                                $('#pa').val((9440 - reduce)/52.1429);
-                                
-                                }
-  
-                                }
-                                
-                                var pa = $('#pa').val();
-                                
-                                var taxableIncome = profit - pa;
-                                
-                                if(taxableIncome < 0) {
-                                
-                                taxableIncome = 0;
-                                
-                                }
-                                
-                                $('#totalTaxableIncome').val(taxableIncome);
-                                
-                                var tax = 0;
-                                
-                                if(taxableIncome < 32011/52.1429) {
-                                tax = taxableIncome * 0.2;
-                                }
-                                if(taxableIncome > 32010/52.1429) {
-                                if(taxableIncome < (150001/52.1429)) {
-                                    tax = ((taxableIncome - 32010/52.1429) * 0.4) + ((32010/52.1429) * 0.2)
-                                }
-                                if(taxableIncome > (150001/52.1429)) {
-                                tax = ((150000/52.1429 - 32010/52.1429) * 0.4) + ((32010/52.1429) * 0.2) + ((taxableIncome - 150000/52.1429) * 0.45);
-                                }
-                                }
-                                
-                                $('#tax').val(tax);
-                                
-                                $('#earnings').val(profit - tax - ni2 - ni4);
 
-                                $('.weekly').each(function() {
-                                                  
-                                                  var value = $(this).val();
-                                                  
-                                                  $(this).parent().find('.monthly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429/12);
-                                                  
-                                                  $(this).parent().find('.yearly').val(Number(value.replace(/[^0-9\.-]+/g,""))*52.1429);
-                                                  
-                                                  });
 
-                                
-                                $('.disabled').formatCurrency({ colorize:true, region: 'cy-GB' });
-
-                                $('input[type="text"]').not(this).each(function() {
-                                                                       
-                                                                       $(this).blur();
-                                                                       
-                                                                       });
-                                
-});
-  
-  $('input[type="text"]').keyup();
-  
-  $('.disabled').attr('readonly', 'readonly');
-
+$(function () {
+$('.edit_target').validate({
+rules: {
+"target[targets][holidays]": { required: true, max: 51 }
+}
 });
 
-
-$(function() {
-  
-  var sectionId = $('.section-container').attr('id');
-  
-  $('#' + sectionId + 'Tab').addClass('active');
-  
-  var section_name = $('.section-container').attr('name');
-  
-  $('#' + section_name + 'Menu').addClass('active');
-  
-  $('.date').each(function(){
-                  $(this).datepicker({
-                                     changeMonth: true,
-                                     changeYear: true,
-                                     dateFormat: "dd/mm/yy",
-                                     minDate: "-100Y",
-                                     maxDate: "-16Y",
-                                     yearRange: "-100:-16"
-                                     });
-                  $(this).attr('readonly', 'readonly');
-                        });
-  });
-
-$(function() {
-
-$('.selectable').on('change', function() {
-
-$("#update_fields").load('/update_fields?expense_type_id=' + (this).value, function(){});
+$(document).tooltip({
+track: !0
+}), $(".alert").attr("title", "Click to close"), $(".alert").click(function () {
+$(this).tooltip({
+disabled: !0
+}), $(this).animate({
+opacity: 0
+}), $(this).css("cursor", "auto")
+}), $(document).attr("title") == "Account Hero | Home" && $(".alert").addClass("moveUp"), $('input[type="text"]').keyup(function () {
+var a = $("#target_targets_hourly").val(),
+b = $("#target_targets_hours").val(),
+c = a * b,
+week = 52;
+if($("#target_targets_holidays").val() >= 0) {
+week = 52 - Number($("#target_targets_holidays").val().replace(/[^0-9\.-]+/g, ""));
+};
+if(week < 0) { week = 0 };
+$("#income").val(c);
+var d = 0;
+$(".expense_category").each(function () {
+d += Number($(this).val().replace(/[^0-9\.-]+/g, ""))
+}), $("#expense").val(d);
+var e = c - d,
+f = 0,
+g = 0;
+$("#profit").val(e), e > 5725 / week && (f = 2.7, $("#ni2").val(f)), e >= 7755 / week && e <= 41450 / week && (g = (e - 7755 / week) * .09, $("#ni4").val(g));
+if (e > 41450 / week) {
+var h = 58.158445349223,
+i = (e - 41450 / week) * .02;
+g = h + i, $("#ni4").val(g)
+}
+e < 7755 / week && (g = 0, $("#ni4").val(g)), e < 5725 / week && (f = 0, $("#ni2").val(f)), Number($("#userAge").attr("class")) > 65 && ($("#ni2").val(0), $("#ni4").val(0), f = 0, g = 0);
+if (Number($("#userAge").attr("class")) > 65) {
+$("#pa").val(10500 / week);
+if (e > 26100 / week) {
+var j = (e * week - 26100) / 2;
+j > 10500 && (j = 10500), $("#pa").val((10500 - j) / week)
+}
+}
+if (Number($("#userAge").attr("class")) > 75) {
+$("#pa").val(10660 / week);
+if (e > 26100 / week) {
+var j = (e * week - 26100) / 2;
+j > 10660 && (j = 10660), $("#pa").val((10660 - j) / week)
+}
+}
+if (Number($("#userAge").attr("class")) < 65) {
+$("#pa").val(9440 / week);
+if (e > 1e5 / week) {
+var j = (e * week - 1e5) / 2;
+j > 9440 && (j = 9440), $("#pa").val((9440 - j) / week)
+}
+}
+var k = $("#pa").val(),
+l = e - k;
+l < 0 && (l = 0), $("#totalTaxableIncome").val(l);
+var m = 0;
+l < 32011 / week && (m = l * .2), l > 32010 / week && (l < 150001 / week && (m = (l - 32010 / week) * .4 + 32010 / week * .2), l > 150001 / week && (m = 1027.9060044608182 + (l - 15e4 / week) * .45)), $("#tax").val(m), $("#earnings").val(e - m - f - g), $(".weekly").each(function () {
+var a = $(this).val();
+$(this).parent().find(".monthly").val(Number(a.replace(/[^0-9\.-]+/g, "")) * week / 12), $(this).parent().find(".yearly").val(Number(a.replace(/[^0-9\.-]+/g, "")) * week)
+}), $(".disabled").formatCurrency({
+colorize: !0,
+region: "cy-GB"
+}), $('input[type="text"]').not(this).each(function () {
+$(this).blur()
+})
+}), $('input[type="text"]').keyup(), $(".disabled").attr("readonly", "readonly")
+}), $(function () {
+var a = $(".section-container").attr("id");
+$("#" + a + "Tab").addClass("active");
+var b = $(".section-container").attr("name");
+$("#" + b + "Menu").addClass("active"), $(".date").each(function () {
+$(this).datepicker({
+changeMonth: !0,
+changeYear: !0,
+dateFormat: "dd/mm/yy",
+minDate: "-100Y",
+maxDate: "-16Y",
+yearRange: "-100:-16"
+}), $(this).attr("readonly", "readonly")
+})
+}), $(function () {
+$(".selectable").on("change", function () {
+$("#update_fields").load("/update_fields?expense_type_id=" + this.value, function () {})
+}), $(function () {
+jQuery(".selectable option:first-child").attr("selected", !0), $(".selectable").change()
+}), $(function () {
+$('input[type="checkbox"]').each(function () {
+this.checked && $(this).closest(".checklist_item").css("background", "#d2eded")
+}), $("#user_weeks_accountant").on("change", function () {
+var a = $(this).attr("id");
+$(this).prop("selectedIndex") == "1" ? $("." + a + " input, ." + a + " label").prop("disabled", !1).animate({
+opacity: 1
+}) : $("." + a + " input, ." + a + " label").prop("disabled", !0).animate({
+opacity: .3
+}, 100)
+}), $("select").change()
+}), $("#student_passed_theory, #student_passed_practical").on("change", function () {
+var a = $(this).attr("id");
+$(this).prop("selectedIndex") == "1" ? $("." + a + " input, ." + a + " label").prop("disabled", !1).animate({
+opacity: 1
+}) : $("." + a + " input, ." + a + " label").prop("disabled", !0).animate({
+opacity: .3
+}, 100)
+}), $(".modalOpen").on("click", function () {
+var a = $(this).attr("id");
+$("#modal").addClass(a);
+if ($(this).attr("id") == "signin") {
+var b = $(this).offset(),
+c = $("#modal").outerWidth() - 200;
+$("#modal").css({
+left: b.left - c
+})
+} else {
+var b = $(".section-container").offset(),
+d = b.left + 2;
+$("#modal").css({
+left: d
+})
+}
+}), $(window).resize(function () {
+if ($("#modal").attr("class") == "signin") {
+var a = $("#signin").offset(),
+b = $("#modal").outerWidth() - 200;
+$("#modal").css({
+left: a.left - b
+})
+} else {
+var a = $(".section-container").offset(),
+c = a.left + 2;
+$("#modal").css({
+left: c
+})
+}
+}), $(window).scroll(function () {
+var a = $(window).scrollTop() + 70;
+$("#modal").height() < 600 && ($("#modal").css({
+top: a
+}), $(".drop-menu2").css({
+top: a - 15
+}))
+}), $("#user_address_location").geocomplete({
+country: "uk",
+details: ".business_address",
+detailsAttribute: "data-geo"
+}), $("#user_weeks_accountant_address_location").geocomplete({
+country: "uk",
+details: ".user_weeks_accountant",
+detailsAttribute: "data-geo"
+}), $(".geo").on("focus", function () {
+var a = $(this).next(".address");
+$(this).geocomplete({
+country: "uk",
+details: a,
+detailsAttribute: "data-geo"
+})
+}), $(".input_address_0").on("click", function () {
+$(this).geocomplete({
+country: "uk",
+details: ".address_0",
+detailsAttribute: "data-geo"
+})
+}), $(".input_address_1").on("click", function () {
+$(this).geocomplete({
+country: "uk",
+details: ".address_1",
+detailsAttribute: "data-geo"
+})
+}), $(".input_address_2").on("click", function () {
+$(this).geocomplete({
+country: "uk",
+details: ".address_2",
+detailsAttribute: "data-geo"
+})
+}), $(".input_address_3").on("click", function () {
+$(this).geocomplete({
+country: "uk",
+details: ".address_3",
+detailsAttribute: "data-geo"
+})
+}), $(document).ajaxSuccess(function () {
+$("#student_address_location").geocomplete({
+country: "uk",
+details: ".student_address",
+detailsAttribute: "data-geo"
+})
+}), $(document).on("keypress", ".currency", function (a) {
+(a.which != 46 || $(this).val().indexOf(".") != -1) && (a.which < 48 || a.which > 57) && a.preventDefault()
+}), $(document).on("blur", ".currency", function () {
+if ($(this).val() != "") {
+var a = parseFloat($(this).val()),
+b = a.toFixed(2);
+$(this).val(b)
+}
+}), $(".currency").blur(), $("#tax_return_employed").on("change", function () {
+$(this).val() != "true" ? $("div.employment input, div.employment select, div.employment label, div.employment h2").prop("disabled", !0).animate({
+opacity: .3
+}, 100) : $("div.employment input, div.employment select, div.employment label, div.employment h2").prop("disabled", !1).animate({
+opacity: 1
+})
+}), $("#tax_return_employed").change()
+}), $(function () {
+$(".menu-item").click(function (a) {
+a.preventDefault();
+var b = $(this).offset(),
+c = $(this).attr("id"),
+d = $(this).outerWidth(),
+e = $("." + c).outerWidth();
+$("." + c).css({
+left: b.left + d - e
+}).slideDown()
+}), $(document).mouseup(function (a) {
+var b = $(".drop-menu");
+!b.is(a.target) && b.has(a.target).length === 0 && b.slideUp()
+})
 });
 
-$(function() {
-
-jQuery(".selectable option:first-child").attr("selected", true);
-  
-  $('.selectable').change();
-
+jQuery.extend(jQuery.validator.messages, {
+required: "This field is required.",
+remote: "Please fix this field.",
+email: "Please enter a valid email address.",
+url: "Please enter a valid URL.",
+date: "Please enter a valid date.",
+dateISO: "Please enter a valid date (ISO).",
+number: "Please enter a valid number.",
+digits: "Please enter only digits.",
+creditcard: "Please enter a valid credit card number.",
+equalTo: "Please enter the same value again.",
+accept: "Please enter a value with a valid extension.",
+maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+minlength: jQuery.validator.format("Please enter at least {0} characters."),
+rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+max: jQuery.validator.format("Value must be less than or equal to {0}."),
+min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
 });
-
-$(function() {
-  
-  $('input[type="checkbox"]').each(function() {
-  
-  if (this.checked) {
-  $(this).closest('.checklist_item').css('background', '#d2eded');
-  }
-  
-  });
-  
-  $('#user_previous_accountant').on('change', function() {
-
-  var id = $(this).attr('id');
-                                                                 
-                                    if ($(this).prop("selectedIndex") == '1') {
-                                    
-                                    $('.' + id + ' input, .' + id + ' label').prop('disabled', false).animate({opacity: 1.0});
-                                    
-                                    }
-                                    
-                                    else {
-                                    
-                                    $('.' + id + ' input, .' + id + ' label').prop('disabled', true).animate({opacity: 0.3},100);
-                                    
-                                    }
-                                   
-  });
-  
-  $('select').change();
-  
-});
-  
-  $('#student_passed_theory, #student_passed_practical').on('change', function(){
-                                 
-                                 var id = $(this).attr('id');
-                                 
-                                 if ($(this).prop("selectedIndex") == '1') {
-                                 
-                                                            $('.' + id + ' input, .' + id + ' label').prop('disabled', false).animate({opacity: 1.0});
-                                 
-                                 }
-                                 
-                                 else {
-                                 
-                                                            $('.' + id + ' input, .' + id + ' label').prop('disabled', true).animate({opacity: 0.3},100);
-                                 
-                                 }
-                         
-  });
-  
-  $('.modalOpen').on('click', function() {
-                     
-                     var id = $(this).attr('id');
-                     $('#modal').addClass(id);
-                     if ($(this).attr('id') == 'signin') {
-                     var offset = $(this).offset();
-                     var width = $('#modal').outerWidth() - 200;
-                     $('#modal').css({left: offset.left - width});
-                     }
-                     else {
-                     var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 2;
-                     $('#modal').css({left: offsetLeft});
-                     }
-                     
-  });
-  
-  $( window ).resize(function() {
-
-                     if ($('#modal').attr('class') == 'signin') {
-                     var offset = $('#signin').offset();
-                     var width = $('#modal').outerWidth() - 200;
-                     $('#modal').css({left: offset.left - width});
-                     }
-                     else {
-                     var offset = $('.section-container').offset();
-                     var offsetLeft = offset.left + 2;
-                     $('#modal').css({left: offsetLeft});
-                     }
-                     
-  });
-  
-  $( window ).scroll(function() {
-                     
-                     var offset = $(window).scrollTop() + 70;
-                     if ($('#modal').height() < 600) {
-                     $('#modal').css({top: offset});
-                     $('.drop-menu2').css({top: offset - 15});
-                     }
-                     });
-  
-  $("#user_address_location").geocomplete({
-  country: 'uk',
-  details: ".business_address",
-  detailsAttribute: "data-geo"
-  });
-  
-  $("#user_previous_accountant_address_location").geocomplete({
-  country: 'uk',
-  details: ".user_previous_accountant",
-  detailsAttribute: "data-geo"
-  });
-  
-                            
-  $('.geo').on("focus", function() {
-                                     
-  var address = $(this).next(".address");
-               
-               
-                                     
-  $(this).geocomplete({
-  country: 'uk',
-  details: address,
-  detailsAttribute: "data-geo"
-  });
-                                     
-  });
-
-  
-  $(".input_address_0").on("click", function() {
-                          
-                          $(this).geocomplete({
-                                             country: 'uk',
-                                             details: ".address_0",
-                                             detailsAttribute: "data-geo"
-                                              });
-  });
-                          
-  $(".input_address_1").on("click", function() {
-                           
-                           $(this).geocomplete({
-                                               country: 'uk',
-                                               details: ".address_1",
-                                               detailsAttribute: "data-geo"
-                                               });
-                           });
-
-  $(".input_address_2").on("click", function() {
-                           
-                           $(this).geocomplete({
-                                               country: 'uk',
-                                               details: ".address_2",
-                                               detailsAttribute: "data-geo"
-                                               });
-                           });
-  
-  $(".input_address_3").on("click", function() {
-                           
-                           $(this).geocomplete({
-                                               country: 'uk',
-                                               details: ".address_3",
-                                               detailsAttribute: "data-geo"
-                                               });
-                           });
-  
-  $(document).ajaxSuccess( function() {
-  
-  $("#student_address_location").geocomplete({
-                                             country: 'uk',
-                                             details: ".student_address",
-                                             detailsAttribute: "data-geo"
-                                             });
-                                    });
-  
-  $(document).on( 'keypress','.currency', function(event) {
-                 if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
-                 event.preventDefault();
-                 }
-                 });
- 
-  
-  $(document).on( 'blur', '.currency', function(){
-                      if ($(this).val() != '') {
-                          var num = parseFloat($(this).val());
-                          var cleanNum = num.toFixed(2);
-                          $(this).val(cleanNum);
-                      }
-                          });
-  
-  $('.currency').blur();
-  
-  
-  $('#tax_return_employed').on("change", function() {
-                              
-                              if ($(this).val() != 'true') {
-                              
-                               $('div.employment input, div.employment select, div.employment label, div.employment h2').prop('disabled', true).animate({opacity: 0.3},100);
-                              
-                              }
-                               else {
-                               
-                               $('div.employment input, div.employment select, div.employment label, div.employment h2').prop('disabled', false).animate({opacity: 1.0});
-                               
-                               }
-                              
-                              });
-  
-  $('#tax_return_employed').change();
-  
-});
-
-$(function() {
-  
-  $('.menu-item').click(function(event) {
-                        
-                event.preventDefault();
-                    
-                 var offset = $(this).offset();
-                 var id = $(this).attr('id');
-                        var width = $(this).outerWidth();
-                        var menuwidth = $('.' + id).outerWidth();
-                        $('.' + id).css({left: offset.left + width - menuwidth}).slideDown();
-                     
-        });
-  
-  $(document).mouseup(function (e)
-                      {
-                      var container = $('.drop-menu');
-                      
-                      if (!container.is(e.target) // if the target of the click isn't the container...
-                          && container.has(e.target).length === 0) // ... nor a descendant of the container
-                      {
-                      container.slideUp();
-                      }
-                      });
-  
-});
-
-
-

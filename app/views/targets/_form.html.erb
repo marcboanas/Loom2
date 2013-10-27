@@ -48,6 +48,13 @@
   </div>
   
   <div class="field">
+    <%= t.label :holidays, "Holidays (weeks)", :class => 'inline' %>
+    <%= text_field_tag 'hoursMonthly', nil, :class => "small_field monthly disabled_number currency" %>
+    <%= text_field_tag 'hoursYearly', nil, :class => "small_field yearly disabled_number currency" %>
+    <%= t.text_field :holidays, :class => "currency yearly", :placeholder => "00.00", :value => @target.targets["holidays"] %>
+  </div>
+  
+  <div class="field">
     <%= label_tag "income", "Total income", :class => 'inline' %>
     <%= text_field_tag "income", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'incomeMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
@@ -77,7 +84,7 @@
   <h2>Profit targets</h2>
   
     <div class="field">
-    <%= label_tag "profit", "Total profit", :class => 'inline' %>
+    <%= label_tag "profit", "Net profit before tax & national insurance", :class => 'inline' %>
     <%= text_field_tag "profit", nil, :class => "small_field weekly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'profitMonthly', nil, :class => "small_field monthly disabled", :placeholder => "00.00" %>
     <%= text_field_tag 'profitYearly', nil, :class => "small_field yearly disabled", :placeholder => "00.00" %>

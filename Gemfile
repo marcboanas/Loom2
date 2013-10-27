@@ -9,6 +9,7 @@ gem 'stripe_event'
 gem 'client_side_validations'
 gem 'font-awesome-rails'
 gem 'geocoder'
+gem "jquery-validation-rails"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

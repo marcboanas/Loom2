@@ -21,6 +21,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js # show.js.erb
       format.json { render json: @expense }
     end
   end
@@ -32,6 +33,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js # new.js.erb
       format.json { render json: @expense }
     end
   end
