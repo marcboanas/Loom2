@@ -1,37 +1,35 @@
-<h1>Listing students</h1>
+<div class="section-container">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Address</th>
-    <th>Home phone</th>
-    <th>Mobile</th>
-    <th>User</th>
-    <th>Current</th>
-    <th>Passed</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="tabs">
+
+<div class="tab active">Students</div>
+
+</div>
+
+<div class="students">
+
+<div class="summaryBox">
+
+<div class="student-title">Summary</div>
+
+<div class="student-summary"><%= @students.count %> Students</div>
+
+<div class="student-summary"><%= @paymentCount %> Payments</div>
+
+<div class="student-summary"><%= currency(@total) %></div>
+
+</div>
 
 <% @students.each do |student| %>
-  <tr>
-    <td><%= student.name %></td>
-    <td><%= student.email %></td>
-    <td><%= student.address %></td>
-    <td><%= student.home_phone %></td>
-    <td><%= student.mobile %></td>
-    <td><%= student.user_id %></td>
-    <td><%= student.passed_theory %></td>
-    <td><%= student.passed_practical %></td>
-    <td><%= link_to 'Show', student %></td>
-    <td><%= link_to 'Edit', edit_student_path(student) %></td>
-    <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+
+<div class="student">
+
+<div class="student-title"><%= student.full_name %></div>
+
+</div>
+
 <% end %>
-</table>
 
-<br />
+</div>
 
-<%= link_to 'New Student', new_student_path %>
+</div>

@@ -3,6 +3,38 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+      
+      @paymentCount = 0
+      
+      @totalValue = [0]
+      
+      @payments = []
+      
+    @students.each do |s|
+      
+    @payments ||= Array.new
+        
+    if s.incomes.count > 0 
+        
+    @payments.push(s.incomes)
+        
+    end
+        
+    end
+        
+    @payments.each do |p|
+        
+    @paymentCount += p.count
+       
+    @value = p.map(&:value).inject(0, &:+)
+        
+    @totalValue ||= Array.new
+        
+    @totalValue.push(@value)
+        
+    end
+        
+    @total = @totalValue.inject{|sum,x| sum + x }
 
     respond_to do |format|
       format.html # index.html.erb

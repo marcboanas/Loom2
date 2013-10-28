@@ -63,7 +63,12 @@
          </li>
       </ul>
    </li>
-   <li id="studentsMenu"><a href='#'><span>Students</span></a></li>
+   <li id="studentsMenu" class='has-sub'><a><span>Students</span></a>
+      <ul>
+         <li class='has-sub'><%= link_to "List of students", students_path %>
+         </li>
+      </ul>   
+   </li>
    <li id="incomeMenu"><a href='#'><span>Income</span></a></li>
    <li id="expensesMenu"><a href='#'><span>Expenses</span></a></li>
    <li id="accountsMenu"><a href='#'><span>Accounts</span></a></li>
